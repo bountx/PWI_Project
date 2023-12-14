@@ -1,6 +1,6 @@
 # pwi_project
 
-na razie nic to można zmienić
+PWI Project 2023/24
 
 ## Getting Started
 
