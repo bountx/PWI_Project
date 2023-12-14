@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'view/calendar_screen_view.dart';
+import 'view/task_manager_screen_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //for now we initiate screen of the specific branch here
-      home: CalendarScreen(), //don't add const yet
+      home: TaskManagerScreen(), //don't add const yet
     );
   }
 }
