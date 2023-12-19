@@ -8,7 +8,7 @@ class Note {
   Color background;
 }
 
-//provider will be here later
+//provider of notes
 class NoteList extends ChangeNotifier {
   List<Note> get exampleNotes => [
     Note(

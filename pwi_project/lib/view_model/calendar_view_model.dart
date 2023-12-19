@@ -10,6 +10,8 @@ class Calendar extends ChangeNotifier {
   CalendarController get controller => _controller;
 }
 
+//Data source for calendar
+//transforming data from task and note to appointment
 class DataSource extends CalendarDataSource {
   DataSource(List<Task> taskSource, List<Note> noteSource) {
     appointments = [];
