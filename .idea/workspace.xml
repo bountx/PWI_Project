@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Added data source to calendar">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PWI_Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PWI_Project.iml" afterDir="false" />
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Added Task class and it's provider">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702985234662</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added Task class and it's provider">
+      <option name="closed" value="true" />
+      <created>1702985268806</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702985268806</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added provider package" />
     <MESSAGE value="Added data source to calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added data source to calendar" />
+    <MESSAGE value="Added Task class and it's provider" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Task class and it's provider" />
   </component>
 </project>

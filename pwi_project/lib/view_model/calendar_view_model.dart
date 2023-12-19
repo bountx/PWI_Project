@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Calendar extends ChangeNotifier {
   final _controller = CalendarController();
-
-  CalendarDataSource getTasksDataSource(BuildContext context){
-    List<Task> tasks = Provider.of<TaskList>(context).exampleTasks;
-    return TasksDataSource(tasks);
-  }
 
   CalendarController get controller => _controller;
 }
