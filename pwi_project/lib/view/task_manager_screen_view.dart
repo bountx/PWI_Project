@@ -3,11 +3,6 @@ import 'package:flutter/material.dart';
 class TaskManagerScreen extends StatelessWidget {
   TaskManagerScreen({super.key});
 
-  var tablica = [
-    Przycisk(),
-    Przycisk(),
-    Przycisk()
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +12,12 @@ class TaskManagerScreen extends StatelessWidget {
       body: Center(
         child: Column(
             verticalDirection: VerticalDirection.down,
-            children: tablica,
+            children:
         ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            tablica.add(Przycisk());
+            // tablica.add(Przycisk());
           },
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
@@ -41,7 +36,8 @@ class TaskManagerScreen extends StatelessWidget {
   }
 }
 
-Widget Przycisk() {
+
+Widget MyButtom(String name, String description) {
   return Container(
     width: 375,
     padding: EdgeInsets.all(30.0),
@@ -54,8 +50,8 @@ Widget Przycisk() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text('wwwwwwwwwwwwwwwwwww'),
-        Text('pomocy'),
+        Text(name),
+        Text(description),
       ],
     ),
   );
