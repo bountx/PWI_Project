@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../view_model/task_view_model.dart';
+import '../widgets/task_widget.dart';
 
 class TaskManagerScreen extends StatelessWidget {
   TaskManagerScreen({super.key});
@@ -12,12 +16,20 @@ class TaskManagerScreen extends StatelessWidget {
       body: Center(
         child: Column(
             verticalDirection: VerticalDirection.down,
-            children:
+            children: Provider.of<TaskList>(context).taskWidgets,
         ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // tablica.add(Przycisk());
+            Provider.of<TaskList>(context, listen: false).addTask(
+              Task(
+                Provider.of<TaskList>(context, listen: false).tasks.length.toString(),
+                'a lot a lot',
+                DateTime.now(),
+                const Color(0xFF0F8644),
+                false,
+              ),
+            );
           },
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
@@ -34,25 +46,4 @@ class TaskManagerScreen extends StatelessWidget {
           )),
     );
   }
-}
-
-
-Widget MyButtom(String name, String description) {
-  return Container(
-    width: 375,
-    padding: EdgeInsets.all(30.0),
-    decoration: BoxDecoration(
-        border: Border.all(width: 10, color: Colors.transparent),
-        color: Color.fromRGBO(235, 235, 140, 1.0),
-        borderRadius: BorderRadius.circular(20.0),
-
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Text(name),
-        Text(description),
-      ],
-    ),
-  );
 }
