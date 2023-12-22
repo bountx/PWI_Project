@@ -75,7 +75,7 @@ class NotelistScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => NotepadScreen()),
+              MaterialPageRoute(builder: (context) => const NotepadScreen()),
             );
           },
           backgroundColor: Colors.limeAccent,
@@ -99,7 +99,7 @@ class NotelistScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                        padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -111,7 +111,7 @@ class NotelistScreen extends StatelessWidget {
                                 'Title: ${noteViewModel.notes[index].title}, no. ${index+1}'
                             ),
                             IconButton(
-                              icon: Icon(Icons.edit),
+                              icon: const Icon(Icons.edit),
                               onPressed: () {},
                             ),
                           ],
