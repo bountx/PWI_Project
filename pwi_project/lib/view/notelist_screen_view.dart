@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
+import 'package:pwi_project/view_model/note_view_model.dart';
+import 'package:provider/provider.dart';
 
 class NoteStick {
   final String title;
@@ -69,53 +72,62 @@ class NotelistScreen extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NotepadScreen()),
+            );
+          },
           backgroundColor: Colors.limeAccent,
           child: const Icon(
             Icons.add,
           ),
         ),
-        body: ListView.builder(
-          itemCount: noteSticks.length,
-          itemBuilder: (context, index) {
-            return Container(
-              height: MediaQuery.of(context).size.height / 4 - 30,
-              margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-              decoration: BoxDecoration(
-                color: Colors.amber[200],
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                            style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold
+        body: Consumer<NoteViewModel>(
+          builder: (context, noteViewModel, child) {
+            return ListView.builder(
+              itemCount: noteViewModel.notes.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: MediaQuery.of(context).size.height / 4 - 30,
+                  margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  decoration: BoxDecoration(
+                    color: Colors.amber[200],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                                style: const TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold
+                                ),
+                                'Title: ${noteViewModel.notes[index].title}, no. ${index+1}'
                             ),
-                            'Title: ${noteSticks[index].title}'
+                            IconButton(
+                              icon: Icon(Icons.edit),
+                              onPressed: () {},
+                            ),
+                          ],
                         ),
-                        IconButton(
-                          icon: Icon(Icons.edit),
-                          onPressed: () {},
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                        child: Text(
+                          'Content: ${noteViewModel.notes[index].content}',
+                          textAlign: TextAlign.center,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Text(
-                      'Content: ${noteSticks[index].content}',
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             );
           },
         ),

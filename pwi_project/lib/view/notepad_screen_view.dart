@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pwi_project/view_model/note_view_model.dart';
+import 'package:pwi_project/model/note.dart';
+import 'package:provider/provider.dart';
 
 class NotepadScreen extends StatelessWidget {
-  const NotepadScreen({super.key});
+  NotepadScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +14,13 @@ class NotepadScreen extends StatelessWidget {
         backgroundColor: Colors.amberAccent[200],
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: TextField(
           maxLines: null,
-          expands: true,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
           decoration: const InputDecoration(
             hintText: 'Enter title...',
             border: InputBorder.none,
@@ -28,7 +33,12 @@ class NotepadScreen extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.check),
-            onPressed: () {},
+            onPressed: () {
+              var noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
+              String title='placeholder_title';
+              String content ='placeholder_content';
+              noteViewModel.addNote(Note(title, content));
+            },
           ),
         ],
       ),
