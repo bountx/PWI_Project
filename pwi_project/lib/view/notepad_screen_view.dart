@@ -41,7 +41,7 @@ class NotepadScreen extends StatelessWidget {
                     Provider.of<NoteViewModel>(context, listen: false);
                 String title = 'placeholder_title';
                 String content = 'placeholder_content';
-                noteViewModel.addNote(Note(title, content));
+                noteViewModel.addNote(Note(title, content, Colors.white, DateTime.now()));
               },
             ),
           ],
