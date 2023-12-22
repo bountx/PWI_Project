@@ -1,21 +1,23 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class Note {
-  Note(this.name, this.description, this.day, this.background);
-  String name;
-  String description;
-  DateTime day;
-  Color background;
-}
+import 'package:flutter/foundation.dart';
+import 'package:pwi_project/model/note.dart';
 
-//provider of notes
-class NoteList extends ChangeNotifier {
-  List<Note> get exampleNotes => [
+class NoteViewModel extends ChangeNotifier {
+  final List<Note> _notes = [
     Note(
-      'My note',
-      'something something',
-      DateTime.now().add(const Duration(days: 1)),
-      const Color(0xFFE74C3C),
-    ),
+      'siema',
+      'eeeeeeeeelo',
+      Color(0xFFF0F4C3),
+      DateTime.now().add(Duration(days: 1))
+    )
   ];
+
+  List<Note> get notes => _notes;
+
+  void addNote(Note note) {
+    _notes.add(note);
+    print("note added!");
+    notifyListeners();
+  }
 }

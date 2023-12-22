@@ -20,7 +20,7 @@ class CalendarScreen extends StatelessWidget {
           controller: Provider.of<Calendar>(context).controller,
           dataSource: DataSource(
               Provider.of<TaskList>(context).exampleTasks,
-              Provider.of<NoteList>(context).exampleNotes),
+              Provider.of<NoteViewModel>(context).notes),
           monthViewSettings: const MonthViewSettings(
             appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
             showAgenda: true,

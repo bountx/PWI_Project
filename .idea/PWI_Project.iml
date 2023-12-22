@@ -6,6 +6,8 @@
       <excludeFolder url="file://$MODULE_DIR$/pwi_project/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/pwi_project/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/pwi_project/build" />
+      <excludeFolder url="file://$MODULE_DIR$/pwi_project/android/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/pwi_project/android/app/src/main/java" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
