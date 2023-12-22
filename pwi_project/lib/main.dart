@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //for now we initiate screen of the specific branch here
-      home: NotepadScreen(), //don't add const yet
+      home: NotelistScreen(), //don't add const yet
     );
   }
 }

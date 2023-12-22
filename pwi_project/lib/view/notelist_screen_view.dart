@@ -14,7 +14,7 @@ class NotelistScreen extends StatelessWidget {
 
   final List<NoteStick> noteSticks = [
     NoteStick(title: 'Note 1', content: 'This is note stick 1'),
-    NoteStick(title: 'Note 2', content: 'This is note stick 2'),
+    NoteStick(title: 'Note 2', content: 'This is note stick 2, but I want to write longer note to see how it looks like'),
   ];
 
 
@@ -85,14 +85,36 @@ class NotelistScreen extends StatelessWidget {
                 color: Colors.amber[200],
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Title: ${noteSticks[index].title}'),
-                    Text('Content: ${noteSticks[index].content}'),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                            style: const TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold
+                            ),
+                            'Title: ${noteSticks[index].title}'
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: Text(
+                      'Content: ${noteSticks[index].content}',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
             );
           },
