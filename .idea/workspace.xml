@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Edited DataSource for notes and tasks">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="task_manager_screen" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ZV0fgzkRnIOvktXXutSo2kblri" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;calendar__screen&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ath0/repos/PWI_Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Run App" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/pwi_project/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="" />
+      <created>1702492044150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702492044150</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added provider package">
+      <option name="closed" value="true" />
+      <created>1702895727919</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702895727919</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added provider package">
+      <option name="closed" value="true" />
+      <created>1702895897783</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702895897783</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added data source to calendar">
+      <option name="closed" value="true" />
+      <created>1702985234662</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702985234662</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Task class and it's provider">
+      <option name="closed" value="true" />
+      <created>1702985268806</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702985268806</updated>
+    </task>
+    <task id="LOCAL-00005" summary="BuildContext inheritance fixed for more clarity">
+      <option name="closed" value="true" />
+      <created>1702986058713</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702986058713</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Note provider">
+      <option name="closed" value="true" />
+      <created>1703022201330</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1703022201330</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Edited DataSource for notes and tasks">
+      <option name="closed" value="true" />
+      <created>1703022359612</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1703022359612</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added provider package" />
+    <MESSAGE value="Added data source to calendar" />
+    <MESSAGE value="Added Task class and it's provider" />
+    <MESSAGE value="BuildContext inheritance fixed for more clarity" />
+    <MESSAGE value="Added Note provider" />
+    <MESSAGE value="Edited DataSource for notes and tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited DataSource for notes and tasks" />
+  </component>
+</project>
