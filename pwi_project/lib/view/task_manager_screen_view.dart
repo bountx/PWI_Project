@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/view/task_creation_screen_view.dart';
 
 import '../view_model/task_view_model.dart';
 import '../widgets/task_widget.dart';
@@ -21,14 +22,9 @@ class TaskManagerScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Provider.of<TaskList>(context, listen: false).addTask(
-              Task(
-                Provider.of<TaskList>(context, listen: false).tasks.length.toString(),
-                'a lot a lot',
-                DateTime.now(),
-                const Color(0xFF0F8644),
-                false,
-              ),
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TaskCreation()),
             );
           },
           shape:
