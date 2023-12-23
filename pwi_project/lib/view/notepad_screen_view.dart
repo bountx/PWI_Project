@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/model/note.dart';
+import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 
 class NotepadScreen extends StatelessWidget {
-  const NotepadScreen({super.key});
+  NotepadScreen({super.key, this.note, this.index});
+
+  final Note? note;
+  final int? index;
+  final titleController = TextEditingController();
+  final contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    var textFieldControllers = Provider.of<TextFieldControllers>(context);
+    var noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
+
+    if (note != null) {
+      textFieldControllers.titleController.text = note?.title ?? '';
+      textFieldControllers.contentController.text = note?.content ?? '';
+    }
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -19,9 +33,16 @@ class NotepadScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                if (!textFieldControllers.hasListeners) {
+                  textFieldControllers.disposeControllers();
+                }
+              });
             },
           ),
           title: TextField(
+            controller:
+                Provider.of<TextFieldControllers>(context).titleController,
             maxLines: null,
             style: Theme.of(context).textTheme.titleLarge,
             decoration: const InputDecoration(
@@ -37,11 +58,26 @@ class NotepadScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.check),
               onPressed: () {
-                var noteViewModel =
-                    Provider.of<NoteViewModel>(context, listen: false);
-                String title = 'placeholder_title';
-                String content = 'placeholder_content';
-                noteViewModel.addNote(Note(title, content, Colors.white, DateTime.now()));
+                String title = textFieldControllers.titleController.text;
+                String content = textFieldControllers.contentController.text;
+                Color color = Colors.white;
+                DateTime dateTime = DateTime.now();
+
+                Note newNote = Note(title, content, color, dateTime);
+
+                if (note != null) {
+                  int index = noteViewModel.notes.indexWhere((existingNote) => existingNote == note);
+                  noteViewModel.updateNote(index, newNote);
+                } else {
+                  noteViewModel.addNote(newNote);
+                }
+
+                Navigator.pop(context);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (!textFieldControllers.hasListeners) {
+                    textFieldControllers.disposeControllers();
+                  }
+                });
               },
             ),
           ],
@@ -49,6 +85,8 @@ class NotepadScreen extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextField(
+            controller:
+                Provider.of<TextFieldControllers>(context).contentController,
             maxLines: null,
             expands: true,
             decoration: InputDecoration(

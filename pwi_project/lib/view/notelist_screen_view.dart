@@ -3,9 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/widgets/note_stick.dart';
+import 'package:pwi_project/utils/text_field_controllers.dart';
 
 class NotelistScreen extends StatelessWidget {
-  NotelistScreen({super.key});
+  const NotelistScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,12 @@ class NotelistScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const NotepadScreen()),
+              MaterialPageRoute(
+                builder: (context) => ChangeNotifierProvider(
+                  create: (context) => TextFieldControllers(),
+                  child: NotepadScreen(note: null, index: null),
+                ),
+              ),
             );
           },
           backgroundColor: Colors.limeAccent,
@@ -73,7 +79,9 @@ class NotelistScreen extends StatelessWidget {
               itemCount: noteViewModel.notes.length,
               itemBuilder: (context, index) {
                 return NoteStick(
-                    note: noteViewModel.notes[index], index: index);
+                    note: noteViewModel.notes[index],
+                    index: index
+                );
               },
             );
           },

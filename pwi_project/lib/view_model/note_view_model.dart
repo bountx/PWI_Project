@@ -5,12 +5,8 @@ import 'package:pwi_project/model/note.dart';
 
 class NoteViewModel extends ChangeNotifier {
   final List<Note> _notes = [
-    Note(
-      'siema',
-      'eeeeeeeeelo',
-      Color(0xFFF0F4C3),
-      DateTime.now().add(Duration(days: 1))
-    )
+    Note('siema', 'eeeeeeeeelo', const Color(0xFFF0F4C3),
+        DateTime.now().add(const Duration(days: 1)))
   ];
 
   List<Note> get notes => _notes;
@@ -20,4 +16,10 @@ class NoteViewModel extends ChangeNotifier {
     print("note added!");
     notifyListeners();
   }
+
+  void updateNote(int index, Note updatedNote) {
+    _notes[index] = updatedNote;
+    notifyListeners();
+  }
+
 }

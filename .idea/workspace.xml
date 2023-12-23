@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Edited DataSource for notes and tasks">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/utils/text_field_controllers.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +51,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "calendar__screen",
     "ignore.virus.scanning.warn.message": "true",
     "io.flutter.reload.alreadyRun": "true",
@@ -58,6 +63,11 @@
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jhaft\Documents\GitHub\PWI_Project\pwi_project\lib\utils" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Run App" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/pwi_project/lib/main.dart" />

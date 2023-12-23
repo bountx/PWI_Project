@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pwi_project/model/note.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
 
 class NoteStick extends StatelessWidget {
   final Note note;
   final int index;
 
-  NoteStick({required this.note, required this.index});
+  const NoteStick({super.key, required this.note, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +26,28 @@ class NoteStick extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Title: ${note.title}, no. ${index + 1}',
+                  '${note.title}, no. ${index + 1}',
                   style: const TextStyle(
                       fontSize: 22, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {},
-                  // Add your onPressed function here
+                  icon: const Icon(Icons.edit),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotepadScreen(note: note)),
+                    );
+                  },
                 ),
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+            child: Text(
+              note.content,
+              textAlign: TextAlign.center,
             ),
           ),
         ],
