@@ -21,7 +21,7 @@ class TaskWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[Container(
-            margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
+            margin: EdgeInsets.fromLTRB(20, 5, 0, 20),
             width: 300,
             height: 90,
             alignment: Alignment.center,
@@ -63,7 +63,7 @@ class _MyCheckboxState extends State<MyCheckbox> {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+        margin: EdgeInsets.fromLTRB(0, 5, 0, 20),
         height: 90,
         width: 60,
         decoration: BoxDecoration(

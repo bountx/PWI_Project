@@ -13,7 +13,7 @@ class TaskManagerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       backgroundColor: Color.fromRGBO(153, 217, 234, 1.0),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
             verticalDirection: VerticalDirection.down,
             children: Provider.of<TaskList>(context).taskWidgets,
