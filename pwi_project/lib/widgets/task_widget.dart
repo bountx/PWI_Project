@@ -14,6 +14,8 @@ class TaskWidget extends StatelessWidget {
   bool isDone;
   int index;
 
+
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,13 +32,55 @@ class TaskWidget extends StatelessWidget {
             ),
             child: GestureDetector(
               onTap: (){
-                print(Provider.of<TaskList>(context, listen: false).tasks.last.description);
+                  print(Provider.of<TaskList>(context, listen: false).tasks.last.description);
                 //placeholder! Goal: Should provide a tasks description, but need indexes for it
               },
             )
       ),
-
+      MyCheckbox(),
     ],
+    );
+    }
+  }
+
+
+
+class MyCheckbox extends StatefulWidget {
+  const MyCheckbox({Key? key}) : super(key: key);
+
+  @override
+  _MyCheckboxState createState() => _MyCheckboxState();
+}
+
+class _MyCheckboxState extends State<MyCheckbox> {
+  bool isChecked = false;
+
+  Color getColor() {
+    return isChecked ? Colors.green : Colors.red;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Container(
+        margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
+        height: 90,
+        width: 60,
+        decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
+            color: getColor()
+        ),
+        child: Checkbox(
+          checkColor: Colors.white,
+          fillColor: MaterialStateProperty.all(getColor()),
+          value: isChecked,
+          onChanged: (bool? value) {
+            setState(() {
+              isChecked = value!;
+            });
+          },
+        ),
+      ),
     );
   }
 }
