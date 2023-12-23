@@ -8,7 +8,6 @@ import '../widgets/task_widget.dart';
 class TaskManagerScreen extends StatelessWidget {
   TaskManagerScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,15 +15,15 @@ class TaskManagerScreen extends StatelessWidget {
       backgroundColor: Color.fromRGBO(153, 217, 234, 1.0),
       body: SingleChildScrollView(
         child: Column(
-            verticalDirection: VerticalDirection.down,
-            children: Provider.of<TaskList>(context).taskWidgets,
+          verticalDirection: VerticalDirection.down,
+          children: Provider.of<TaskList>(context).taskWidgets,
         ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TaskCreation()),
+              context,
+              MaterialPageRoute(builder: (context) => TaskCreation()),
             );
           },
           shape:

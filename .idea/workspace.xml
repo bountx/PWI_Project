@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Made the task list scrollable&#10;Done with L0UG0 :)">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Made the base of a task creation screen&#10;Done with L0UG0 :)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703335876010</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Made the base of a task creation screen&#10;Done with L0UG0 :)">
+      <option name="closed" value="true" />
+      <created>1703339652709</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703339652709</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +168,7 @@
     <MESSAGE value="Added Note provider" />
     <MESSAGE value="Edited DataSource for notes and tasks" />
     <MESSAGE value="Made the task list scrollable&#10;Done with L0UG0 :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the task list scrollable&#10;Done with L0UG0 :)" />
+    <MESSAGE value="Made the base of a task creation screen&#10;Done with L0UG0 :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the base of a task creation screen&#10;Done with L0UG0 :)" />
   </component>
 </project>
