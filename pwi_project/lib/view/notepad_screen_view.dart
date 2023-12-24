@@ -53,7 +53,20 @@ class NotepadScreen extends StatelessWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.delete_forever_rounded),
-              onPressed: () {},
+              onPressed: () {
+                if (note != null) {
+                  int index = noteViewModel.notes
+                      .indexWhere((existingNote) => existingNote == note);
+                  noteViewModel.deleteNote(index);
+                }
+
+                Navigator.pop(context);
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (!textFieldControllers.hasListeners) {
+                    textFieldControllers.disposeControllers();
+                  }
+                });
+              },
             ),
             IconButton(
               icon: const Icon(Icons.check),
