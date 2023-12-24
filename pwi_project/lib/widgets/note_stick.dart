@@ -26,7 +26,7 @@ class NoteStick extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '${note.title}, no. ${index + 1}',
+                  note.title,
                   style: const TextStyle(
                       fontSize: 22, fontWeight: FontWeight.bold),
                 ),

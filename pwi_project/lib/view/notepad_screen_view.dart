@@ -34,7 +34,7 @@ class NotepadScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                if (!textFieldControllers.hasListeners) {
+                if (!textFieldControllers.hasActiveListeners) {
                   textFieldControllers.disposeControllers();
                 }
               });
@@ -62,7 +62,7 @@ class NotepadScreen extends StatelessWidget {
 
                 Navigator.pop(context);
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (!textFieldControllers.hasListeners) {
+                  if (!textFieldControllers.hasActiveListeners) {
                     textFieldControllers.disposeControllers();
                   }
                 });
@@ -72,6 +72,12 @@ class NotepadScreen extends StatelessWidget {
               icon: const Icon(Icons.check),
               onPressed: () {
                 String title = textFieldControllers.titleController.text;
+                if (title.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Title is too short!')),
+                  );
+                  return;
+                }
                 String content = textFieldControllers.contentController.text;
                 Color color = Colors.white;
                 DateTime dateTime = DateTime.now();
@@ -79,7 +85,8 @@ class NotepadScreen extends StatelessWidget {
                 Note newNote = Note(title, content, color, dateTime);
 
                 if (note != null) {
-                  int index = noteViewModel.notes.indexWhere((existingNote) => existingNote == note);
+                  int index = noteViewModel.notes
+                      .indexWhere((existingNote) => existingNote == note);
                   noteViewModel.updateNote(index, newNote);
                 } else {
                   noteViewModel.addNote(newNote);
@@ -87,7 +94,7 @@ class NotepadScreen extends StatelessWidget {
 
                 Navigator.pop(context);
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (!textFieldControllers.hasListeners) {
+                  if (!textFieldControllers.hasActiveListeners) {
                     textFieldControllers.disposeControllers();
                   }
                 });

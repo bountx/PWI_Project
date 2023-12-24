@@ -13,7 +13,9 @@ class NoteViewModel extends ChangeNotifier {
 
   void addNote(Note note) {
     _notes.add(note);
-    print("note added!");
+    if (kDebugMode) {
+      print("note added!");
+    }
     notifyListeners();
   }
 
