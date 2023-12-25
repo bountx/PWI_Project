@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Edited DataSource for notes and tasks">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="created expandable tasks and notes (again)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" afterDir="false" />
     </list>
@@ -137,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703514966794</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="created expandable tasks and notes (again)">
+      <option name="closed" value="true" />
+      <created>1703515418020</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703515418020</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +164,7 @@
     <MESSAGE value="BuildContext inheritance fixed for more clarity" />
     <MESSAGE value="Added Note provider" />
     <MESSAGE value="Edited DataSource for notes and tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited DataSource for notes and tasks" />
+    <MESSAGE value="created expandable tasks and notes (again)" />
+    <option name="LAST_COMMIT_MESSAGE" value="created expandable tasks and notes (again)" />
   </component>
 </project>

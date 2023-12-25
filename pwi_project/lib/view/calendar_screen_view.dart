@@ -46,6 +46,33 @@ class CalendarScreen extends StatelessWidget {
           },
           showDatePickerButton: true,
           view: CalendarView.month,
+          appointmentBuilder: appointmentBuilder,
         ));
   }
+}
+
+Widget appointmentBuilder(BuildContext context,
+    CalendarAppointmentDetails calendarAppointmentDetails) {
+  final Appointment appointment =
+      calendarAppointmentDetails.appointments.first;
+  if (appointment.id == 0) {
+    return Container(
+      width: calendarAppointmentDetails.bounds.width,
+      height: calendarAppointmentDetails.bounds.height,
+      color: appointment.color,
+      child: Text(
+        appointment.subject,
+      ),
+    );
+  }else{
+    return Container(
+      width: calendarAppointmentDetails.bounds.width,
+      height: calendarAppointmentDetails.bounds.height,
+      color: appointment.color,
+      child: Text(
+        appointment.subject,
+      ),
+    );
+  }
+
 }
