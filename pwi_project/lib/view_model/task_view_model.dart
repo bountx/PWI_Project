@@ -17,5 +17,35 @@ class TaskList extends ChangeNotifier {
       DateTime.now(),
       const Color(0xFF0F8644),
     ),
+    Task(
+      'To do',
+      'a lot a lot',
+      DateTime.now(),
+      const Color(0xFF0F8644),
+    ),
+    Task(
+      'To do',
+      'a lot a lot',
+      DateTime.now(),
+      const Color(0xFF0F8644),
+    ),
+    Task(
+      'To do',
+      'a lot a lot',
+      DateTime.now(),
+      const Color(0xFF0F8644),
+    ),
+    Task(
+      'To do',
+      'a lot a lot',
+      DateTime.now(),
+      const Color(0xFF0F8644),
+    ),
+    Task(
+      'To do',
+      'a lot a lot',
+      DateTime.now(),
+      const Color(0xFF0F8644),
+    ),
   ];
 }

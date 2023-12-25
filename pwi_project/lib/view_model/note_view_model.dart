@@ -10,6 +10,11 @@ class NoteViewModel extends ChangeNotifier {
       'eeeeeeeeelo',
       Color(0xFFF0F4C3),
       DateTime.now().add(Duration(days: 1))
+    ),Note(
+        'siema',
+        'eeeeeeeeelo',
+        Color(0xFFF0F4C3),
+        DateTime.now()
     )
   ];
 

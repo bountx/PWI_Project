@@ -18,11 +18,11 @@ class CalendarScreen extends StatelessWidget {
         body: SfCalendar(
           onSelectionChanged: (selection) {},
           controller: Provider.of<Calendar>(context).controller,
-          dataSource: DataSource(
-              Provider.of<TaskList>(context).exampleTasks,
+          dataSource: DataSource(Provider.of<TaskList>(context).exampleTasks,
               Provider.of<NoteViewModel>(context).notes),
           monthViewSettings: const MonthViewSettings(
-            appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
+            agendaItemHeight: 50,
+            //appointmentDisplayMode: MonthAppointmentDisplayMode.appointment
             showAgenda: true,
           ),
           onTap: (details) {
@@ -42,7 +42,6 @@ class CalendarScreen extends StatelessWidget {
                     );
                   });
             }
-
           },
           showDatePickerButton: true,
           view: CalendarView.month,
@@ -53,18 +52,28 @@ class CalendarScreen extends StatelessWidget {
 
 Widget appointmentBuilder(BuildContext context,
     CalendarAppointmentDetails calendarAppointmentDetails) {
-  final Appointment appointment =
-      calendarAppointmentDetails.appointments.first;
+  final Appointment appointment = calendarAppointmentDetails.appointments.first;
   if (appointment.id == 0) {
     return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        color: appointment.color,
+      ),
       width: calendarAppointmentDetails.bounds.width,
       height: calendarAppointmentDetails.bounds.height,
-      color: appointment.color,
-      child: Text(
-        appointment.subject,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Row(
+          children: <Widget>[
+            Text(
+              appointment.subject,
+            ),
+            Checkbox(value: false, onChanged: (bool? new_value) {})
+          ],
+        ),
       ),
     );
-  }else{
+  } else {
     return Container(
       width: calendarAppointmentDetails.bounds.width,
       height: calendarAppointmentDetails.bounds.height,
@@ -74,5 +83,4 @@ Widget appointmentBuilder(BuildContext context,
       ),
     );
   }
-
 }
