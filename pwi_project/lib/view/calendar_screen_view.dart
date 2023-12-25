@@ -25,6 +25,25 @@ class CalendarScreen extends StatelessWidget {
             appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
             showAgenda: true,
           ),
+          onTap: (details) {
+            if (details.targetElement == CalendarElement.appointment) {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text(details.appointments![0].subject),
+                      content: Text(details.appointments![0].notes),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('OK'),
+                        ),
+                      ],
+                    );
+                  });
+            }
+
+          },
           showDatePickerButton: true,
           view: CalendarView.month,
         ));
