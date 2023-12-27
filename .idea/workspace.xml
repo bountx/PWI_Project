@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Made the base of a task creation screen&#10;Done with L0UG0 :)">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/model/task.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
