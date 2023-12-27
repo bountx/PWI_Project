@@ -5,6 +5,8 @@ import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/widgets/note_stick.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 
+import '../widgets/note_line.dart';
+
 class NotelistScreen extends StatelessWidget {
   const NotelistScreen({super.key});
 
@@ -78,7 +80,7 @@ class NotelistScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: noteViewModel.notes.length,
               itemBuilder: (context, index) {
-                return NoteStick(
+                return NoteLine(
                     note: noteViewModel.notes[index],
                     index: index
                 );
