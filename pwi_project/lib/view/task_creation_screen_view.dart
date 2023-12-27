@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
+import '../model/task.dart';
 import '../view_model/task_view_model.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
@@ -8,7 +9,7 @@ class TaskCreationViewModel extends ChangeNotifier {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   DateTime selectedDate = DateTime.now();
-  Color selectedColor = Colors.blue;
+  Color selectedColor = Colors.amber;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
