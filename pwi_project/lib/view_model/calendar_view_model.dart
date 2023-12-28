@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+
+import '../model/note.dart';
 import '../model/task.dart';
 import 'note_view_model.dart';
 
@@ -28,11 +30,11 @@ class DataSource extends CalendarDataSource {
     }
     for(Note note in noteSource){
       Appointment noteAppointment = Appointment(
-        subject: note.name,
-        startTime: note.day,
-        endTime: note.day,
-        color: note.background,
-        notes: note.description,
+        subject: note.title,
+        startTime: note.date,
+        endTime: note.date,
+        color: note.color,
+        notes: note.content,
         isAllDay: true,
       );
       appointments?.add(noteAppointment);
