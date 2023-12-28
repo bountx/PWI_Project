@@ -21,7 +21,7 @@ class TaskWidget extends StatelessWidget {
             height: 50,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Provider.of<TaskList>(context, listen: false).tasks.last.background,
+              color: task.background,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(
