@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Made the base of a task creation screen&#10;Done with L0UG0 :)">
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Reprogrammed the task creation widget, changed the date input from text field to DatePicker,added a ColorPicker">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
@@ -146,7 +144,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703339652709</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added a Task Creation widget, which lets you make your own title, desc and finish date, using the commented provider doesnt work and seems to disrupt the navigator.pop()&#10;Done with L0UG0 :)">
+      <option name="closed" value="true" />
+      <created>1703344329890</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703344329890</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Reprogrammed the task creation widget, changed the date input from text field to DatePicker,added a ColorPicker">
+      <option name="closed" value="true" />
+      <created>1703694372248</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703694372248</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,6 +183,8 @@
     <MESSAGE value="Edited DataSource for notes and tasks" />
     <MESSAGE value="Made the task list scrollable&#10;Done with L0UG0 :)" />
     <MESSAGE value="Made the base of a task creation screen&#10;Done with L0UG0 :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the base of a task creation screen&#10;Done with L0UG0 :)" />
+    <MESSAGE value="Added a Task Creation widget, which lets you make your own title, desc and finish date, using the commented provider doesnt work and seems to disrupt the navigator.pop()&#10;Done with L0UG0 :)" />
+    <MESSAGE value="Reprogrammed the task creation widget, changed the date input from text field to DatePicker,added a ColorPicker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reprogrammed the task creation widget, changed the date input from text field to DatePicker,added a ColorPicker" />
   </component>
 </project>

@@ -5,22 +5,22 @@ import '../view_model/task_view_model.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class TaskCreationViewModel extends ChangeNotifier {
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  DateTime selectedDate = DateTime.now();
-  Color selectedColor = Colors.blue;
+      TextEditingController titleController = TextEditingController();
+      TextEditingController descriptionController = TextEditingController();
+      DateTime selectedDate = DateTime.now();
+      Color selectedColor = Colors.blue;
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != selectedDate) {
-      selectedDate = picked;
-      notifyListeners();
-    }
+      Future<void> _selectDate(BuildContext context) async {
+        final DateTime? picked = await showDatePicker(
+          context: context,
+          initialDate: selectedDate,
+          firstDate: DateTime.now(),
+          lastDate: DateTime(2101),
+        );
+        if (picked != null && picked != selectedDate) {
+          selectedDate = picked;
+          notifyListeners();
+        }
   }
 
   void _selectColor(BuildContext context) {
