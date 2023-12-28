@@ -4,7 +4,7 @@ import 'package:pwi_project/utils/notelist_view_mode.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/widgets/noteline_list.dart';
-import 'package:pwi_project/widgets/notestick_list.dart';
+import 'package:pwi_project/widgets/notestick_grid.dart';
 
 class NotelistScreen extends StatelessWidget {
   const NotelistScreen({super.key});
@@ -35,7 +35,7 @@ class NotelistScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(
-                          viewMode.isTileMode ? Icons.list : Icons.grid_view,
+                          viewMode.isGridMode ? Icons.list : Icons.grid_view,
                         ),
                       ),
                     ),
@@ -81,7 +81,7 @@ class NotelistScreen extends StatelessWidget {
           ),
         ),
         body: Consumer<NotelistViewMode>(
-          builder: (context, viewMode, child) => viewMode.isTileMode ? const NoteStickList() : const NoteLineList(),
+          builder: (context, viewMode, child) => viewMode.isGridMode ? const NoteStickList() : const NoteLineList(),
         ),
       ),
     );

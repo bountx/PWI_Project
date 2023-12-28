@@ -26,7 +26,7 @@ class NoteStick extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  note.title,
+                  note.title.length > 6 ? '${note.title.substring(0, 6)}...' : note.title,
                   style: const TextStyle(
                       fontSize: 22, fontWeight: FontWeight.bold),
                 ),
@@ -46,8 +46,8 @@ class NoteStick extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Text(
-              note.content,
-              textAlign: TextAlign.center,
+              note.content.length > 75 ? '${note.content.substring(0, 75)}...' : note.content,
+              textAlign: TextAlign.justify,
             ),
           ),
         ],

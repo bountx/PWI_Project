@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class NotelistViewMode extends ChangeNotifier {
-  bool isTileMode = true;
+  bool isGridMode = true;
 
   void toggleViewMode() {
-    isTileMode = !isTileMode;
+    isGridMode = !isGridMode;
     notifyListeners();
   }
 }

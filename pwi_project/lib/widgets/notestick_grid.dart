@@ -9,7 +9,10 @@ class NoteStickList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final noteViewModel = Provider.of<NoteViewModel>(context);
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // Change this number as per your requirement
+      ),
       itemCount: noteViewModel.notes.length,
       itemBuilder: (context, index) {
         return NoteStick(
