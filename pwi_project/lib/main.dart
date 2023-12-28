@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'view/task_manager_screen_view.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/notelist_view_mode.dart';
 import 'package:pwi_project/view/notelist_screen_view.dart';
@@ -16,7 +18,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => TextFieldControllers()),
       ChangeNotifierProvider(create: (context) => NotelistViewMode()),
     ],
-    child: const MyApp(),
+    child: MyApp(),
   ));
 
 }
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //for now we initiate screen of the specific branch here
-      home: const NotelistScreen(), //don't add const yet
+      home: NotelistScreen(), //don't add const yet
     );
   }
 }
