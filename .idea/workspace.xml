@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Edited DataSource for notes and tasks">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Reprogrammed the task creation widget, changed the date input from text&#10;field to DatePicker,added a ColorPicker">
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_creation_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/model/note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/model/note.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,14 +45,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;calendar__screen&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;task__manager__screen&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ath0/repos/PWI_Project&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/srcflutter/flutter/bin/cache/dart-sdk&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -134,7 +132,47 @@
       <option name="project" value="LOCAL" />
       <updated>1703022359612</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Made the task list scrollable&#10;Done with L0UG0 :)">
+      <option name="closed" value="true" />
+      <created>1703335876010</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703335876010</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Made the base of a task creation screen&#10;Done with L0UG0 :)">
+      <option name="closed" value="true" />
+      <created>1703339652709</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703339652709</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added a Task Creation widget, which lets you make your own title, desc and finish date, using the commented provider doesnt work and seems to disrupt the navigator.pop()&#10;Done with L0UG0 :)">
+      <option name="closed" value="true" />
+      <created>1703344329890</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703344329890</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Reprogrammed the task creation widget, changed the date input from text field to DatePicker,added a ColorPicker">
+      <option name="closed" value="true" />
+      <created>1703694372248</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703694372248</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Reprogrammed the task creation widget, changed the date input from text&#10;field to DatePicker,added a ColorPicker">
+      <option name="closed" value="true" />
+      <created>1703762906315</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1703762906315</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +193,11 @@
     <MESSAGE value="BuildContext inheritance fixed for more clarity" />
     <MESSAGE value="Added Note provider" />
     <MESSAGE value="Edited DataSource for notes and tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited DataSource for notes and tasks" />
+    <MESSAGE value="Made the task list scrollable&#10;Done with L0UG0 :)" />
+    <MESSAGE value="Made the base of a task creation screen&#10;Done with L0UG0 :)" />
+    <MESSAGE value="Added a Task Creation widget, which lets you make your own title, desc and finish date, using the commented provider doesnt work and seems to disrupt the navigator.pop()&#10;Done with L0UG0 :)" />
+    <MESSAGE value="Reprogrammed the task creation widget, changed the date input from text field to DatePicker,added a ColorPicker" />
+    <MESSAGE value="Reprogrammed the task creation widget, changed the date input from text&#10;field to DatePicker,added a ColorPicker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reprogrammed the task creation widget, changed the date input from text&#10;field to DatePicker,added a ColorPicker" />
   </component>
 </project>

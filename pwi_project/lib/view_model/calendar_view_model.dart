@@ -3,6 +3,7 @@ import 'package:pwi_project/view_model/task_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../model/note.dart';
+import '../model/task.dart';
 import 'note_view_model.dart';
 
 class Calendar extends ChangeNotifier {
