@@ -43,7 +43,7 @@ class NoteLine extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          note.title,
+                          note.title.length > 17 ? '${note.title.substring(0, 17)}...' : note.title,
                           style: const TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),

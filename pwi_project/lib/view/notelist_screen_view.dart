@@ -81,7 +81,7 @@ class NotelistScreen extends StatelessWidget {
           ),
         ),
         body: Consumer<NotelistViewMode>(
-          builder: (context, viewMode, child) => viewMode.isGridMode ? const NoteStickList() : const NoteLineList(),
+          builder: (context, viewMode, child) => viewMode.isGridMode ? const NoteStickGrid() : const NoteLineList(),
         ),
       ),
     );

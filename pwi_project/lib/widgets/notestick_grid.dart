@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import '../view_model/note_view_model.dart';
 import 'note_stick.dart';
 
-class NoteStickList extends StatelessWidget {
-  const NoteStickList({super.key});
+class NoteStickGrid extends StatelessWidget {
+  const NoteStickGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
