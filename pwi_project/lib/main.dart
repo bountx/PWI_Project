@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pwi_project/view/calendar_screen_view.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
 
 import 'view/task_manager_screen_view.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //for now we initiate screen of the specific branch here
-      home: NotelistScreen(), //don't add const yet
+      home: CalendarScreen(), //don't add const yet
     );
   }
 }

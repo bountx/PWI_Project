@@ -78,9 +78,13 @@ class NotelistScreen extends StatelessWidget {
             return ListView.builder(
               itemCount: noteViewModel.notes.length,
               itemBuilder: (context, index) {
-                return NoteStick(
-                    note: noteViewModel.notes[index],
-                    index: index
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  child: NoteStick(
+                      note: noteViewModel.notes[index],
+                      simplifiedLook: false,
+                    //index: index
+                  ),
                 );
               },
             );

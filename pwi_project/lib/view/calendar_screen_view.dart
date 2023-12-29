@@ -5,6 +5,10 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../view_model/note_view_model.dart';
 import '../view_model/task_view_model.dart';
+import '../widgets/task_widget.dart';
+import '../model/task.dart';
+import '../model/note.dart';
+import '../widgets/note_stick.dart';
 
 class CalendarScreen extends StatelessWidget {
   const CalendarScreen({super.key});
@@ -54,33 +58,18 @@ Widget appointmentBuilder(BuildContext context,
     CalendarAppointmentDetails calendarAppointmentDetails) {
   final Appointment appointment = calendarAppointmentDetails.appointments.first;
   if (appointment.id == 0) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: appointment.color,
-      ),
-      width: calendarAppointmentDetails.bounds.width,
-      height: calendarAppointmentDetails.bounds.height,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Row(
-          children: <Widget>[
-            Text(
-              appointment.subject,
-            ),
-            Checkbox(value: false, onChanged: (bool? new_value) {})
-          ],
-        ),
-      ),
-    );
+    return TaskWidget(
+        task: Task(appointment.subject, '', appointment.startTime,
+            appointment.color, false));
   } else {
-    return Container(
-      width: calendarAppointmentDetails.bounds.width,
-      height: calendarAppointmentDetails.bounds.height,
-      color: appointment.color,
-      child: Text(
+    return NoteStick(
+      note: Note(
         appointment.subject,
+        '',
+        appointment.color,
+        appointment.startTime,
       ),
+      simplifiedLook: true,
     );
   }
 }

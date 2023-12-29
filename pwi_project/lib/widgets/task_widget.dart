@@ -15,17 +15,17 @@ class TaskWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         MyCheckbox(),
-        Container(
-            margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-            width: 300,
-            height: 50,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: task.background,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Container(
-              margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+        Expanded(
+          child: Container(
+              margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              //width: 300,
+              //height: 50,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: task.background,
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -42,7 +42,7 @@ class TaskWidget extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+          ),
         ),
       ],
     );
