@@ -14,11 +14,9 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        MyCheckbox(),
         Container(
-            margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
             width: 300,
-            height: 50,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: task.background,
@@ -29,11 +27,13 @@ class TaskWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    task.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                  Expanded(
+                    child: Text(
+                      task.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                   IconButton(
@@ -43,7 +43,8 @@ class TaskWidget extends StatelessWidget {
                 ],
               ),
             ),
-        ),
+          ),
+        MyCheckbox(),
       ],
     );
   }
