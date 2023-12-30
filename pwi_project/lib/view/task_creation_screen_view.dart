@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
-import '../model/task.dart';
+
 import '../view_model/task_creation_view_model.dart';
-import '../view_model/task_view_model.dart';
-
-
 
 class TaskCreationWidget extends StatelessWidget {
   @override

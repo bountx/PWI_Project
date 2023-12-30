@@ -6,7 +6,8 @@ class TextFieldControllers with ChangeNotifier {
 
   bool get hasActiveListeners => hasListeners;
 
-  void disposeControllers() {  // call after being done with textfields
+  void disposeControllers() {
+    // call after being done with textfields
     titleController.dispose();
     contentController.dispose();
   }

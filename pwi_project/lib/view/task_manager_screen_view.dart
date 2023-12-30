@@ -47,13 +47,13 @@ class TaskManagerScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 0.0),
-                child: TaskWidget(task: Task(
-                  taskList.tasks[index].name,
-                  taskList.tasks[index].description,
-                  taskList.tasks[index].day,
-                  taskList.tasks[index].background,
-                  false
-                ),
+                child: TaskWidget(
+                  task: Task(
+                      taskList.tasks[index].name,
+                      taskList.tasks[index].description,
+                      taskList.tasks[index].day,
+                      taskList.tasks[index].background,
+                      false),
                 ),
               );
             },
