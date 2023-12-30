@@ -36,7 +36,7 @@ class NoteStick extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => NotepadScreen(note: note)),
+                          builder: (context) => NotepadScreen(note: note, index: index)),
                     );
                   },
                 ),
