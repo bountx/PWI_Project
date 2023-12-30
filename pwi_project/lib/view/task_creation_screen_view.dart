@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
@@ -49,11 +48,22 @@ class TaskCreationWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text('Background Color:'),
-                ElevatedButton(
-                  onPressed: () => model.selectColor(context),
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: model.selectedColor),
-                  child: Text('Select Color'),
+                Row(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () => model.selectColor(context),
+                        child: Text('Select Color'),
+                    ),
+                    Container(
+                      width: 40,
+                      height: 40,
+                      margin: EdgeInsets.only(left: 15),
+                      decoration: BoxDecoration(
+                        color: model.selectedColor,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
