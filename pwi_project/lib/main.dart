@@ -17,7 +17,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => TextFieldControllers()),
       ChangeNotifierProvider(create: (context) => NotelistViewMode()),
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //for now we initiate screen of the specific branch here
-      home: NotelistScreen(), //don't add const yet
+      home: const NotelistScreen(), //don't add const yet
     );
   }
 }

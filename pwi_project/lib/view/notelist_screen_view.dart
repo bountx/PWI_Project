@@ -42,7 +42,7 @@ class NotelistScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: NoteSearchBar(),
                 ),
               ],

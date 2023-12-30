@@ -13,9 +13,9 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        MyCheckbox(),
+        const MyCheckbox(),
         Container(
-          margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+          margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
           width: 300,
           height: 50,
           alignment: Alignment.center,
@@ -24,7 +24,7 @@ class TaskWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Container(
-            margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+            margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +49,7 @@ class TaskWidget extends StatelessWidget {
 }
 
 class MyCheckbox extends StatefulWidget {
-  const MyCheckbox({Key? key}) : super(key: key);
+  const MyCheckbox({super.key});
 
   @override
   _MyCheckboxState createState() => _MyCheckboxState();

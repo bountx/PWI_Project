@@ -16,7 +16,7 @@ class NoteStickGrid extends StatelessWidget {
             ? []
             : noteViewModel.notes;
     return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
       itemCount: notes.length,
