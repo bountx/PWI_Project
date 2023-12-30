@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
@@ -40,28 +41,32 @@ class TaskCreationWidget extends StatelessWidget {
                   controller: model.descriptionController,
                   decoration: InputDecoration(labelText: 'Description'),
                 ),
-                SizedBox(height: 20),
-                Text('Finish Date: ${model.selectedDate.toLocal()}'),
-                ElevatedButton(
-                  onPressed: () => model.selectDate(context),
-                  child: Text('Select Finish Date'),
-                ),
-                SizedBox(height: 20),
-                Text('Background Color:'),
+                SizedBox(height: 50),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ElevatedButton(
-                        onPressed: () => model.selectColor(context),
-                        child: Text('Select Color'),
+                    Column(
+                      children: [
+                        Text('Finish Date:'),
+                        ElevatedButton(
+                          onPressed: () => model.selectDate(context),
+                          child: Text(DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
+                        ),
+                      ],
                     ),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      margin: EdgeInsets.only(left: 15),
-                      decoration: BoxDecoration(
-                        color: model.selectedColor,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('Background Color:'),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: model.selectedColor,
+                            shape: CircleBorder(),
+                          ),
+                          onPressed: () => model.selectColor(context),
+                          child: null,
+                        ),
+                      ],
                     ),
                   ],
                 ),
