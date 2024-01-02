@@ -8,8 +8,14 @@ class NoteViewModel extends ChangeNotifier {
     Note('siema', 'eeeeeeeeelo', const Color(0xFFF0F4C3),
         DateTime.now().add(const Duration(days: 1)))
   ];
+  List<Note> _searchResults = [];
 
   List<Note> get notes => _notes;
+
+  List<Note> get searchResults => _searchResults;
+  String _searchQuery = '';
+
+  String get searchQuery => _searchQuery;
 
   void addNote(Note note) {
     _notes.add(note);
@@ -29,4 +35,17 @@ class NoteViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void search(String query) {
+  _searchQuery = query;
+
+  if (query.trim().isEmpty) {
+    _searchResults = [];
+  } else {
+    _searchResults = _notes
+        .where((note) => note.title.toLowerCase().contains(query.trim().toLowerCase()))
+        .toList();
+  }
+
+  notifyListeners();
+}
 }

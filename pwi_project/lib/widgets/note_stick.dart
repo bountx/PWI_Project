@@ -26,7 +26,9 @@ class NoteStick extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  note.title.length > 6 ? '${note.title.substring(0, 6)}...' : note.title, // !!mediaquery to be implemented
+                  note.title.length > 6
+                      ? '${note.title.substring(0, 6)}...'
+                      : note.title, // !!mediaquery to be implemented
                   style: const TextStyle(
                       fontSize: 22, fontWeight: FontWeight.bold),
                 ),
@@ -46,7 +48,9 @@ class NoteStick extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Text(
-              note.content.length > 75 ? '${note.content.substring(0, 75)}...' : note.content, // !!mediaquery to be implemented
+              note.content.length > 75
+                  ? '${note.content.substring(0, 75)}...'
+                  : note.content, // !!mediaquery to be implemented
               textAlign: TextAlign.justify,
             ),
           ),

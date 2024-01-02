@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
-import '../model/task.dart';
+
 import '../view_model/task_creation_view_model.dart';
-import '../view_model/task_view_model.dart';
-
-
 
 class TaskCreationWidget extends StatelessWidget {
+  const TaskCreationWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -17,13 +15,13 @@ class TaskCreationWidget extends StatelessWidget {
           backgroundColor: Colors.orange[50],
           appBar: AppBar(
             backgroundColor: Colors.amberAccent[200],
-            title: Text(
+            title: const Text(
               'Create Task',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.check),
+                icon: const Icon(Icons.check),
                 onPressed: () => model.addTask(context),
               ),
             ],
@@ -35,25 +33,25 @@ class TaskCreationWidget extends StatelessWidget {
               children: [
                 TextFormField(
                   controller: model.titleController,
-                  decoration: InputDecoration(labelText: 'Title'),
+                  decoration: const InputDecoration(labelText: 'Title'),
                 ),
                 TextFormField(
                   controller: model.descriptionController,
-                  decoration: InputDecoration(labelText: 'Description'),
+                  decoration: const InputDecoration(labelText: 'Description'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text('Finish Date: ${model.selectedDate.toLocal()}'),
                 ElevatedButton(
                   onPressed: () => model.selectDate(context),
-                  child: Text('Select Finish Date'),
+                  child: const Text('Select Finish Date'),
                 ),
-                SizedBox(height: 20),
-                Text('Background Color:'),
+                const SizedBox(height: 20),
+                const Text('Background Color:'),
                 ElevatedButton(
                   onPressed: () => model.selectColor(context),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: model.selectedColor),
-                  child: Text('Select Color'),
+                  child: const Text('Select Color'),
                 ),
               ],
             ),
