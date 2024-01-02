@@ -18,8 +18,7 @@ class CalendarScreen extends StatelessWidget {
         body: SfCalendar(
           onSelectionChanged: (selection) {},
           controller: Provider.of<Calendar>(context).controller,
-          dataSource: DataSource(
-              Provider.of<TaskList>(context).exampleTasks,
+          dataSource: DataSource(Provider.of<TaskList>(context).exampleTasks,
               Provider.of<NoteViewModel>(context).notes),
           monthViewSettings: const MonthViewSettings(
             appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
