@@ -5,10 +5,11 @@ import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 
 class NotepadScreen extends StatelessWidget {
-  NotepadScreen({super.key, this.note, this.index});
-
   final Note? note;
   final int? index;
+
+  NotepadScreen({super.key, required this.note, this.index});
+
   final titleController = TextEditingController();
   final contentController = TextEditingController();
 
@@ -54,10 +55,8 @@ class NotepadScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.delete_forever_rounded),
               onPressed: () {
-                if (note != null) {
-                  int index = noteViewModel.notes
-                      .indexWhere((existingNote) => existingNote == note);
-                  noteViewModel.deleteNote(index);
+                if (note != null && index != null) {
+                  noteViewModel.deleteNote(index!);
                 }
 
                 Navigator.pop(context);
@@ -84,10 +83,8 @@ class NotepadScreen extends StatelessWidget {
 
                 Note newNote = Note(title, content, color, dateTime);
 
-                if (note != null) {
-                  int index = noteViewModel.notes
-                      .indexWhere((existingNote) => existingNote == note);
-                  noteViewModel.updateNote(index, newNote);
+                if (note != null && index != null) {
+                  noteViewModel.updateNote(index!, newNote);
                 } else {
                   noteViewModel.addNote(newNote);
                 }

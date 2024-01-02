@@ -43,10 +43,7 @@ class NoteLine extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          note.title.length > 17
-                              ? '${note.title.substring(0, 17)}...'
-                              : note.title,
-                          // !!mediaquery to be implemented
+                          note.title.length > 17 ? '${note.title.substring(0, 17)}...' : note.title, // !!mediaquery to be implemented
                           style: const TextStyle(
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
@@ -56,14 +53,14 @@ class NoteLine extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      NotepadScreen(note: note)),
+                                  builder: (context) => NotepadScreen(note: note, index: index)),
                             );
                           },
                         ),
                       ],
                     ),
                   ),
+
                 ),
               ],
             ),
