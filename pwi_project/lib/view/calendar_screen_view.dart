@@ -8,7 +8,7 @@ import '../view_model/task_view_model.dart';
 import '../widgets/task_widget.dart';
 import '../model/task.dart';
 import '../model/note.dart';
-import '../widgets/note_stick.dart';
+import '../widgets/note_line.dart';
 
 class CalendarScreen extends StatelessWidget {
   const CalendarScreen({super.key});
@@ -62,7 +62,7 @@ Widget appointmentBuilder(BuildContext context,
         task: Task(appointment.subject, '', appointment.startTime,
             appointment.color, false));
   } else {
-    return NoteStick(
+    return NoteLine(
       note: Note(
         appointment.subject,
         '',

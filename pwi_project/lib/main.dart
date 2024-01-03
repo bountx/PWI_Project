@@ -9,6 +9,7 @@ import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
 import 'view_model/calendar_view_model.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
+import 'package:pwi_project/utils/notelist_view_mode.dart';
 
 void main() {
   runApp(MultiProvider(
@@ -17,6 +18,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => Calendar()),
       ChangeNotifierProvider(create: (context) => TaskList()),
       ChangeNotifierProvider(create: (context) => TextFieldControllers()),
+      ChangeNotifierProvider(create: (context) => NotelistViewMode()),
     ],
     child: MyApp(),
   ));
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
       ),
 
       //for now we initiate screen of the specific branch here
-      home: CalendarScreen(), //don't add const yet
+      home: NotelistScreen(), //don't add const yet
     );
   }
 }

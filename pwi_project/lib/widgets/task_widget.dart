@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:pwi_project/view_model/task_view_model.dart';
 import '../model/task.dart';
 
 class TaskWidget extends StatelessWidget {
@@ -14,17 +15,17 @@ class TaskWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         const MyCheckbox(),
-        Container(
-          margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-          width: 300,
-          height: 50,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: task.background,
-            borderRadius: BorderRadius.circular(20),
-          ),
+        Expanded(
           child: Container(
-            margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+            margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            //width: 300,
+            //height: 150,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: task.background,
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +50,7 @@ class TaskWidget extends StatelessWidget {
 }
 
 class MyCheckbox extends StatefulWidget {
-  const MyCheckbox({super.key});
+  const MyCheckbox({Key? key}) : super(key: key);
 
   @override
   _MyCheckboxState createState() => _MyCheckboxState();
@@ -81,10 +82,10 @@ class _MyCheckboxState extends State<MyCheckbox> {
         child: Center(
           child: isChecked
               ? const Icon(
-                  Icons.check,
-                  size: 24.0,
-                  color: Colors.black,
-                )
+            Icons.check,
+            size: 24.0,
+            color: Colors.black,
+          )
               : null,
         ),
       ),
