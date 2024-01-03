@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:pwi_project/view_model/task_view_model.dart';
+
 import '../model/task.dart';
 
 class TaskWidget extends StatelessWidget {
@@ -14,34 +13,34 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        MyCheckbox(),
-        Expanded(
+        const MyCheckbox(),
+        Container(
+          margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          width: 300,
+          height: 50,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: task.background,
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Container(
-              margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              //width: 300,
-              //height: 50,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: task.background,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    task.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
+            margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  task.name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.0,
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.edit),
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ),
       ],
@@ -50,7 +49,7 @@ class TaskWidget extends StatelessWidget {
 }
 
 class MyCheckbox extends StatefulWidget {
-  const MyCheckbox({Key? key}) : super(key: key);
+  const MyCheckbox({super.key});
 
   @override
   _MyCheckboxState createState() => _MyCheckboxState();

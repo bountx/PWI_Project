@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pwi_project/view/notepad_screen_view.dart';
-import 'package:pwi_project/view_model/note_view_model.dart';
-import 'package:pwi_project/widgets/note_stick.dart';
+import 'package:pwi_project/utils/notelist_view_mode.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
+import 'package:pwi_project/widgets/note_search_bar.dart';
+import 'package:pwi_project/widgets/noteline_list.dart';
+import 'package:pwi_project/widgets/notestick_grid.dart';
 
 class NotelistScreen extends StatelessWidget {
   const NotelistScreen({super.key});
@@ -21,35 +23,27 @@ class NotelistScreen extends StatelessWidget {
           child: AppBar(
             title: Row(
               children: [
-                Material(
-                  color: Colors.yellowAccent,
-                  borderRadius: BorderRadius.circular(10),
-                  child: InkWell(
-                    onTap: () {},
+                Consumer<NotelistViewMode>(
+                  builder: (context, viewMode, child) => Material(
+                    color: Colors.yellowAccent,
                     borderRadius: BorderRadius.circular(10),
-                    splashColor: Colors.amberAccent[100],
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.format_list_bulleted),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        contentPadding: EdgeInsets.all(10),
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search, color: Colors.grey),
+                    child: InkWell(
+                      onTap: () {
+                        viewMode.toggleViewMode();
+                      },
+                      borderRadius: BorderRadius.circular(10),
+                      splashColor: Colors.amberAccent[100],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          viewMode.isGridMode ? Icons.list : Icons.grid_view,
+                        ),
                       ),
                     ),
                   ),
+                ),
+                const Expanded(
+                  child: NoteSearchBar(),
                 ),
               ],
             ),
@@ -73,22 +67,10 @@ class NotelistScreen extends StatelessWidget {
             Icons.add,
           ),
         ),
-        body: Consumer<NoteViewModel>(
-          builder: (context, noteViewModel, child) {
-            return ListView.builder(
-              itemCount: noteViewModel.notes.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-                  child: NoteStick(
-                      note: noteViewModel.notes[index],
-                      simplifiedLook: false,
-                    //index: index
-                  ),
-                );
-              },
-            );
-          },
+        body: Consumer<NotelistViewMode>(
+          builder: (context, viewMode, child) => viewMode.isGridMode
+              ? const NoteStickGrid()
+              : const NoteLineList(),
         ),
       ),
     );

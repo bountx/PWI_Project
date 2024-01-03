@@ -7,7 +7,7 @@ import '../model/task.dart';
 import '../view_model/task_view_model.dart';
 
 class TaskManagerScreen extends StatelessWidget {
-  TaskManagerScreen({super.key});
+  const TaskManagerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +47,13 @@ class TaskManagerScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 0.0),
-                child: TaskWidget(task: Task(
-                  taskList.tasks[index].name,
-                  taskList.tasks[index].description,
-                  taskList.tasks[index].day,
-                  taskList.tasks[index].background,
-                  false
-                ),
+                child: TaskWidget(
+                  task: Task(
+                      taskList.tasks[index].name,
+                      taskList.tasks[index].description,
+                      taskList.tasks[index].day,
+                      taskList.tasks[index].background,
+                      false),
                 ),
               );
             },
@@ -64,7 +64,7 @@ class TaskManagerScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TaskCreationWidget()),
+              MaterialPageRoute(builder: (context) => const TaskCreationWidget()),
             );
           },
           shape:
