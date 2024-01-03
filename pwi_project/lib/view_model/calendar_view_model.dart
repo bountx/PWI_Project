@@ -17,6 +17,7 @@ class DataSource extends CalendarDataSource {
     appointments = [];
     for (Task task in taskSource) {
       Appointment taskAppointment = Appointment(
+        id: 0,
         subject: task.name,
         startTime: task.day,
         endTime: task.day,
@@ -28,6 +29,7 @@ class DataSource extends CalendarDataSource {
     }
     for (Note note in noteSource) {
       Appointment noteAppointment = Appointment(
+        id: 1,
         subject: note.title,
         startTime: note.date,
         endTime: note.date,

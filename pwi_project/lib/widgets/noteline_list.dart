@@ -18,9 +18,13 @@ class NoteLineList extends StatelessWidget {
     return ListView.builder(
       itemCount: notes.length,
       itemBuilder: (context, index) {
-        return NoteLine(
-          note: notes[index],
-          index: index,
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
+          child: NoteLine(
+            note: notes[index],
+            index: index,
+            simplifiedLook: false,
+          ),
         );
       },
     );
