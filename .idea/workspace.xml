@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Edited DataSource for notes and tasks">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/utils/notelist_view_mode.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/notestick_list.dart" afterDir="false" />
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/note_line.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_line.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" afterDir="false" />
     </list>
-=======
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Edited DataSource for notes and tasks" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,36 +44,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-<<<<<<< Updated upstream
-=======
-    "dart.analysis.tool.window.visible": "false",
->>>>>>> Stashed changes
-    "git-widget-placeholder": "calendar__screen",
-    "ignore.virus.scanning.warn.message": "true",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/home/ath0/repos/PWI_Project",
-    "project.structure.last.edited": "Facets",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-<<<<<<< Updated upstream
-    "settings.editor.selected.configurable": "flutter.settings",
-=======
-    "settings.editor.selected.configurable": "preferences.pluginManager",
->>>>>>> Stashed changes
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;creating__my__day__screen&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ath0/repos/PWI_Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jhaft\Documents\GitHub\PWI_Project\pwi_project\lib\utils" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager">
     <configuration name="Run App" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/pwi_project/lib/main.dart" />
@@ -149,7 +133,39 @@
       <option name="project" value="LOCAL" />
       <updated>1703022359612</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Edited DataSource for notes and tasks">
+      <option name="closed" value="true" />
+      <created>1703514966794</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703514966794</updated>
+    </task>
+    <task id="LOCAL-00009" summary="created expandable tasks and notes (again)">
+      <option name="closed" value="true" />
+      <created>1703515418020</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703515418020</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added custom appointment builder for calendar screen">
+      <option name="closed" value="true" />
+      <created>1703517059652</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703517059652</updated>
+    </task>
+    <task id="LOCAL-00011" summary="made changes to custom appointment builder">
+      <option name="closed" value="true" />
+      <created>1703532033334</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703532033334</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +186,9 @@
     <MESSAGE value="BuildContext inheritance fixed for more clarity" />
     <MESSAGE value="Added Note provider" />
     <MESSAGE value="Edited DataSource for notes and tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited DataSource for notes and tasks" />
+    <MESSAGE value="created expandable tasks and notes (again)" />
+    <MESSAGE value="added custom appointment builder for calendar screen" />
+    <MESSAGE value="made changes to custom appointment builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="made changes to custom appointment builder" />
   </component>
 </project>
