@@ -11,6 +11,7 @@ class TaskCreationViewModel extends ChangeNotifier {
   DateTime selectedDate = DateTime.now();
   Color selectedColor = Colors.amber;
 
+
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -56,6 +57,20 @@ class TaskCreationViewModel extends ChangeNotifier {
 
   void addTask(BuildContext context) {
     Provider.of<TaskList>(context, listen: false).addTask(
+      Task(
+        titleController.text,
+        descriptionController.text,
+        selectedDate,
+        selectedColor,
+        false,
+      ),
+    );
+    Navigator.pop(context);
+    notifyListeners();
+  }
+
+  void editTask(BuildContext context, Task task) {
+    Provider.of<TaskList>(context, listen: false).editTask(task,
       Task(
         titleController.text,
         descriptionController.text,

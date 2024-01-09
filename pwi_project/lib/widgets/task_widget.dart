@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
 import '../model/task.dart';
+import '../view_model/task_creation_view_model.dart';
+import '../view/task_creation_screen_view.dart';
+import '../view/task_edit_screen_view.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
@@ -38,7 +41,11 @@ class TaskWidget extends StatelessWidget {
                   ),
                   IconButton(
                     icon: const Icon(Icons.edit),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => TaskEditWidget(task: task,))
+                          );
+                      },
                   ),
                 ],
               ),

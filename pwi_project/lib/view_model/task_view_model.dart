@@ -15,6 +15,25 @@ class TaskList extends ChangeNotifier {
 
   List<Task> get tasks => _tasks;
 
+  void removeTask(Task task){
+    _tasks.remove(task);
+    notifyListeners();
+  }
+
+  void toggleDone(Task task){
+    task.isDone = !task.isDone;
+    notifyListeners();
+  }
+//This is the function that edits the task(it should find the task by id and replace it with the edited one,then notify the listeners to rebuild the widget)
+  //i dont know if this works
+  void editTask(Task task,Task editedtask) {
+    int index = _tasks.indexWhere((t) => t.id == task.id);
+    if (index != -1) {
+      _tasks[index] = editedtask;
+      notifyListeners();
+    }
+  }
+
   List<Task> get exampleTasks => [
     Task(
       'To do',
