@@ -11,7 +11,7 @@ class TaskCreationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TaskCreationViewModel(),
+      create: (context) => TaskCreationViewModel(task: Task('', '', DateTime.now(), Color(0xFFFFC107) , false)),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.orange[50],

@@ -24,10 +24,13 @@ class TaskList extends ChangeNotifier {
     task.isDone = !task.isDone;
     notifyListeners();
   }
-//This is the function that edits the task(it should find the task by id and replace it with the edited one,then notify the listeners to rebuild the widget)
-  //i dont know if this works
-  void editTask(Task task,Task editedtask) {
-    int index = _tasks.indexWhere((t) => t.id == task.id);
+// there is a problem with the generated id, i don't know why it changes during the execution
+  void editTask(String id,Task editedtask) {
+    print('Editing task with id: $id');
+    for (var task in _tasks) {
+      print('Task: ${task.id}');
+    }
+    int index = _tasks.indexWhere((t) => t.id == id);
     if (index != -1) {
       _tasks[index] = editedtask;
       notifyListeners();

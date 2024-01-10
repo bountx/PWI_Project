@@ -6,11 +6,16 @@ import '../view_model/task_view_model.dart';
 
 
 class TaskCreationViewModel extends ChangeNotifier {
+  final Task task;
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   DateTime selectedDate = DateTime.now();
-  Color selectedColor = Colors.amber;
-
+  Color selectedColor ;
+  TaskCreationViewModel({required this.task})
+      : titleController = TextEditingController(text: task.name),
+        descriptionController = TextEditingController(text: task.description),
+        selectedDate = task.day,
+        selectedColor = task.background;
 
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -68,9 +73,8 @@ class TaskCreationViewModel extends ChangeNotifier {
     Navigator.pop(context);
     notifyListeners();
   }
-
-  void editTask(BuildContext context, Task task) {
-    Provider.of<TaskList>(context, listen: false).editTask(task,
+  void editTask(BuildContext context) {
+    Provider.of<TaskList>(context, listen: false).editTask(task.id,
       Task(
         titleController.text,
         descriptionController.text,

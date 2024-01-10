@@ -3,23 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
+import '../view_model/task_view_model.dart';
 
 class TaskEditWidget extends StatelessWidget {
   final Task task;
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  DateTime selectedDate = DateTime.now();
-  Color selectedColor ;
-  TaskEditWidget({required this.task})
-      : titleController = TextEditingController(text: task.name),
-        descriptionController = TextEditingController(text: task.description),
-        selectedDate = task.day,
-        selectedColor = task.background;
+  TaskEditWidget({required this.task});
+
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TaskCreationViewModel(),
+      create: (context) => TaskCreationViewModel(task: task),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.orange[50],
@@ -33,9 +27,8 @@ class TaskEditWidget extends StatelessWidget {
             actions: [
               IconButton(
                 icon: Icon(Icons.check),
-                onPressed: () {
-                  model.editTask(context, task);
-                }),
+                onPressed: () => model.editTask(context),
+                ),
             ],
           ),
           body: Padding(
@@ -44,11 +37,11 @@ class TaskEditWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
-                  controller: titleController,
+                  controller: model.titleController,
                   decoration: InputDecoration(labelText: 'Title'),
                 ),
                 TextFormField(
-                  controller: descriptionController,
+                  controller: model.descriptionController,
                   decoration: InputDecoration(labelText: 'Description'),
                 ),
                 SizedBox(height: 50),
@@ -61,9 +54,8 @@ class TaskEditWidget extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () {
                             model.selectDate(context);
-                            selectedDate = model.selectedDate;
                           },
-                          child: Text(DateFormat('yyyy-MM-dd HH:mm').format(selectedDate.toLocal())),
+                          child: Text(DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
                         ),
                       ],
                     ),
@@ -73,12 +65,11 @@ class TaskEditWidget extends StatelessWidget {
                         Text('Background Color:'),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: selectedColor,
+                            primary: model.selectedColor,
                             shape: CircleBorder(),
                           ),
                           onPressed: () {
                             model.selectColor(context);
-                            selectedColor = model.selectedColor;
                           },
                           child: null,
                         ),
