@@ -29,7 +29,7 @@ class NotepadScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amberAccent[200],
+          backgroundColor: Theme.of(context).colorScheme.primary,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -109,7 +109,7 @@ class NotepadScreen extends StatelessWidget {
             decoration: InputDecoration(
               hintText: 'Enter your note here...',
               filled: true,
-              fillColor: Colors.amber[100],
+              fillColor: Theme.of(context).colorScheme.background,
               border: InputBorder.none,
             ),
           ),

@@ -12,9 +12,9 @@ class TaskCreationWidget extends StatelessWidget {
       create: (context) => TaskCreationViewModel(),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
-          backgroundColor: Colors.orange[50],
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
-            backgroundColor: Colors.amberAccent[200],
+            backgroundColor: Theme.of(context).colorScheme.primary,
             title: const Text(
               'Create Task',
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -43,15 +43,25 @@ class TaskCreationWidget extends StatelessWidget {
                 Text('Finish Date: ${model.selectedDate.toLocal()}'),
                 ElevatedButton(
                   onPressed: () => model.selectDate(context),
-                  child: const Text('Select Finish Date'),
+                  child: Text(
+                      'Select Finish Date',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary
+                      )
+                  ),
                 ),
                 const SizedBox(height: 20),
-                const Text('Background Color:'),
+                Text('Background Color:'),
                 ElevatedButton(
                   onPressed: () => model.selectColor(context),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: model.selectedColor),
-                  child: const Text('Select Color'),
+                  child: Text(
+                      'Select Color',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary
+                      )
+                  ),
                 ),
               ],
             ),

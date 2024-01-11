@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pwi_project/view/calendar_screen_view.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
-
+import 'package:pwi_project/themes/app_theme.dart';
 import 'view/task_manager_screen_view.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/view/notelist_screen_view.dart';
@@ -32,12 +32,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.lightTheme,
 
       //for now we initiate screen of the specific branch here
-      home: NotelistScreen(), //don't add const yet
+      home: TaskManagerScreen(), //don't add const yet
     );
   }
 }
