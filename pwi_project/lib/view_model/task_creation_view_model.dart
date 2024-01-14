@@ -29,6 +29,15 @@ class TaskCreationViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> viewcalendar(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(200),
+      lastDate: DateTime(2101),
+    );
+  }
+
   void selectColor(BuildContext context) {
     showDialog(
       context: context,
@@ -58,7 +67,7 @@ class TaskCreationViewModel extends ChangeNotifier {
       },
     );
   }
-
+ // addTask is function that creates a new task and adds it to the list of tasks
   void addTask(BuildContext context) {
     Provider.of<TaskList>(context, listen: false).addTask(
       Task(

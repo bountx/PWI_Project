@@ -5,6 +5,7 @@ import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
 import '../view/task_creation_screen_view.dart';
 import '../view/task_edit_screen_view.dart';
+import '../view/task_view_screen.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
@@ -17,6 +18,7 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
+
         Container(
             margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
             width: 300,
@@ -24,6 +26,8 @@ class TaskWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: task.background,
               borderRadius: BorderRadius.circular(20),
+
+
             ),
             child: Container(
               margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
@@ -31,11 +35,18 @@ class TaskWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text(
-                      task.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18.0,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => TaskViewWidget(task: task,))
+                          );
+                      },
+                      child: Text(
+                        task.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
                       ),
                     ),
                   ),
