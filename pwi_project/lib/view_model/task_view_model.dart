@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pwi_project/widgets/task_widget.dart';
 import 'package:pwi_project/model/task.dart';
-
+import 'package:uuid/uuid.dart';
 
 //provider of tasks
 class TaskList extends ChangeNotifier {
@@ -24,12 +24,8 @@ class TaskList extends ChangeNotifier {
     task.isDone = !task.isDone;
     notifyListeners();
   }
-// there is a problem with the generated id, i don't know why it changes during the execution
+
   void editTask(String id,Task editedtask) {
-    print('Editing task with id: $id');
-    for (var task in _tasks) {
-      print('Task: ${task.id}');
-    }
     int index = _tasks.indexWhere((t) => t.id == id);
     if (index != -1) {
       _tasks[index] = editedtask;
@@ -39,6 +35,7 @@ class TaskList extends ChangeNotifier {
 
   List<Task> get exampleTasks => [
     Task(
+      'o',
       'To do',
       'a lot a lot',
       DateTime.now(),

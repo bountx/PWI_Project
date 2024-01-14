@@ -4,7 +4,6 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import '../model/task.dart';
 import '../view_model/task_view_model.dart';
 
-
 class TaskCreationViewModel extends ChangeNotifier {
   final Task task;
   TextEditingController titleController = TextEditingController();
@@ -63,6 +62,7 @@ class TaskCreationViewModel extends ChangeNotifier {
   void addTask(BuildContext context) {
     Provider.of<TaskList>(context, listen: false).addTask(
       Task(
+        task.id,
         titleController.text,
         descriptionController.text,
         selectedDate,
@@ -76,6 +76,7 @@ class TaskCreationViewModel extends ChangeNotifier {
   void editTask(BuildContext context) {
     Provider.of<TaskList>(context, listen: false).editTask(task.id,
       Task(
+        task.id,
         titleController.text,
         descriptionController.text,
         selectedDate,

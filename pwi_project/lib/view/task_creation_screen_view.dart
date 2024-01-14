@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
 import '../view_model/task_view_model.dart';
-
+import 'package:uuid/uuid.dart';
 
 
 class TaskCreationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TaskCreationViewModel(task: Task('', '', DateTime.now(), Color(0xFFFFC107) , false)),
+      create: (context) => TaskCreationViewModel(task: Task(Uuid().v4(),'', '', DateTime.now(), Color(0xFFFFC107) , false)),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.orange[50],
