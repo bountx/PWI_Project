@@ -24,22 +24,7 @@ class NoteStickGrid extends StatelessWidget {
       itemCount: notes.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {
-            var noteViewModel =
-                Provider.of<NoteViewModel>(context, listen: false);
-            var notepadViewMode =
-                Provider.of<NotepadViewMode>(context, listen: false);
-
-            noteViewModel.selectNote(index);
-            notepadViewMode.isEditing = false;
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const NotepadScreen(),
-              ),
-            );
-          },
+          onTap: () => _handleTap(context, index),
           child: NoteStick(
             note: notes[index],
             index: index,
@@ -48,4 +33,19 @@ class NoteStickGrid extends StatelessWidget {
       },
     );
   }
+}
+
+void _handleTap(BuildContext context, int index) {
+  final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
+  final notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
+
+  noteViewModel.selectNote(index);
+  notepadViewMode.isEditing = false;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const NotepadScreen(),
+    ),
+  );
 }

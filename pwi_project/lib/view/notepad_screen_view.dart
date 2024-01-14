@@ -17,7 +17,6 @@ class NotepadScreen extends StatelessWidget {
 
     noteViewModel.updateControllersIfNeeded(textFieldControllers);
 
-    final notepadViewMode = context.read<NotepadViewMode>();
 
     return GestureDetector(
       onTap: () {

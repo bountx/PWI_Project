@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/notepad_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/notelist_view_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/notestick_grid.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/notestick_grid.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

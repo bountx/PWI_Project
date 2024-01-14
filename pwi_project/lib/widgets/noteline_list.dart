@@ -15,28 +15,13 @@ class NoteLineList extends StatelessWidget {
     final notes = noteViewModel.searchResults.isNotEmpty
         ? noteViewModel.searchResults
         : noteViewModel.searchQuery.isNotEmpty
-            ? []
-            : noteViewModel.notes;
+        ? []
+        : noteViewModel.notes;
     return ListView.builder(
       itemCount: notes.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {
-            var noteViewModel =
-                Provider.of<NoteViewModel>(context, listen: false);
-            var notepadViewMode =
-                Provider.of<NotepadViewMode>(context, listen: false);
-
-            noteViewModel.selectNote(index);
-            notepadViewMode.isEditing = false;
-
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const NotepadScreen(),
-              ),
-            );
-          },
+          onTap: () => _handleTap(context, index),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
             child: NoteLine(
@@ -48,4 +33,20 @@ class NoteLineList extends StatelessWidget {
       },
     );
   }
+}
+
+void _handleTap(BuildContext context, int index) {
+  final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
+  final notepadViewMode = Provider.of<NotepadViewMode>(
+      context, listen: false);
+
+  noteViewModel.selectNote(index);
+  notepadViewMode.isEditing = false;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const NotepadScreen(),
+    ),
+  );
 }
