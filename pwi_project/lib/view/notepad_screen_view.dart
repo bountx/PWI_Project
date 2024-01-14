@@ -24,6 +24,8 @@ class NotepadScreen extends StatelessWidget {
       );
     }
 
+    final notepadViewMode = Provider.of<NotepadViewMode>(context);
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -44,7 +46,7 @@ class NotepadScreen extends StatelessWidget {
           ),
           title: Consumer<NoteViewModel>(
             builder: (context, noteViewModel, child) {
-              return Provider.of<NotepadViewMode>(context).isEditing
+              return notepadViewMode.isEditing
                   ? TextField(
                       controller: Provider.of<TextFieldControllers>(context)
                           .titleController,
@@ -92,7 +94,7 @@ class NotepadScreen extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Provider.of<NotepadViewMode>(context).isEditing
+          child: notepadViewMode.isEditing
               ? TextField(
                   controller: Provider.of<TextFieldControllers>(context)
                       .contentController,
@@ -144,12 +146,11 @@ class NotepadScreen extends StatelessWidget {
                 noteViewModel.updateCurrentNote(newNote);
               } else {
                 noteViewModel.addNote(newNote);
+                noteViewModel.selectNote(noteViewModel.notes.length - 1);
               }
 
-              notepadViewMode.toggleEditMode();
-            } else {
-              notepadViewMode.toggleEditMode();
-            }
+            } 
+            notepadViewMode.toggleEditMode();
           },
           child: Icon(Provider.of<NotepadViewMode>(context).isEditing
               ? Icons.check
