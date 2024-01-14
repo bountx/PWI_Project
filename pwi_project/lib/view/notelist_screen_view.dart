@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pwi_project/utils/notelist_view_mode.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
+import 'package:pwi_project/utils/view_modes.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
+import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/widgets/note_search_bar.dart';
 import 'package:pwi_project/widgets/noteline_list.dart';
 import 'package:pwi_project/widgets/notestick_grid.dart';
@@ -52,12 +53,20 @@ class NotelistScreen extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            var noteViewModel =
+                Provider.of<NoteViewModel>(context, listen: false);
+            var notepadViewMode =
+                Provider.of<NotepadViewMode>(context, listen: false);
+
+            noteViewModel.selectNote(null);
+            notepadViewMode.isEditing = true;
+
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => ChangeNotifierProvider(
                   create: (context) => TextFieldControllers(),
-                  child: NotepadScreen(note: null, index: null),
+                  child: const NotepadScreen(),
                 ),
               ),
             );

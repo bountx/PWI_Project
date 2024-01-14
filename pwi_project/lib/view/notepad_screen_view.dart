@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/model/note.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
+import 'package:pwi_project/utils/view_modes.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 
 class NotepadScreen extends StatelessWidget {
-  final Note? note;
   final int? index;
 
-  NotepadScreen({super.key, required this.note, this.index});
-
-  final titleController = TextEditingController();
-  final contentController = TextEditingController();
+  const NotepadScreen({super.key, this.index});
 
   @override
   Widget build(BuildContext context) {
-    var textFieldControllers = Provider.of<TextFieldControllers>(context);
-    var noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
+    var noteViewModel = context.watch<NoteViewModel>();
+    var textFieldControllers = context.watch<TextFieldControllers>();
 
-    if (note != null) {
-      textFieldControllers.titleController.text = note?.title ?? '';
-      textFieldControllers.contentController.text = note?.content ?? '';
+    Note? currentNote = noteViewModel.currentNote;
+
+    if (currentNote != null) {
+      textFieldControllers.updateControllers(
+        currentNote.title,
+        currentNote.content,
+      );
     }
 
     return GestureDetector(
@@ -41,52 +42,42 @@ class NotepadScreen extends StatelessWidget {
               });
             },
           ),
-          title: TextField(
-            controller:
-                Provider.of<TextFieldControllers>(context).titleController,
-            maxLines: null,
-            style: Theme.of(context).textTheme.titleLarge,
-            decoration: const InputDecoration(
-              hintText: 'Enter title...',
-              border: InputBorder.none,
-            ),
+          title: Consumer<NoteViewModel>(
+            builder: (context, noteViewModel, child) {
+              return Provider.of<NotepadViewMode>(context).isEditing
+                  ? TextField(
+                      controller: Provider.of<TextFieldControllers>(context)
+                          .titleController,
+                      readOnly: false,
+                      maxLines: null,
+                      style: Theme.of(context).textTheme.titleLarge,
+                      decoration: const InputDecoration(
+                        hintText: 'Enter title...',
+                        border: InputBorder.none,
+                      ),
+                    )
+                  : IgnorePointer(
+                      child: TextField(
+                        controller: Provider.of<TextFieldControllers>(context)
+                            .titleController,
+                        readOnly: true,
+                        maxLines: null,
+                        style: Theme.of(context).textTheme.titleLarge,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter title...',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    );
+            },
           ),
           actions: [
             IconButton(
               icon: const Icon(Icons.delete_forever_rounded),
               onPressed: () {
-                if (note != null && index != null) {
-                  noteViewModel.deleteNote(index!);
-                }
-
-                Navigator.pop(context);
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (!textFieldControllers.hasActiveListeners) {
-                    textFieldControllers.disposeControllers();
-                  }
-                });
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.check),
-              onPressed: () {
-                String title = textFieldControllers.titleController.text;
-                if (title.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Title is too short!')),
-                  );
-                  return;
-                }
-                String content = textFieldControllers.contentController.text;
-                Color color = Colors.white;
-                DateTime dateTime = DateTime.now();
-
-                Note newNote = Note(title, content, color, dateTime);
-
-                if (note != null && index != null) {
-                  noteViewModel.updateNote(index!, newNote);
-                } else {
-                  noteViewModel.addNote(newNote);
+                if (noteViewModel.currentNote != null &&
+                    noteViewModel.currentIndex != null) {
+                  noteViewModel.deleteNote(noteViewModel.currentIndex!);
                 }
 
                 Navigator.pop(context);
@@ -101,18 +92,68 @@ class NotepadScreen extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller:
-                Provider.of<TextFieldControllers>(context).contentController,
-            maxLines: null,
-            expands: true,
-            decoration: InputDecoration(
-              hintText: 'Enter your note here...',
-              filled: true,
-              fillColor: Colors.amber[100],
-              border: InputBorder.none,
-            ),
-          ),
+          child: Provider.of<NotepadViewMode>(context).isEditing
+              ? TextField(
+                  controller: Provider.of<TextFieldControllers>(context)
+                      .contentController,
+                  readOnly: false,
+                  maxLines: null,
+                  expands: true,
+                  decoration: InputDecoration(
+                    hintText: 'Enter your note here...',
+                    filled: true,
+                    fillColor: Colors.amber[100],
+                    border: InputBorder.none,
+                  ),
+                )
+              : IgnorePointer(
+                  child: TextField(
+                    controller: Provider.of<TextFieldControllers>(context)
+                        .contentController,
+                    readOnly: true,
+                    maxLines: null,
+                    expands: true,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your note here...',
+                      filled: true,
+                      fillColor: Colors.amber[100],
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            var notepadViewMode =
+                Provider.of<NotepadViewMode>(context, listen: false);
+            if (notepadViewMode.isEditing) {
+              String title = textFieldControllers.titleController.text;
+              if (title.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Title is too short!')),
+                );
+                return;
+              }
+              String content = textFieldControllers.contentController.text;
+              Color color = Colors.white;
+              DateTime dateTime = DateTime.now();
+
+              Note newNote = Note(title, content, color, dateTime);
+
+              if (noteViewModel.currentIndex != null) {
+                noteViewModel.updateCurrentNote(newNote);
+              } else {
+                noteViewModel.addNote(newNote);
+              }
+
+              notepadViewMode.toggleEditMode();
+            } else {
+              notepadViewMode.toggleEditMode();
+            }
+          },
+          child: Icon(Provider.of<NotepadViewMode>(context).isEditing
+              ? Icons.check
+              : Icons.edit),
         ),
       ),
     );

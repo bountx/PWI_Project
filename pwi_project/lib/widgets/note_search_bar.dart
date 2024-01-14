@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
+
 import '../utils/text_field_controllers.dart';
 
 class NoteSearchBar extends StatelessWidget {
@@ -8,7 +9,8 @@ class NoteSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchController = Provider.of<TextFieldControllers>(context).searchController;
+    final searchController =
+        Provider.of<TextFieldControllers>(context).searchController;
     return Container(
       margin: const EdgeInsets.only(left: 10),
       decoration: BoxDecoration(

@@ -10,42 +10,65 @@ class NoteViewModel extends ChangeNotifier {
   ];
   List<Note> _searchResults = [];
 
+  String _searchQuery = '';
+  Note? _currentNote;
+  int? _currentIndex;
+
   List<Note> get notes => _notes;
 
   List<Note> get searchResults => _searchResults;
-  String _searchQuery = '';
 
   String get searchQuery => _searchQuery;
 
-  void addNote(Note note) {
-    _notes.add(note);
-    if (kDebugMode) {
-      print("note added!");
+  Note? get currentNote => _currentNote;
+
+  int? get currentIndex => _currentIndex;
+
+  void selectNote(int? index) {
+    if (index != null && index >= 0 && index < _notes.length) {
+      _currentNote = _notes[index];
+      _currentIndex = index;
+    } else {
+      _currentNote = null;
+      _currentIndex = null;
     }
     notifyListeners();
   }
 
-  void updateNote(int index, Note updatedNote) {
-    _notes[index] = updatedNote;
+  void addNote(Note note) {
+    _notes.add(note);
+    _searchResults = [];
     notifyListeners();
   }
 
   void deleteNote(int index) {
-    _notes.removeAt(index);
-    notifyListeners();
+    if (index >= 0 && index < _notes.length) {
+      _notes.removeAt(index);
+      _searchResults = [];
+      notifyListeners();
+    }
+  }
+
+  void updateCurrentNote(Note updatedNote) {
+    if (_currentIndex != null &&
+        _currentIndex! >= 0 &&
+        _currentIndex! < _notes.length) {
+      _notes[_currentIndex!] = updatedNote;
+      _currentNote = updatedNote;
+      notifyListeners();
+    }
   }
 
   void search(String query) {
-  _searchQuery = query;
-
-  if (query.trim().isEmpty) {
-    _searchResults = [];
-  } else {
-    _searchResults = _notes
-        .where((note) => note.title.toLowerCase().contains(query.trim().toLowerCase()))
-        .toList();
+    _searchQuery = query;
+    if (query.trim().isEmpty) {
+      _searchResults = [];
+    } else {
+      _searchResults = _notes
+          .where((note) =>
+              note.title.toLowerCase().contains(query.trim().toLowerCase()))
+          .toList();
+    }
+    notifyListeners();
   }
-
-  notifyListeners();
-}
 }
