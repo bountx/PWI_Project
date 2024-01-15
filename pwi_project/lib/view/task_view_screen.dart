@@ -30,7 +30,6 @@ class TaskViewWidget extends StatelessWidget {
                 children:[
                   IconButton(
                     icon: Icon(Icons.delete),
-                    // onPressed: () => print('delete'),
                     onPressed: () {
                       Provider.of<TaskList>(context, listen: false).removeTask(task.id);
                       Navigator.pop(context);

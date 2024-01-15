@@ -25,12 +25,23 @@ class TaskEditWidget extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             actions: [
+          Row(
+          children:[
+          IconButton(
+          icon: Icon(Icons.delete),
+          onPressed: () {
+            Provider.of<TaskList>(context, listen: false).removeTask(task.id);
+            Navigator.pop(context);
+          },
+
+        ),
               IconButton(
                 icon: Icon(Icons.check),
                 onPressed: () => model.editTask(context),
                 ),
             ],
           ),
+            ],),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
