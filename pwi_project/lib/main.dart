@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pwi_project/utils/view_modes.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view/calendar_screen_view.dart';
 import 'package:pwi_project/view/notelist_screen_view.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
+import 'package:pwi_project/view_model/notelist_view_model.dart';
+import 'package:pwi_project/view_model/notepad_view_model.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
 
 import 'view_model/calendar_view_model.dart';

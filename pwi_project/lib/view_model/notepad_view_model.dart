@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/model/note.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
-import 'package:pwi_project/utils/view_modes.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 
 void handleEditSaveButtonPress(BuildContext context,
@@ -48,4 +47,20 @@ void handleBackButtonPress(
       textFieldControllers.disposeControllers();
     }
   });
+}
+
+class NotepadViewMode with ChangeNotifier {
+  bool _isEditing = false;
+
+  bool get isEditing => _isEditing;
+
+  set isEditing(bool value) {
+    _isEditing = value;
+    notifyListeners();
+  }
+
+  void toggleEditMode() {
+    _isEditing = !_isEditing;
+    notifyListeners();
+  }
 }

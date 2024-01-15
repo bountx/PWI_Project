@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pwi_project/utils/view_modes.dart';
 import 'package:pwi_project/view_model/notelist_view_model.dart';
 import 'package:pwi_project/widgets/note_search_bar.dart';
 import 'package:pwi_project/widgets/noteline_list.dart';

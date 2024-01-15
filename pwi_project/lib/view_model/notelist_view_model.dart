@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
-import 'package:pwi_project/utils/view_modes.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
+import 'package:pwi_project/view_model/notepad_view_model.dart';
 
 void handleAddButtonPress(BuildContext context) {
   var noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
@@ -21,4 +21,15 @@ void handleAddButtonPress(BuildContext context) {
       ),
     ),
   );
+}
+
+class NotelistViewMode extends ChangeNotifier {
+  bool _isGridMode = true;
+
+  bool get isGridMode => _isGridMode;
+
+  void toggleViewMode() {
+    _isGridMode = !_isGridMode;
+    notifyListeners();
+  }
 }
