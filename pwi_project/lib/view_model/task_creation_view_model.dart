@@ -96,4 +96,5 @@ class TaskCreationViewModel extends ChangeNotifier {
     Navigator.pop(context);
     notifyListeners();
   }
+
 }

@@ -1,3 +1,5 @@
+// import 'dart:ui_web';
+
 import 'package:flutter/material.dart';
 import 'package:pwi_project/widgets/task_widget.dart';
 import 'package:pwi_project/model/task.dart';
@@ -15,8 +17,9 @@ class TaskList extends ChangeNotifier {
 
   List<Task> get tasks => _tasks;
 
-  void removeTask(Task task){
-    _tasks.remove(task);
+  void removeTask(String id){
+    int index = _tasks.indexWhere((t) => t.id == id);
+    _tasks.removeAt(index);
     notifyListeners();
   }
 

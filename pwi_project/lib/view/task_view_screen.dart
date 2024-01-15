@@ -30,20 +30,21 @@ class TaskViewWidget extends StatelessWidget {
                 children:[
                   IconButton(
                     icon: Icon(Icons.delete),
-                    onPressed: () => print('delete'),
-                    // onPressed: () => model.deleteTask(context),
-                  ),
-                  IconButton(
-                      icon: Icon(Icons.edit),
+                    // onPressed: () => print('delete'),
+                    onPressed: () {
+                      Provider.of<TaskList>(context, listen: false).removeTask(task.id);
+                      Navigator.pop(context);
+                    },
+
+                      ),
+                      IconButton(
+                    icon:
+                     Icon(Icons.edit),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => TaskEditWidget(task: task,))
                       );
                     },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.check),
-                    onPressed: () => model.editTask(context),
                   ),
               ],
               ),
@@ -71,7 +72,6 @@ class TaskViewWidget extends StatelessWidget {
             ),
           ),
         ),
-
     );
   }
 }
