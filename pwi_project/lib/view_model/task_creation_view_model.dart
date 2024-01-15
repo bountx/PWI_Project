@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+
 import '../model/task.dart';
 import '../view_model/task_view_model.dart';
 
@@ -9,7 +9,8 @@ class TaskCreationViewModel extends ChangeNotifier {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   DateTime selectedDate = DateTime.now();
-  Color selectedColor ;
+  Color selectedColor;
+
   TaskCreationViewModel({required this.task})
       : titleController = TextEditingController(text: task.name),
         descriptionController = TextEditingController(text: task.description),
@@ -39,25 +40,58 @@ class TaskCreationViewModel extends ChangeNotifier {
   }
 
   void selectColor(BuildContext context) {
+    List<Color> colors = [
+      Color(0xFFFA9198),
+      Color(0xFFFCAE7C),
+      Color(0xFFEFB949),
+      Color(0xFFECCD7B),
+      Color(0xFFB3F5BC),
+      Color(0xFF9EDFEC),
+      Color(0xFFE2CBF7),
+      Color(0xFFC1A1FF),
+    ];
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Pick a color!'),
           content: SingleChildScrollView(
-            child: ColorPicker(
-              pickerColor: selectedColor,
-              onColorChanged: (Color color) {
-                selectedColor = color;
-                notifyListeners();
-              },
-              showLabel: true,
-              pickerAreaHeightPercent: 0.8,
+            child: Container(
+              width: double.maxFinite,
+              child: GridView.count(
+                crossAxisCount: 4,
+                shrinkWrap: true,
+                children: List.generate(colors.length, (index) {
+                  return GestureDetector(
+                    onTap: () {
+                      selectedColor = colors[index];
+                      notifyListeners();
+                      Navigator.of(context).pop();
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: colors[index],
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1,
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Got it'),
+              child: const Text(
+                  'Got it',
+                  style: TextStyle(
+                    fontSize: 21
+                  ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -67,7 +101,8 @@ class TaskCreationViewModel extends ChangeNotifier {
       },
     );
   }
- // addTask is function that creates a new task and adds it to the list of tasks
+
+  // addTask is function that creates a new task and adds it to the list of tasks
   void addTask(BuildContext context) {
     Provider.of<TaskList>(context, listen: false).addTask(
       Task(
@@ -82,8 +117,10 @@ class TaskCreationViewModel extends ChangeNotifier {
     Navigator.pop(context);
     notifyListeners();
   }
+
   void editTask(BuildContext context) {
-    Provider.of<TaskList>(context, listen: false).editTask(task.id,
+    Provider.of<TaskList>(context, listen: false).editTask(
+      task.id,
       Task(
         task.id,
         titleController.text,
@@ -96,5 +133,4 @@ class TaskCreationViewModel extends ChangeNotifier {
     Navigator.pop(context);
     notifyListeners();
   }
-
 }
