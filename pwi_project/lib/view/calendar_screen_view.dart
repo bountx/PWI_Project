@@ -57,7 +57,7 @@ Widget appointmentBuilder(BuildContext context,
   final Appointment appointment = calendarAppointmentDetails.appointments.first;
   if (appointment.id == 0) {
     return TaskWidget(
-        task: Task(appointment.subject, '', appointment.startTime,
+        task: Task(appointment.id.toString(),appointment.subject,'', appointment.startTime,
             appointment.color, false));
   } else {
     return NoteLine(
