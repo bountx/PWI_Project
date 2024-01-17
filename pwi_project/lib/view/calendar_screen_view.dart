@@ -16,10 +16,8 @@ class CalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Calendar Screen'),
-        ),
         body: SfCalendar(
+          backgroundColor: Colors.orange[50],
           onSelectionChanged: (selection) {},
           controller: Provider.of<Calendar>(context).controller,
           dataSource: DataSource(Provider.of<TaskList>(context).exampleTasks,
