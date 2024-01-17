@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:pwi_project/view_model/task_view_model.dart';
+import 'package:intl/intl.dart';
+
 import '../model/task.dart';
+import '../view/task_view_screen.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
@@ -14,36 +15,49 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        const MyCheckbox(),
-        Expanded(
+        InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TaskViewWidget(
+                          task: task,
+                        )));
+          },
+          splashColor: Colors.transparent,
           child: Container(
-            margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            //width: 300,
-            //height: 150,
+            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+            width: 300,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: task.background,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  task.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
+            child: Container(
+              margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    DateFormat('yyyy-MM-dd').format(task.day.toLocal()),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.0,
+                    ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () {},
-                ),
-              ],
+                  Text(
+                    task.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
+        MyCheckbox(),
       ],
     );
   }
@@ -82,10 +96,10 @@ class _MyCheckboxState extends State<MyCheckbox> {
         child: Center(
           child: isChecked
               ? const Icon(
-            Icons.check,
-            size: 24.0,
-            color: Colors.black,
-          )
+                  Icons.check,
+                  size: 24.0,
+                  color: Colors.black,
+                )
               : null,
         ),
       ),
