@@ -19,7 +19,7 @@ class TaskViewWidget extends StatelessWidget {
         builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.orange[50],
           appBar: AppBar(
-            backgroundColor: Colors.amberAccent[200],
+            backgroundColor: model.selectedColor,
             title: Text(
               model.titleController.text,
               textAlign: TextAlign.center,
@@ -37,11 +37,11 @@ class TaskViewWidget extends StatelessWidget {
 
                       ),
                       IconButton(
-                    icon:
-                     Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => TaskEditWidget(task: task,))
+                      icon:
+                       Icon(Icons.edit),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => TaskEditWidget(task: task,))
                       );
                     },
                   ),

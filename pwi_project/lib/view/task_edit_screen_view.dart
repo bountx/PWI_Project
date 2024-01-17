@@ -18,7 +18,7 @@ class TaskEditWidget extends StatelessWidget {
         builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.orange[50],
           appBar: AppBar(
-            backgroundColor: Colors.amberAccent[200],
+            backgroundColor: model.selectedColor,
             title: Text(
               'Edit Task',
               textAlign: TextAlign.center,
@@ -37,7 +37,9 @@ class TaskEditWidget extends StatelessWidget {
         ),
               IconButton(
                 icon: Icon(Icons.check),
-                onPressed: () => model.editTask(context),
+                onPressed: () { model.editTask(context);
+                Navigator.pop(context); //goes back to task manager screen, omiting task view screen, temporary solution, need to change it so that the view screen updates after edit
+                },
                 ),
             ],
           ),

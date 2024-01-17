@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:pwi_project/view_model/task_view_model.dart';
+import 'package:intl/intl.dart';
+
 import '../model/task.dart';
-import '../view_model/task_creation_view_model.dart';
-import '../view/task_creation_screen_view.dart';
-import '../view/task_edit_screen_view.dart';
 import '../view/task_view_screen.dart';
 
 class TaskWidget extends StatelessWidget {
@@ -18,50 +15,48 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-
-        Container(
+        InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TaskViewWidget(
+                          task: task,
+                        )));
+          },
+          splashColor: Colors.transparent,
+          child: Container(
             margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
             width: 300,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: task.background,
               borderRadius: BorderRadius.circular(20),
-
-
             ),
             child: Container(
-              margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => TaskViewWidget(task: task,))
-                          );
-                      },
-                      child: Text(
-                        task.name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
-                      ),
+                  Text(
+                    DateFormat('yyyy-MM-dd').format(task.day.toLocal()),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.0,
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => TaskEditWidget(task: task,))
-                          );
-                      },
+                  Text(
+                    task.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
+        ),
         MyCheckbox(),
       ],
     );
