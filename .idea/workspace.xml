@@ -5,28 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/notelist_view_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/notepad_view_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_line.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_search_bar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/notestick_grid.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/model/note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/model/note.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/model/task.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/model/task.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/utils/text_field_controllers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/utils/text_field_controllers.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_creation_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_creation_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +49,20 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;task__manager__features__and__fixes&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;designing-appbar&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/ath0/repos/PWI_Project&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jhaft\Documents\GitHub\PWI_Project\pwi_project\lib\utils" />
+      <recent name="C:\Users\marci\Documents\GitHub\PWI_Project\pwi_project\lib" />
     </key>
   </component>
   <component name="RunManager">
@@ -153,37 +136,37 @@
       <option name="project" value="LOCAL" />
       <updated>1703022359612</updated>
     </task>
-    <task id="LOCAL-00008" summary="Changed the select color button in task creation screen so that the selected color shows besides the button">
+    <task id="LOCAL-00008" summary="Edited DataSource for notes and tasks">
       <option name="closed" value="true" />
-      <created>1703935120491</created>
+      <created>1703514966794</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1703935120492</updated>
+      <updated>1703514966794</updated>
     </task>
-    <task id="LOCAL-00009" summary="Made the task widget expand and wrap the task title when its too long for the basic container">
+    <task id="LOCAL-00009" summary="created expandable tasks and notes (again)">
       <option name="closed" value="true" />
-      <created>1703942438199</created>
+      <created>1703515418020</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1703942438199</updated>
+      <updated>1703515418020</updated>
     </task>
-    <task id="LOCAL-00010" summary="Added Unique task id generation">
+    <task id="LOCAL-00010" summary="added custom appointment builder for calendar screen">
       <option name="closed" value="true" />
-      <created>1703970467502</created>
+      <created>1703517059652</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1703970467502</updated>
+      <updated>1703517059652</updated>
     </task>
-    <task id="LOCAL-00011" summary="Added Unique task id generation">
+    <task id="LOCAL-00011" summary="made changes to custom appointment builder">
       <option name="closed" value="true" />
-      <created>1703971114172</created>
+      <created>1703532033334</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1703971114172</updated>
+      <updated>1703532033334</updated>
     </task>
     <option name="localTasksCounter" value="12" />
     <servers />
@@ -206,10 +189,9 @@
     <MESSAGE value="BuildContext inheritance fixed for more clarity" />
     <MESSAGE value="Added Note provider" />
     <MESSAGE value="Edited DataSource for notes and tasks" />
-    <MESSAGE value="Changed the select color button in task creation screen so that the selected color shows besides the button" />
-    <MESSAGE value="Made the task widget expand and wrap the task title when its too long for the basic container" />
-    <MESSAGE value="Added Unique task id generation" />
-    <MESSAGE value="Added a new widget for editing a task and added both editTask functions needed for it to work(although one of them still doesnt work[the one in task_view_model.dart],will try to fix it tomorrow)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new widget for editing a task and added both editTask functions needed for it to work(although one of them still doesnt work[the one in task_view_model.dart],will try to fix it tomorrow)" />
+    <MESSAGE value="created expandable tasks and notes (again)" />
+    <MESSAGE value="added custom appointment builder for calendar screen" />
+    <MESSAGE value="made changes to custom appointment builder" />
+    <option name="LAST_COMMIT_MESSAGE" value="made changes to custom appointment builder" />
   </component>
 </project>
