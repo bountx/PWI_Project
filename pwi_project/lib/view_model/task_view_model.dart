@@ -10,7 +10,7 @@ class TaskList extends ChangeNotifier {
 
   final List<Task> _tasks = [];
 
-  void addTask(Task task){
+  void addTask(Task task) {
     _tasks.add(task);
     notifyListeners();
   }
@@ -37,13 +37,13 @@ class TaskList extends ChangeNotifier {
   }
 
   List<Task> get exampleTasks => [
-    Task(
-      'o',
-      'To do',
-      'a lot a lot',
-      DateTime.now(),
-      const Color(0xFF0F8644),
-      false,
-    ),
-  ];
+        Task(
+          'o',
+          'To do',
+          'a lot a lot',
+          DateTime.now(),
+          const Color(0xFF0F8644),
+          false,
+        ),
+      ];
 }

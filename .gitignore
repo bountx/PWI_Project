@@ -2,3 +2,8 @@
 *.xml
 .idea/libraries/Dart_SDK.xml
 .idea/workspace.xml
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+.vs/PWI_Project/v17/.wsuo
+.vs/ProjectSettings.json
+*.vsidx

@@ -8,6 +8,8 @@ import 'package:uuid/uuid.dart';
 
 
 class TaskCreationWidget extends StatelessWidget {
+  const TaskCreationWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -17,13 +19,13 @@ class TaskCreationWidget extends StatelessWidget {
           backgroundColor: Colors.orange[50],
           appBar: AppBar(
             backgroundColor: Colors.amberAccent[200],
-            title: Text(
+            title: const Text(
               'Create Task',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             actions: [
               IconButton(
-                icon: Icon(Icons.check),
+                icon: const Icon(Icons.check),
                 onPressed: () => model.addTask(context),
               ),
             ],
@@ -35,11 +37,11 @@ class TaskCreationWidget extends StatelessWidget {
               children: [
                 TextFormField(
                   controller: model.titleController,
-                  decoration: InputDecoration(labelText: 'Title'),
+                  decoration: const InputDecoration(labelText: 'Title'),
                 ),
                 TextFormField(
                   controller: model.descriptionController,
-                  decoration: InputDecoration(labelText: 'Description'),
+                  decoration: const InputDecoration(labelText: 'Description'),
                 ),
                 SizedBox(height: 50),
                 Row(

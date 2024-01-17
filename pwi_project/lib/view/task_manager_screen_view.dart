@@ -7,7 +7,7 @@ import '../model/task.dart';
 import '../view_model/task_view_model.dart';
 
 class TaskManagerScreen extends StatelessWidget {
-  TaskManagerScreen({super.key});
+  const TaskManagerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class TaskManagerScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TaskCreationWidget()),
+              MaterialPageRoute(builder: (context) => const TaskCreationWidget()),
             );
           },
           shape:
