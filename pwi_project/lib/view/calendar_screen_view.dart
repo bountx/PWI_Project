@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import '../model/note.dart';
+import '../model/task.dart';
 import '../view_model/note_view_model.dart';
 import '../view_model/task_view_model.dart';
-import '../widgets/task_widget.dart';
-import '../model/task.dart';
-import '../model/note.dart';
 import '../widgets/note_line.dart';
+import '../widgets/task_widget.dart';
 
 class CalendarScreen extends StatelessWidget {
   const CalendarScreen({super.key});
@@ -69,7 +69,6 @@ Widget appointmentBuilder(BuildContext context,
         appointment.color,
         appointment.startTime,
       ),
-      simplifiedLook: true,
     );
   }
 }

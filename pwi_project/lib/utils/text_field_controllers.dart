@@ -13,4 +13,10 @@ class TextFieldControllers with ChangeNotifier {
     contentController.dispose();
     searchController.dispose();
   }
+
+  void updateControllers(String title, String content) {
+    titleController.text = title;
+    contentController.text = content;
+    notifyListeners();
+  }
 }
