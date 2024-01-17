@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:pwi_project/view/calendar_screen_view.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
+
+import 'view/task_manager_screen_view.dart';
 import 'package:provider/provider.dart';
-import 'package:pwi_project/utils/notelist_view_mode.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
+import 'package:pwi_project/view/calendar_screen_view.dart';
 import 'package:pwi_project/view/notelist_screen_view.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
+import 'package:pwi_project/view_model/notelist_view_model.dart';
+import 'package:pwi_project/view_model/notepad_view_model.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
-import 'package:pwi_project/navigator.dart';
-
 
 import 'view_model/calendar_view_model.dart';
 
@@ -18,6 +22,7 @@ void main() {
       ChangeNotifierProvider(create: (context) => TaskList()),
       ChangeNotifierProvider(create: (context) => TextFieldControllers()),
       ChangeNotifierProvider(create: (context) => NotelistViewMode()),
+      ChangeNotifierProvider(create: (context) => NotepadViewMode()),
     ],
     child: const MyApp(),
   ));
@@ -34,8 +39,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-      //for now we initiate screen of the specific branch here
-      home: Nawigator(), //don't add const yet
+
+      home: Nawigator(),
     );
   }
 }
