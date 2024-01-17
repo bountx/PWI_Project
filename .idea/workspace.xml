@@ -4,13 +4,29 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="Added a new widget for editing a task and added both editTask functions needed for it to work(although one of them still doesnt work[the one in task_view_model.dart],will try to fix it tomorrow)">
+    <list default="true" id="e351c828-5cdf-4f0d-a3b8-dff4731d44cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/notelist_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/notepad_view_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_line.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_search_bar.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/noteline_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/notestick_grid.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pwi_project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_edit_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_edit_screen_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_view_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_view_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/task_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/model/note.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/model/note.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/model/task.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/model/task.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/utils/text_field_controllers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/utils/text_field_controllers.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/calendar_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notelist_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/notepad_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_creation_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view/task_manager_screen_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/calendar_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/note_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_creation_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_creation_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/view_model/task_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" beforeDir="false" afterPath="$PROJECT_DIR$/pwi_project/lib/widgets/note_stick.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
