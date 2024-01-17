@@ -20,7 +20,7 @@ class CalendarScreen extends StatelessWidget {
           backgroundColor: Colors.orange[50],
           onSelectionChanged: (selection) {},
           controller: Provider.of<Calendar>(context).controller,
-          dataSource: DataSource(Provider.of<TaskList>(context).exampleTasks,
+          dataSource: DataSource(Provider.of<TaskList>(context).tasks,
               Provider.of<NoteViewModel>(context).notes),
           monthViewSettings: const MonthViewSettings(
             agendaItemHeight: 50,
