@@ -36,10 +36,10 @@ class TaskManagerScreen extends StatelessWidget {
               ),
             ],
           ),
-          backgroundColor: Colors.amberAccent[400],
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
       ),
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Consumer<TaskList>(
         builder: (context, taskList, child) {
           return ListView.builder(
@@ -70,7 +70,7 @@ class TaskManagerScreen extends StatelessWidget {
           },
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-          backgroundColor: Colors.amberAccent[400],
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           child: Container(
             width: 100,
             height: 100,

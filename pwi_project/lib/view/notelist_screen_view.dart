@@ -15,7 +15,7 @@ class NotelistScreen extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: Colors.orange[50],
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: AppBar(
@@ -24,7 +24,7 @@ class NotelistScreen extends StatelessWidget {
                 Selector<NotelistViewMode, bool>(
                   selector: (_, viewMode) => viewMode.isGridMode,
                   builder: (context, isGridMode, viewMode) => Material(
-                    color: Colors.yellowAccent,
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       onTap: () {
@@ -32,7 +32,7 @@ class NotelistScreen extends StatelessWidget {
                             .toggleViewMode();
                       },
                       borderRadius: BorderRadius.circular(10),
-                      splashColor: Colors.amberAccent[100],
+                      splashColor: Theme.of(context).splashColor,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(
@@ -47,14 +47,14 @@ class NotelistScreen extends StatelessWidget {
                 ),
               ],
             ),
-            backgroundColor: Colors.amberAccent[400],
+            backgroundColor: Theme.of(context).colorScheme.primary,
           ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             handleAddButtonPress(context);
           },
-          backgroundColor: Colors.limeAccent,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           child: const Icon(
             Icons.add,
           ),

@@ -74,7 +74,7 @@ class _MyCheckboxState extends State<MyCheckbox> {
   bool isChecked = false;
 
   Color? getColor() {
-    return isChecked ? Colors.yellow[700] : Colors.amberAccent;
+    return isChecked ? Theme.of(context).colorScheme.surfaceVariant : Theme.of(context).colorScheme.surface;
   }
 
   @override
@@ -85,7 +85,7 @@ class _MyCheckboxState extends State<MyCheckbox> {
           isChecked = !isChecked;
         });
       },
-      splashColor: Colors.amber[100],
+      splashColor: Theme.of(context).splashColor,
       child: Container(
         width: 40.0,
         height: 40.0,

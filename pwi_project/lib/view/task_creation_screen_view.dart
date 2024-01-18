@@ -16,9 +16,9 @@ class TaskCreationWidget extends StatelessWidget {
       create: (context) => TaskCreationViewModel(task: Task(Uuid().v4(),'', '', DateTime.now(), Color(0xFFFFC107) , false)),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
-          backgroundColor: Colors.orange[50],
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
-            backgroundColor: Colors.amberAccent[200],
+            backgroundColor: Theme.of(context).colorScheme.primary,
             title: const Text(
               'Create Task',
               style: TextStyle(fontWeight: FontWeight.bold),
