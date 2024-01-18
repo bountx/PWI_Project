@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import '../model/note.dart';
+import '../model/task.dart';
 import '../view_model/note_view_model.dart';
 import '../view_model/task_view_model.dart';
-import '../widgets/task_widget.dart';
-import '../model/task.dart';
-import '../model/note.dart';
 import '../widgets/note_line.dart';
+import '../widgets/task_widget.dart';
 
 class CalendarScreen extends StatelessWidget {
   const CalendarScreen({super.key});
@@ -16,13 +16,11 @@ class CalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Calendar Screen'),
-        ),
         body: SfCalendar(
+          backgroundColor: Colors.orange[50],
           onSelectionChanged: (selection) {},
           controller: Provider.of<Calendar>(context).controller,
-          dataSource: DataSource(Provider.of<TaskList>(context).exampleTasks,
+          dataSource: DataSource(Provider.of<TaskList>(context).tasks,
               Provider.of<NoteViewModel>(context).notes),
           monthViewSettings: const MonthViewSettings(
             agendaItemHeight: 50,
@@ -59,7 +57,7 @@ Widget appointmentBuilder(BuildContext context,
   final Appointment appointment = calendarAppointmentDetails.appointments.first;
   if (appointment.id == 0) {
     return TaskWidget(
-        task: Task(appointment.subject, '', appointment.startTime,
+        task: Task(appointment.id.toString(),appointment.subject,'', appointment.startTime,
             appointment.color, false));
   } else {
     return NoteLine(
@@ -69,7 +67,6 @@ Widget appointmentBuilder(BuildContext context,
         appointment.color,
         appointment.startTime,
       ),
-      simplifiedLook: true,
     );
   }
 }

@@ -1,35 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
 import '../view_model/task_view_model.dart';
-import 'package:uuid/uuid.dart';
 
+class TaskEditWidget extends StatelessWidget {
+  final Task task;
+  TaskEditWidget({required this.task});
 
-class TaskCreationWidget extends StatelessWidget {
-  const TaskCreationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TaskCreationViewModel(task: Task(Uuid().v4(),'', '', DateTime.now(), Color(0xFFFFC107) , false)),
+      create: (context) => TaskCreationViewModel(task: task),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Colors.orange[50],
           appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            title: const Text(
-              'Create Task',
+            backgroundColor: model.selectedColor,
+            title: Text(
+              'Edit Task',
+              textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             actions: [
+          Row(
+          children:[
+          IconButton(
+          icon: Icon(Icons.delete),
+          onPressed: () {
+            Provider.of<TaskList>(context, listen: false).removeTask(task.id);
+            Navigator.pop(context);
+          },
+
+        ),
               IconButton(
-                icon: const Icon(Icons.check),
-                onPressed: () => model.addTask(context),
-              ),
+                icon: Icon(Icons.check),
+                onPressed: () { model.editTask(context);
+                Navigator.pop(context); //goes back to task manager screen, omiting task view screen, temporary solution, need to change it so that the view screen updates after edit
+                },
+                ),
             ],
           ),
+            ],),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -37,11 +51,11 @@ class TaskCreationWidget extends StatelessWidget {
               children: [
                 TextFormField(
                   controller: model.titleController,
-                  decoration: const InputDecoration(labelText: 'Title'),
+                  decoration: InputDecoration(labelText: 'Title'),
                 ),
                 TextFormField(
                   controller: model.descriptionController,
-                  decoration: const InputDecoration(labelText: 'Description'),
+                  decoration: InputDecoration(labelText: 'Description'),
                 ),
                 SizedBox(height: 50),
                 Row(
@@ -51,7 +65,9 @@ class TaskCreationWidget extends StatelessWidget {
                       children: [
                         Text('Finish Date:'),
                         ElevatedButton(
-                          onPressed: () => model.selectDate(context),
+                          onPressed: () {
+                            model.selectDate(context);
+                          },
                           child: Text(DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
                         ),
                       ],
@@ -65,7 +81,9 @@ class TaskCreationWidget extends StatelessWidget {
                             primary: model.selectedColor,
                             shape: CircleBorder(),
                           ),
-                          onPressed: () => model.selectColor(context),
+                          onPressed: () {
+                            model.selectColor(context);
+                          },
                           child: null,
                         ),
                       ],
