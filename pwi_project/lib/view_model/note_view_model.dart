@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
@@ -6,7 +7,8 @@ import 'package:pwi_project/utils/text_field_controllers.dart';
 
 class NoteViewModel extends ChangeNotifier {
   final List<Note> _notes = [
-    Note('siema', 'eeeeeeeeelo', const Color(0xFFF0F4C3),
+    //convert plain string to json
+    Note('siema', 'eeeeeeeeelo',null, const Color(0xFFF0F4C3),
         DateTime.now().add(const Duration(days: 1)))
   ];
   List<Note> _searchResults = [];
@@ -79,7 +81,7 @@ class NoteViewModel extends ChangeNotifier {
     if (currentNote != null) {
       textFieldControllers.updateControllers(
         currentNote.title,
-        currentNote.content,
+        currentNote.jsonContent,
       );
     }
   }

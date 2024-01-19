@@ -18,11 +18,12 @@ void handleEditSaveButtonPress(BuildContext context,
       );
       return;
     }
-    final content = jsonEncode(textFieldControllers.quillController.document.toDelta().toJson());
+    String stringContent = textFieldControllers.quillController.document.toPlainText();
+    final jsonContent = jsonEncode(textFieldControllers.quillController.document.toDelta().toJson());
     Color color = Colors.white;
     DateTime dateTime = DateTime.now();
 
-    Note newNote = Note(title, content, color, dateTime);
+    Note newNote = Note(title, stringContent,jsonContent, color, dateTime);
 
     if (noteViewModel.currentIndex != null) {
       noteViewModel.updateCurrentNote(newNote);
