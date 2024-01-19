@@ -21,15 +21,18 @@ class TaskManagerScreen extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(left: 10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: const TextField(
+                  child: TextField(
                     decoration: InputDecoration(
                       hintText: 'Search',
+                      hintStyle: TextStyle(
+                        color: Theme.of(context).secondaryHeaderColor,
+                      ),
                       contentPadding: EdgeInsets.all(10),
                       border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search, color: Colors.grey),
+                      prefixIcon: Icon(Icons.search, color: Theme.of(context).secondaryHeaderColor),
                     ),
                   ),
                 ),
@@ -68,17 +71,12 @@ class TaskManagerScreen extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const TaskCreationWidget()),
             );
           },
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          child: Container(
-            width: 100,
-            height: 100,
-            alignment: Alignment.center,
-            child: const Icon(
+          child: Icon(
               Icons.add,
+              color: Theme.of(context).colorScheme.onSecondary,
             ),
-          )),
+          ),
     );
   }
 }

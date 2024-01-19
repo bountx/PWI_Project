@@ -16,38 +16,45 @@ class CalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SfCalendar(
-          backgroundColor: Colors.orange[50],
-          onSelectionChanged: (selection) {},
-          controller: Provider.of<Calendar>(context).controller,
-          dataSource: DataSource(Provider.of<TaskList>(context).tasks,
-              Provider.of<NoteViewModel>(context).notes),
-          monthViewSettings: const MonthViewSettings(
-            agendaItemHeight: 50,
-            //appointmentDisplayMode: MonthAppointmentDisplayMode.appointment
-            showAgenda: true,
+        body: Padding(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          child: SfCalendar(
+            backgroundColor: Theme.of(context).colorScheme.background,
+            onSelectionChanged: (selection) {},
+            todayHighlightColor: Theme.of(context).colorScheme.secondary,
+            controller: Provider.of<Calendar>(context).controller,
+            dataSource: DataSource(Provider.of<TaskList>(context).tasks,
+                Provider.of<NoteViewModel>(context).notes),
+            monthViewSettings: const MonthViewSettings(
+              agendaItemHeight: 50,
+              //appointmentDisplayMode: MonthAppointmentDisplayMode.appointment
+              showAgenda: true,
+            ),
+            onTap: (details) {
+              if (details.targetElement == CalendarElement.appointment) {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(details.appointments![0].subject),
+                        content: Text(details.appointments![0].notes),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text(
+                                'OK',
+                                style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                            ),
+                          ),
+                        ],
+                      );
+                    });
+              }
+            },
+            showDatePickerButton: true,
+            view: CalendarView.month,
+            appointmentBuilder: appointmentBuilder,
           ),
-          onTap: (details) {
-            if (details.targetElement == CalendarElement.appointment) {
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text(details.appointments![0].subject),
-                      content: Text(details.appointments![0].notes),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    );
-                  });
-            }
-          },
-          showDatePickerButton: true,
-          view: CalendarView.month,
-          appointmentBuilder: appointmentBuilder,
         ));
   }
 }
@@ -56,9 +63,14 @@ Widget appointmentBuilder(BuildContext context,
     CalendarAppointmentDetails calendarAppointmentDetails) {
   final Appointment appointment = calendarAppointmentDetails.appointments.first;
   if (appointment.id == 0) {
-    return TaskWidget(
-        task: Task(appointment.id.toString(),appointment.subject,'', appointment.startTime,
-            appointment.color, false));
+    return Flexible(
+      child: TaskWidget(
+          task: Task(appointment.id.toString(),appointment.subject,'', appointment.startTime,
+              appointment.color, false), showDate: false,
+      
+      ),
+    );
+
   } else {
     return NoteLine(
       note: Note(

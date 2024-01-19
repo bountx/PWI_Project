@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       theme: AppTheme.lightTheme,
-
+      darkTheme: AppTheme.darkTheme,
 
       home: Nawigator(),
     );

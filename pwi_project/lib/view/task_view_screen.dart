@@ -18,7 +18,7 @@ class TaskViewWidget extends StatelessWidget {
       create: (context) => TaskCreationViewModel(task: task),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
-          backgroundColor: Colors.orange[50],
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             backgroundColor: model.selectedColor,
             title: Text(
@@ -81,7 +81,7 @@ class TaskViewWidget extends StatelessWidget {
                   ),
                   Container(
                     height: 650, // media query
-                    alignment: Alignment.center,
+                    alignment: Alignment.topCenter,
                     decoration: BoxDecoration(
                       color: task.background,
                       borderRadius: BorderRadius.circular(20),

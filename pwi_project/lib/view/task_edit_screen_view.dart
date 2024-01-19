@@ -16,7 +16,7 @@ class TaskEditWidget extends StatelessWidget {
       create: (context) => TaskCreationViewModel(task: task),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
-          backgroundColor: Colors.orange[50],
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             backgroundColor: model.selectedColor,
             title: Text(
@@ -51,12 +51,29 @@ class TaskEditWidget extends StatelessWidget {
               children: [
                 TextFormField(
                   controller: model.titleController,
-                  decoration: InputDecoration(labelText: 'Title'),
+                  decoration: InputDecoration(
+                    labelText: 'Title',
+                    labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                    ),
+                  ),
                 ),
                 TextFormField(
                   controller: model.descriptionController,
-                  decoration: InputDecoration(labelText: 'Description'),
-                ),
+                  decoration: InputDecoration(
+                    labelText: 'Description',
+                    labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                    ),
+                  ),),
                 SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -68,7 +85,11 @@ class TaskEditWidget extends StatelessWidget {
                           onPressed: () {
                             model.selectDate(context);
                           },
-                          child: Text(DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
+                          child: Text(
+                              DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal()),
+                              style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+                            ),
+                          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(model.selectedColor)),
                         ),
                       ],
                     ),

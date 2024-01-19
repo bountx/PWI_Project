@@ -11,6 +11,8 @@ class NoteLineList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     final noteViewModel = Provider.of<NoteViewModel>(context);
     final notes = noteViewModel.searchResults.isNotEmpty
         ? noteViewModel.searchResults

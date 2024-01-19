@@ -37,6 +37,7 @@ class NotelistScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(
                           isGridMode ? Icons.list : Icons.grid_view,
+                          color: Theme.of(context).colorScheme.onSecondary,
                         ),
                       ),
                     ),
@@ -55,8 +56,9 @@ class NotelistScreen extends StatelessWidget {
             handleAddButtonPress(context);
           },
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          child: const Icon(
+          child: Icon(
             Icons.add,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
         body: Selector<NotelistViewMode, bool>(

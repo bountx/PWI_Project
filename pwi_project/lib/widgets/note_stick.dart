@@ -9,11 +9,13 @@ class NoteStick extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: MediaQuery.of(context).size.height / 4 - 30,
+      height: screenHeight / 4 - 30,
       margin: const EdgeInsets.fromLTRB(20, 15, 20, 15),
       decoration: BoxDecoration(
-        color: Colors.amber[200],
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -22,19 +24,18 @@ class NoteStick extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
             child: Text(
-              note.title.length > 6
-                  ? '${note.title.substring(0, 6)}...'
-                  : note.title, // !!mediaquery to be implemented
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              note.title,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSecondary),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Text(
-              note.content.length > 75
-                  ? '${note.content.substring(0, 75)}...'
-                  : note.content, // !!mediaquery to be implemented
+              note.content,
+              overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.justify,
+              style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
             ),
           ),
         ],

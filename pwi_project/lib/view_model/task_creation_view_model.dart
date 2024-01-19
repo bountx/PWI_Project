@@ -18,11 +18,23 @@ class TaskCreationViewModel extends ChangeNotifier {
         selectedColor = task.background;
 
   Future<void> selectDate(BuildContext context) async {
+    final ThemeData themeData = Theme.of(context);
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: themeData.copyWith(
+              colorScheme: themeData.colorScheme.copyWith(
+                primary: Theme.of(context).colorScheme.onBackground,
+                surface:  Theme.of(context).colorScheme.background,
+              ),
+            ),
+            child: child!,
+          );
+        },
     );
     if (picked != null && picked != selectedDate) {
       selectedDate = picked;
@@ -55,6 +67,7 @@ class TaskCreationViewModel extends ChangeNotifier {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Pick a color!'),
+          backgroundColor: Theme.of(context).colorScheme.background,
           content: SingleChildScrollView(
             child: Container(
               width: double.maxFinite,
@@ -86,10 +99,11 @@ class TaskCreationViewModel extends ChangeNotifier {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text(
+              child: Text(
                   'Got it',
                   style: TextStyle(
-                    fontSize: 21
+                    fontSize: 21,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
               ),
               onPressed: () {

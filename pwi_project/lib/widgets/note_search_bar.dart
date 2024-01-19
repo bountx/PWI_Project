@@ -14,18 +14,21 @@ class NoteSearchBar extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(left: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: BorderRadius.circular(30),
       ),
       child: TextField(
         controller: searchController,
         decoration: InputDecoration(
           hintText: 'Search...',
+          hintStyle: TextStyle(
+            color: Theme.of(context).secondaryHeaderColor,
+          ),
           contentPadding: const EdgeInsets.all(10),
           border: InputBorder.none,
-          prefixIcon: const Icon(Icons.search, color: Colors.grey),
+          prefixIcon: Icon(Icons.search, color: Theme.of(context).secondaryHeaderColor),
           suffixIcon: IconButton(
-            icon: const Icon(Icons.close),
+            icon: Icon(Icons.close, color: Theme.of(context).secondaryHeaderColor),
             onPressed: () {
               searchController.clear();
               Provider.of<NoteViewModel>(context, listen: false).search('');
