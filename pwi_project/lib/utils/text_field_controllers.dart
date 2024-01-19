@@ -18,8 +18,10 @@ class TextFieldControllers with ChangeNotifier {
   }
 
   void updateControllers(String title, String content) {
-    titleController.text = title;
-    quillController.document=Document.fromJson(jsonDecode(content));
-    notifyListeners();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      titleController.text = title;
+      quillController.document=Document.fromJson(jsonDecode(content));
+      notifyListeners();
+    });
   }
 }

@@ -73,36 +73,48 @@ class NotepadScreen extends StatelessWidget {
                     expands: true,
                   ),
                 ),
-
-                // TextField(
-                //   controller: Provider.of<TextFieldControllers>(context)
-                //       .contentController,
-                //   readOnly: !isEditing,
-                //   maxLines: null,
-                //   expands: true,
-                //   decoration: InputDecoration(
-                //     hintText: 'Enter your note here...',
-                //     filled: true,
-                //     fillColor: Theme.of(context).colorScheme.background,
-                //     border: InputBorder.none,
-                //   ),
-                // ),
               );
             },
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            handleEditSaveButtonPress(
-                context, textFieldControllers, noteViewModel);
-          },
-          child: Icon(Provider.of<NotepadViewMode>(context).isEditing
-              ? Icons.check
-              : Icons.edit),
+        floatingActionButton: Padding(
+          padding: Provider.of<NotepadViewMode>(context).isEditing
+              ? const EdgeInsets.only(bottom: 60.0)
+              : EdgeInsets.zero,
+          child: FloatingActionButton(
+            onPressed: () {
+              handleEditSaveButtonPress(
+                  context, textFieldControllers, noteViewModel);
+            },
+            child: Icon(Provider.of<NotepadViewMode>(context).isEditing
+                ? Icons.check
+                : Icons.edit),
+          ),
         ),
-        bottomNavigationBar: QuillToolbar.simple(
-            configurations: QuillSimpleToolbarConfigurations(
-                controller: textFieldControllers.quillController)),
+        bottomSheet: Provider.of<NotepadViewMode>(context).isEditing
+            ? QuillToolbar.simple(
+                configurations: QuillSimpleToolbarConfigurations(
+                controller: textFieldControllers.quillController,
+                fontSizesValues: const {
+                  'mała': '10',
+                  'średnia': '20',
+                  'duża': '30',
+                  'ogromna': '40',
+                  'gigantyczna': '50'
+                },
+                showDividers: false,
+                showInlineCode: false,
+                showListCheck: false,
+                showIndent: false,
+                showHeaderStyle: false,
+                showSearchButton: false,
+                showLink: false,
+                showSubscript: false,
+                showSuperscript: false,
+                showQuote: false,
+                showCodeBlock: false,
+              ))
+            : null,
       ),
     );
   }
