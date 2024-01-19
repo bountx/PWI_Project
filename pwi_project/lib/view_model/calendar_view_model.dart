@@ -34,7 +34,7 @@ class DataSource extends CalendarDataSource {
         startTime: note.date,
         endTime: note.date,
         color: note.color,
-        notes: note.content,
+        notes: note.stringContent,
         isAllDay: true,
       );
       appointments?.add(noteAppointment);

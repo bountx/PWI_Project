@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/model/note.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
+
 
 void handleEditSaveButtonPress(BuildContext context,
     TextFieldControllers textFieldControllers, NoteViewModel noteViewModel) {
@@ -15,11 +18,12 @@ void handleEditSaveButtonPress(BuildContext context,
       );
       return;
     }
-    String content = textFieldControllers.contentController.text;
+    String stringContent = textFieldControllers.quillController.document.toPlainText();
+    final jsonContent = jsonEncode(textFieldControllers.quillController.document.toDelta().toJson());
     Color color = Colors.white;
     DateTime dateTime = DateTime.now();
 
-    Note newNote = Note(title, content, color, dateTime);
+    Note newNote = Note(title, stringContent,jsonContent, color, dateTime);
 
     if (noteViewModel.currentIndex != null) {
       noteViewModel.updateCurrentNote(newNote);
