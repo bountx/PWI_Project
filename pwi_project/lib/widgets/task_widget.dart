@@ -30,7 +30,7 @@ class TaskWidget extends StatelessWidget {
           splashColor: Colors.transparent,
           child: Container(
             margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-            width: 300,
+            width: 200,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: task.color,

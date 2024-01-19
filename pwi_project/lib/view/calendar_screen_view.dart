@@ -28,7 +28,7 @@ class CalendarScreen extends StatelessWidget {
         showAgenda: true,
       ),
       onTap: (details) {
-        if (details.targetElement == CalendarElement.appointment) {
+        /*if (details.targetElement == CalendarElement.appointment) {
 
           showDialog(
               context: context,
@@ -44,7 +44,7 @@ class CalendarScreen extends StatelessWidget {
                   ],
                 );
               });
-        }
+        }*/
       },
       showDatePickerButton: true,
       view: CalendarView.month,
