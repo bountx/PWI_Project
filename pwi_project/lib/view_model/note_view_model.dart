@@ -5,10 +5,12 @@ import 'package:flutter/foundation.dart';
 import 'package:pwi_project/model/note.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 
+import '../utils/memory_management.dart';
+
 class NoteViewModel extends ChangeNotifier {
   final List<Note> _notes = [
     //convert plain string to json
-    Note('siema', 'eeeeeeeeelo',r'[{"insert":"eeeeeeeelo\n"}]', const Color(0xFFF0F4C3),
+    Note('adfsafd', 'siema', 'eeeeeeeeelo',r'[{"insert":"eeeeeeeelo\n"}]', const Color(0xFFF0F4C3),
         DateTime.now().add(const Duration(days: 1)))
   ];
   List<Note> _searchResults = [];
@@ -26,6 +28,12 @@ class NoteViewModel extends ChangeNotifier {
   Note? get currentNote => _currentNote;
 
   int? get currentIndex => _currentIndex;
+
+  void loadNotesFromMemory() async {
+    _notes.clear();
+    _notes.addAll(await loadNotes());
+    notifyListeners();
+  }
 
   void selectNote(int? index) {
     if (index != null && index >= 0 && index < _notes.length) {
@@ -46,6 +54,7 @@ class NoteViewModel extends ChangeNotifier {
 
   void deleteNote(int index) {
     if (index >= 0 && index < _notes.length) {
+      deleteNoteFromMemory(_notes[index].id);
       _notes.removeAt(index);
       _searchResults = [];
       notifyListeners();

@@ -30,7 +30,7 @@ class TaskEditWidget extends StatelessWidget {
           IconButton(
           icon: Icon(Icons.delete),
           onPressed: () {
-            Provider.of<TaskList>(context, listen: false).removeTask(task.id);
+            Provider.of<TaskViewModel>(context, listen: false).removeTask(task.id);
             Navigator.pop(context);
           },
 

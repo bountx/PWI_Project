@@ -20,32 +20,14 @@ class NoteLineList extends StatelessWidget {
     return ListView.builder(
       itemCount: notes.length,
       itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () => _handleTap(context, index),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-            child: NoteLine(
-              note: notes[index],
-              index: index,
-            ),
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
+          child: NoteLine(
+            note: notes[index],
+            index: index,
           ),
         );
       },
     );
   }
-}
-
-void _handleTap(BuildContext context, int index) {
-  final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
-  final notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
-
-  noteViewModel.selectNote(index);
-  notepadViewMode.isEditing = false;
-
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => const NotepadScreen(),
-    ),
-  );
 }

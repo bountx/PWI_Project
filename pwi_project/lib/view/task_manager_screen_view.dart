@@ -24,7 +24,7 @@ class TaskManagerScreen extends StatelessWidget {
                   searchController: Provider.of<TextFieldControllers>(context)
                       .searchController,
                   onSearch: (query) {
-                    Provider.of<TaskList>(context, listen: false).search(query);
+                    Provider.of<TaskViewModel>(context, listen: false).search(query);
                   },
                 ),
               ),
@@ -34,7 +34,7 @@ class TaskManagerScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Consumer<TaskList>(
+      body: Consumer<TaskViewModel>(
         builder: (context, taskList, child) {
           var displayTasks = taskList.searchResults.isNotEmpty
               ? taskList.searchResults
@@ -48,13 +48,8 @@ class TaskManagerScreen extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 0.0),
                 child: TaskWidget(
-                  task: Task(
-                      displayTasks[index].id,
-                      displayTasks[index].name,
-                      displayTasks[index].description,
-                      displayTasks[index].day,
-                      displayTasks[index].background,
-                      false),
+                  task: displayTasks[index],
+                  index: index,
                 ),
               );
             },
