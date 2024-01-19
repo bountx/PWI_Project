@@ -23,7 +23,7 @@ class Nawigator extends StatelessWidget {
           children: _screens,
         ),
         bottomNavigationBar:  Material(
-          color: Colors.orange[50],
+          color: Theme.of(context).colorScheme.background,
 
           child: TabBar(
             overlayColor: MaterialStateProperty.all(Colors.transparent),
