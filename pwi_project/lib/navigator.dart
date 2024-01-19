@@ -5,6 +5,7 @@ import 'package:pwi_project/view/task_manager_screen_view.dart';
 
 import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
+import 'package:pwi_project/view_model/task_view_model.dart';
 
 List<Widget> _screens = [
   const NotelistScreen(),
@@ -18,6 +19,7 @@ class Nawigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<NoteViewModel>(context, listen: false).loadNotesFromMemory();
+    Provider.of<TaskViewModel>(context, listen: false).loadTasksFromMemory();
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -29,9 +31,6 @@ class Nawigator extends StatelessWidget {
 
 
           child: TabBar(
-            onTap: (index) {
-              Provider.of<NoteViewModel>(context, listen: false).loadNotesFromMemory();
-            },
             overlayColor: MaterialStateProperty.all(Colors.transparent),
             splashFactory: NoSplash.splashFactory,
             labelColor: Colors.orange[300],

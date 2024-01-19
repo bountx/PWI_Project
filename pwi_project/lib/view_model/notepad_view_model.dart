@@ -13,7 +13,7 @@ void handleEditSaveButtonPress(BuildContext context,
     TextFieldControllers textFieldControllers, NoteViewModel noteViewModel) {
   var notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
   if (notepadViewMode.isEditing) {
-    String id = noteViewModel.currentNote?.id ?? generateRandomString(16);
+    String id = noteViewModel.currentNote?.id ?? 'N${generateRandomString(16)}';
 
     String title = textFieldControllers.titleController.text;
     if (title.isEmpty) {

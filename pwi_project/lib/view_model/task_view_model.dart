@@ -3,34 +3,47 @@
 import 'package:flutter/material.dart';
 import 'package:pwi_project/model/task.dart';
 
+import '../utils/memory_management.dart';
+
 //provider of tasks
-class TaskList extends ChangeNotifier {
+class TaskViewModel extends ChangeNotifier {
   final List<Task> _tasks = [];
 
-  void addTask(Task task) {
-    _tasks.add(task);
+  void addTask(Task newTask) {
+    _tasks.add(newTask);
+    saveTaskInMemory(newTask);
     notifyListeners();
   }
 
   List<Task> get tasks => _tasks;
 
+  void loadTasksFromMemory() async {
+    _tasks.clear();
+    _tasks.addAll(await loadTasks());
+    notifyListeners();
+  }
+
   void removeTask(String id) {
     int index = _tasks.indexWhere((t) => t.id == id);
     _tasks.removeAt(index);
+    deleteTaskFromMemory(id);
     notifyListeners();
   }
 
   void toggleDone(Task task) {
     task.isDone = !task.isDone;
+    saveTaskInMemory(task);
+    print(task.isDone);
     notifyListeners();
   }
 
-  void editTask(String id, Task editedtask) {
+  void editTask(String id, Task editedTask) {
     int index = _tasks.indexWhere((t) => t.id == id);
     if (index != -1) {
-      _tasks[index] = editedtask;
+      _tasks[index] = editedTask;
       notifyListeners();
     }
+    saveTaskInMemory(editedTask);
   }
 
   String _searchQuery = '';
@@ -51,15 +64,4 @@ class TaskList extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  List<Task> get exampleTasks => [
-        Task(
-          'o',
-          'To do',
-          'a lot a lot',
-          DateTime.now(),
-          const Color(0xFF0F8644),
-          false,
-        ),
-      ];
 }

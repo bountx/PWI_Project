@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../model/task.dart';
 import '../view/task_view_screen.dart';
+import '../view_model/task_view_model.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
+  final int? index;
 
-  const TaskWidget({super.key, required this.task});
+  const TaskWidget({super.key, required this.task, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class TaskWidget extends StatelessWidget {
             width: 300,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: task.background,
+              color: task.color,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(
@@ -39,7 +42,7 @@ class TaskWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    DateFormat('yyyy-MM-dd').format(task.day.toLocal()),
+                    DateFormat('yyyy-MM-dd').format(task.date.toLocal()),
                     style: const TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18.0,
@@ -57,54 +60,48 @@ class TaskWidget extends StatelessWidget {
             ),
           ),
         ),
-        MyCheckbox(),
+        MyCheckbox(task: task, index: index,),
       ],
     );
   }
 }
 
-class MyCheckbox extends StatefulWidget {
-  const MyCheckbox({Key? key}) : super(key: key);
+class MyCheckbox extends StatelessWidget {
+  final Task task;
+  final int? index;
 
-  @override
-  _MyCheckboxState createState() => _MyCheckboxState();
-}
-
-class _MyCheckboxState extends State<MyCheckbox> {
-  bool isChecked = false;
-
-  Color? getColor() {
-    return isChecked
-        ? Theme.of(context).colorScheme.surfaceVariant
-        : Theme.of(context).colorScheme.surface;
-  }
+  const MyCheckbox({super.key, required this.task, required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return InkResponse(
-      onTap: () {
-        setState(() {
-          isChecked = !isChecked;
-        });
+    return Consumer<TaskViewModel>(
+      builder: (context, taskProvider, child) {
+        return InkResponse(
+          onTap: () {
+            taskProvider.toggleDone(task);
+          },
+          splashColor: Theme.of(context).splashColor,
+          child: Container(
+            width: 40.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Provider.of<TaskViewModel>(context).tasks[index!].isDone
+                  ? Theme.of(context).colorScheme.surfaceVariant
+                  : Theme.of(context).colorScheme.surface,
+            ),
+            child: Center(
+              child:  Provider.of<TaskViewModel>(context).tasks[index!].isDone
+                  ? const Icon(
+                Icons.check,
+                size: 24.0,
+                color: Colors.black,
+              )
+                  : null,
+            ),
+          ),
+        );
       },
-      splashColor: Theme.of(context).splashColor,
-      child: Container(
-        width: 40.0,
-        height: 40.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: getColor(),
-        ),
-        child: Center(
-          child: isChecked
-              ? const Icon(
-                  Icons.check,
-                  size: 24.0,
-                  color: Colors.black,
-                )
-              : null,
-        ),
-      ),
     );
   }
 }

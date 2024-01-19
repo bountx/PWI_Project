@@ -19,10 +19,10 @@ class DataSource extends CalendarDataSource {
       Appointment taskAppointment = Appointment(
         id: 0,
         subject: task.name,
-        startTime: task.day,
-        endTime: task.day,
-        color: task.background,
-        notes: task.description,
+        startTime: task.date,
+        endTime: task.date,
+        color: task.color,
+        notes: task.id,
         isAllDay: true,
       );
       appointments?.add(taskAppointment);
@@ -34,7 +34,7 @@ class DataSource extends CalendarDataSource {
         startTime: note.date,
         endTime: note.date,
         color: note.color,
-        notes: note.stringContent,
+        notes: note.id,
         isAllDay: true,
       );
       appointments?.add(noteAppointment);
