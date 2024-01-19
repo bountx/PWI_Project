@@ -33,7 +33,6 @@ class TaskViewModel extends ChangeNotifier {
   void toggleDone(Task task) {
     task.isDone = !task.isDone;
     saveTaskInMemory(task);
-    print(task.isDone);
     notifyListeners();
   }
 

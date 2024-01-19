@@ -8,7 +8,7 @@ import '../view_model/task_view_model.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
-  final int? index;
+  final int index;
 
   const TaskWidget({super.key, required this.task, required this.index});
 
@@ -68,17 +68,15 @@ class TaskWidget extends StatelessWidget {
 
 class MyCheckbox extends StatelessWidget {
   final Task task;
-  final int? index;
+  final int index;
 
   const MyCheckbox({super.key, required this.task, required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<TaskViewModel>(
-      builder: (context, taskProvider, child) {
-        return InkResponse(
+    return InkResponse(
           onTap: () {
-            taskProvider.toggleDone(task);
+            Provider.of<TaskViewModel>(context, listen: false).toggleDone(task);
           },
           splashColor: Theme.of(context).splashColor,
           child: Container(
@@ -86,12 +84,12 @@ class MyCheckbox extends StatelessWidget {
             height: 40.0,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Provider.of<TaskViewModel>(context).tasks[index!].isDone
+              color: task.isDone
                   ? Theme.of(context).colorScheme.surfaceVariant
                   : Theme.of(context).colorScheme.surface,
             ),
             child: Center(
-              child:  Provider.of<TaskViewModel>(context).tasks[index!].isDone
+              child:  task.isDone
                   ? const Icon(
                 Icons.check,
                 size: 24.0,
@@ -101,7 +99,5 @@ class MyCheckbox extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
   }
 }
