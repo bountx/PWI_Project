@@ -37,7 +37,7 @@ class NoteStick extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15.0),
             child: Text(
-              note.content,
+              note.stringContent,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.justify,
               style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),

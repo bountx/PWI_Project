@@ -94,7 +94,7 @@ class NotepadScreen extends StatelessWidget {
             },
             child: Icon(Provider.of<NotepadViewMode>(context).isEditing
                 ? Icons.check
-                : Icons.edit
+                : Icons.edit,
                 color: Theme.of(context).colorScheme.onSecondary
             ),
           backgroundColor: Theme.of(context).colorScheme.secondary,
