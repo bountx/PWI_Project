@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view/task_creation_screen_view.dart';
+import 'package:pwi_project/widgets/search_bar.dart';
 import 'package:pwi_project/widgets/task_widget.dart';
 
 import '../model/task.dart';
@@ -18,23 +20,12 @@ class TaskManagerScreen extends StatelessWidget {
           title: Row(
             children: [
               Expanded(
-                child: Container(
-                  margin: const EdgeInsets.only(left: 10),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: TextStyle(
-                        color: Theme.of(context).secondaryHeaderColor,
-                      ),
-                      contentPadding: EdgeInsets.all(10),
-                      border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search, color: Theme.of(context).secondaryHeaderColor),
-                    ),
-                  ),
+                child: OurSearchBar(
+                  searchController: Provider.of<TextFieldControllers>(context)
+                      .searchController,
+                  onSearch: (query) {
+                    Provider.of<TaskList>(context, listen: false).search(query);
+                  },
                 ),
               ),
             ],
@@ -45,19 +36,25 @@ class TaskManagerScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Consumer<TaskList>(
         builder: (context, taskList, child) {
+          var displayTasks = taskList.searchResults.isNotEmpty
+              ? taskList.searchResults
+              : taskList.searchQuery.isNotEmpty
+                  ? []
+                  : taskList.tasks;
+
           return ListView.builder(
-            itemCount: taskList.tasks.length,
+            itemCount: displayTasks.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 0.0),
-                child: TaskWidget(task: Task(
-                  taskList.tasks[index].id,
-                  taskList.tasks[index].name,
-                  taskList.tasks[index].description,
-                  taskList.tasks[index].day,
-                  taskList.tasks[index].background,
-                  false
-                ),
+                child: TaskWidget(
+                  task: Task(
+                      displayTasks[index].id,
+                      displayTasks[index].name,
+                      displayTasks[index].description,
+                      displayTasks[index].day,
+                      displayTasks[index].background,
+                      false),
                 ),
               );
             },
@@ -68,7 +65,8 @@ class TaskManagerScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const TaskCreationWidget()),
+              MaterialPageRoute(
+                  builder: (context) => const TaskCreationWidget()),
             );
           },
           backgroundColor: Theme.of(context).colorScheme.secondary,

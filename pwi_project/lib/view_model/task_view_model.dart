@@ -1,13 +1,10 @@
 // import 'dart:ui_web';
 
 import 'package:flutter/material.dart';
-import 'package:pwi_project/widgets/task_widget.dart';
 import 'package:pwi_project/model/task.dart';
-import 'package:uuid/uuid.dart';
 
 //provider of tasks
 class TaskList extends ChangeNotifier {
-
   final List<Task> _tasks = [];
 
   void addTask(Task task) {
@@ -17,23 +14,42 @@ class TaskList extends ChangeNotifier {
 
   List<Task> get tasks => _tasks;
 
-  void removeTask(String id){
+  void removeTask(String id) {
     int index = _tasks.indexWhere((t) => t.id == id);
     _tasks.removeAt(index);
     notifyListeners();
   }
 
-  void toggleDone(Task task){
+  void toggleDone(Task task) {
     task.isDone = !task.isDone;
     notifyListeners();
   }
 
-  void editTask(String id,Task editedtask) {
+  void editTask(String id, Task editedtask) {
     int index = _tasks.indexWhere((t) => t.id == id);
     if (index != -1) {
       _tasks[index] = editedtask;
       notifyListeners();
     }
+  }
+
+  String _searchQuery = '';
+  List<Task> _searchResults = [];
+
+  String get searchQuery => _searchQuery;
+  List<Task> get searchResults => _searchResults;
+  
+  void search(String query) {
+    _searchQuery = query;
+    if (query.trim().isEmpty) {
+      _searchResults = [];
+    } else {
+      _searchResults = _tasks
+          .where((task) =>
+              task.name.toLowerCase().contains(query.trim().toLowerCase()))
+          .toList();
+    }
+    notifyListeners();
   }
 
   List<Task> get exampleTasks => [

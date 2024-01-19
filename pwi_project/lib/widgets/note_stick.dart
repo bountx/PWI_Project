@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:pwi_project/model/note.dart';
+import 'package:pwi_project/view_model/note_view_model.dart';
+import '../utils/text_field_controllers.dart';
+import 'package:provider/provider.dart';
 
 class NoteStick extends StatelessWidget {
   final Note note;

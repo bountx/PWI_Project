@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:pwi_project/view_model/note_view_model.dart';
 
-import '../utils/text_field_controllers.dart';
+class OurSearchBar extends StatelessWidget {
+  final TextEditingController searchController;
+  final ValueChanged<String> onSearch;
 
-class NoteSearchBar extends StatelessWidget {
-  const NoteSearchBar({super.key});
+  const OurSearchBar(
+      {Key? key, required this.searchController, required this.onSearch})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final searchController =
-        Provider.of<TextFieldControllers>(context).searchController;
     return Container(
       margin: const EdgeInsets.only(left: 10),
       decoration: BoxDecoration(
@@ -31,13 +30,11 @@ class NoteSearchBar extends StatelessWidget {
             icon: Icon(Icons.close, color: Theme.of(context).secondaryHeaderColor),
             onPressed: () {
               searchController.clear();
-              Provider.of<NoteViewModel>(context, listen: false).search('');
+              onSearch('');
             },
           ),
         ),
-        onChanged: (value) {
-          Provider.of<NoteViewModel>(context, listen: false).search(value);
-        },
+        onChanged: onSearch,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
@@ -69,35 +70,60 @@ class NotepadScreen extends StatelessWidget {
             builder: (context, isEditing, child) {
               return IgnorePointer(
                 ignoring: !isEditing,
-                child: TextField(
-                  controller: Provider.of<TextFieldControllers>(context)
-                      .contentController,
-                  readOnly: !isEditing,
-                  maxLines: null,
-                  expands: true,
-                  decoration: InputDecoration(
-                    hintText: 'Enter your note here...',
-                    filled: true,
-                    fillColor: Theme.of(context).colorScheme.background,
-                    border: InputBorder.none,
+                child: QuillEditor.basic(
+                  configurations: QuillEditorConfigurations(
+                    controller: textFieldControllers.quillController,
+                    readOnly: !isEditing,
+                    showCursor: isEditing,
+                    placeholder: 'Enter your note here...',
+                    expands: true,
                   ),
                 ),
               );
             },
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            handleEditSaveButtonPress(
-                context, textFieldControllers, noteViewModel);
-          },
-          child: Icon(Provider.of<NotepadViewMode>(context).isEditing
-              ? Icons.check
-              : Icons.edit,
-            color: Theme.of(context).colorScheme.onSecondary,
-          ),
+        floatingActionButton: Padding(
+          padding: Provider.of<NotepadViewMode>(context).isEditing
+              ? const EdgeInsets.only(bottom: 60.0)
+              : EdgeInsets.zero,
+          child: FloatingActionButton(
+            onPressed: () {
+              handleEditSaveButtonPress(
+                  context, textFieldControllers, noteViewModel);
+            },
+            child: Icon(Provider.of<NotepadViewMode>(context).isEditing
+                ? Icons.check
+                : Icons.edit
+                color: Theme.of(context).colorScheme.onSecondary
+            ),
           backgroundColor: Theme.of(context).colorScheme.secondary,
+          ),
         ),
+        bottomSheet: Provider.of<NotepadViewMode>(context).isEditing
+            ? QuillToolbar.simple(
+                configurations: QuillSimpleToolbarConfigurations(
+                controller: textFieldControllers.quillController,
+                fontSizesValues: const {
+                  'mała': '10',
+                  'średnia': '20',
+                  'duża': '30',
+                  'ogromna': '40',
+                  'gigantyczna': '50'
+                },
+                showDividers: false,
+                showInlineCode: false,
+                showListCheck: false,
+                showIndent: false,
+                showHeaderStyle: false,
+                showSearchButton: false,
+                showLink: false,
+                showSubscript: false,
+                showSuperscript: false,
+                showQuote: false,
+                showCodeBlock: false,
+              ))
+            : null,
       ),
     );
   }

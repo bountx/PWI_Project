@@ -17,8 +17,8 @@ class NoteLineList extends StatelessWidget {
     final notes = noteViewModel.searchResults.isNotEmpty
         ? noteViewModel.searchResults
         : noteViewModel.searchQuery.isNotEmpty
-        ? []
-        : noteViewModel.notes;
+            ? []
+            : noteViewModel.notes;
     return ListView.builder(
       itemCount: notes.length,
       itemBuilder: (context, index) {
@@ -39,8 +39,7 @@ class NoteLineList extends StatelessWidget {
 
 void _handleTap(BuildContext context, int index) {
   final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
-  final notepadViewMode = Provider.of<NotepadViewMode>(
-      context, listen: false);
+  final notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
 
   noteViewModel.selectNote(index);
   notepadViewMode.isEditing = false;

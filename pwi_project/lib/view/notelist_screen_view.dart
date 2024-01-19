@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/utils/text_field_controllers.dart';
+import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/view_model/notelist_view_model.dart';
-import 'package:pwi_project/widgets/note_search_bar.dart';
+import 'package:pwi_project/widgets/search_bar.dart';
 import 'package:pwi_project/widgets/noteline_list.dart';
 import 'package:pwi_project/widgets/notestick_grid.dart';
 
@@ -43,8 +45,15 @@ class NotelistScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Expanded(
-                  child: NoteSearchBar(),
+                Expanded(
+                  child: OurSearchBar(
+                    searchController: Provider.of<TextFieldControllers>(context)
+                        .searchController,
+                    onSearch: (query) {
+                      Provider.of<NoteViewModel>(context, listen: false)
+                          .search(query);
+                    },
+                  ),
                 ),
               ],
             ),

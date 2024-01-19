@@ -76,6 +76,7 @@ Widget appointmentBuilder(BuildContext context,
       note: Note(
         appointment.subject,
         '',
+        null,
         appointment.color,
         appointment.startTime,
       ),
