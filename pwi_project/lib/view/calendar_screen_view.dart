@@ -62,6 +62,7 @@ Widget appointmentBuilder(BuildContext context,
   } else {
     return NoteLine(
       note: Note(
+        appointment.id.toString(),
         appointment.subject,
         '',
         null,

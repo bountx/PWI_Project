@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/model/note.dart';
+import 'package:pwi_project/utils/memory_management.dart';
+import 'package:pwi_project/utils/random_string.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 
@@ -11,6 +13,8 @@ void handleEditSaveButtonPress(BuildContext context,
     TextFieldControllers textFieldControllers, NoteViewModel noteViewModel) {
   var notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
   if (notepadViewMode.isEditing) {
+    String id = noteViewModel.currentNote?.id ?? generateRandomString(16);
+
     String title = textFieldControllers.titleController.text;
     if (title.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -23,7 +27,8 @@ void handleEditSaveButtonPress(BuildContext context,
     Color color = Colors.white;
     DateTime dateTime = DateTime.now();
 
-    Note newNote = Note(title, stringContent,jsonContent, color, dateTime);
+    Note newNote = Note(id, title, stringContent,jsonContent, color, dateTime);
+    saveNoteInMemory(newNote);
 
     if (noteViewModel.currentIndex != null) {
       noteViewModel.updateCurrentNote(newNote);
