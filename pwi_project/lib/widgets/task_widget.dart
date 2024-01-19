@@ -74,7 +74,9 @@ class _MyCheckboxState extends State<MyCheckbox> {
   bool isChecked = false;
 
   Color? getColor() {
-    return isChecked ? Theme.of(context).colorScheme.surfaceVariant : Theme.of(context).colorScheme.surface;
+    return isChecked
+        ? Theme.of(context).colorScheme.surfaceVariant
+        : Theme.of(context).colorScheme.surface;
   }
 
   @override
