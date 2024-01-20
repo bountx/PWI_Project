@@ -14,6 +14,8 @@ class TaskViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return ChangeNotifierProvider(
       create: (context) => TaskCreationViewModel(task: task),
       child: Consumer<TaskCreationViewModel>(
@@ -21,6 +23,7 @@ class TaskViewWidget extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             backgroundColor: model.selectedColor,
+            foregroundColor: Theme.of(context).colorScheme.onSecondary,
             title: Text(
               model.titleController.text,
               textAlign: TextAlign.center,
@@ -54,64 +57,68 @@ class TaskViewWidget extends StatelessWidget {
           ),
           body: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold
-                          ),
-                            'Finish Date'
-                        ),
-                        Text(
-                          style: TextStyle(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold
+                            ),
+                              'Finish Date'
                           ),
-                            DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: 650, // media query
-                    alignment: Alignment.topCenter,
-                    decoration: BoxDecoration(
-                      color: task.background,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: SingleChildScrollView(
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Description',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 27.0,
-                              ),
+                          Text(
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold
                             ),
-                            Text(
-                              task.description,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
+                              DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: screenHeight - 200,
+                      alignment: Alignment.topCenter,
+                      decoration: BoxDecoration(
+                        color: task.background,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Description',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 27.0,
+                                  color: Theme.of(context).colorScheme.onSecondary,
+                                ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                task.description,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18.0,
+                                  color: Theme.of(context).colorScheme.onSecondary,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
           ),
         ),
