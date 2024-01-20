@@ -48,6 +48,7 @@ class CalendarScreen extends StatelessWidget {
 
         body: SfCalendar(
       backgroundColor: Theme.of(context).colorScheme.background,
+      todayHighlightColor: Theme.of(context).colorScheme.tertiary,
       onSelectionChanged: (selection) {},
       controller: Provider.of<Calendar>(context).controller,
       dataSource: DataSource(Provider.of<TaskViewModel>(context).tasks,

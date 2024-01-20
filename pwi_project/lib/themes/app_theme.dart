@@ -15,6 +15,7 @@ class AppTheme {
           surface: Color(0xFFFAD95D),
           onSurface: Color(0xFF2A2006),
           surfaceVariant: Color(0xFFFFC400),
+          tertiary: Color(0xFFC29B00),
 
       ),
       splashColor: Color(0xFFFFE082),
@@ -35,6 +36,7 @@ class AppTheme {
           surface: Color(0xFF85630D),
           onSurface: Color(0xFFFFFCB3),
           surfaceVariant: Color(0xFFFFC400),
+          tertiary: Color(0xFFB48F0F),
 
       ),
       splashColor: Color(0xFFFFE082),

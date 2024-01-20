@@ -24,7 +24,7 @@ void handleEditSaveButtonPress(BuildContext context,
     }
     String stringContent = textFieldControllers.quillController.document.toPlainText();
     final jsonContent = jsonEncode(textFieldControllers.quillController.document.toDelta().toJson());
-    Color color = Colors.white;
+    Color color = Theme.of(context).colorScheme.surface;
     DateTime dateTime = DateTime.now();
 
     Note newNote = Note(id, title, stringContent,jsonContent, color, dateTime);

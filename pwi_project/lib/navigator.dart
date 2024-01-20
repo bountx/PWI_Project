@@ -50,7 +50,7 @@ class Nawigator extends StatelessWidget {
               },
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 splashFactory: NoSplash.splashFactory,
-                labelColor: Theme.of(context).colorScheme.secondary,
+                labelColor: Theme.of(context).colorScheme.tertiary,
                 indicatorColor: Theme.of(context).colorScheme.secondary,
                 unselectedLabelColor: Theme.of(context).colorScheme.onBackground,
                 tabs: const [
