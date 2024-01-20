@@ -19,6 +19,25 @@ class TaskManagerScreen extends StatelessWidget {
         child: AppBar(
           title: Row(
             children: [
+               InkWell(
+                onTap: () {
+                    var taskViewModel = Provider.of<TaskViewModel>(context, listen: false);
+                    taskViewModel.isDoneFilter = !taskViewModel.isDoneFilter;
+                },
+                child: Consumer<TaskViewModel>(
+                  builder: (context, taskList, child) => Material(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(10),
+                    child:
+                        Padding(padding: const EdgeInsets.all(8.0),
+                          child : Icon(
+                            taskList.isDoneFilter ? Icons.check_box : Icons.check_box_outline_blank,
+                        ),
+                        ),
+                ),
+              ),
+           ),
+
               Expanded(
                 child: OurSearchBar(
                   searchController: Provider.of<TextFieldControllers>(context)

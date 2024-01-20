@@ -1,5 +1,3 @@
-// import 'dart:ui_web';
-
 import 'package:flutter/material.dart';
 import 'package:pwi_project/model/task.dart';
 
@@ -12,14 +10,24 @@ class TaskViewModel extends ChangeNotifier {
   void addTask(Task newTask) {
     _tasks.add(newTask);
     saveTaskInMemory(newTask);
+    sortTasksByDate();
+    _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
     notifyListeners();
   }
 
   List<Task> get tasks => _tasks;
 
+  void sortTasksByDate() {
+    // _tasks.sort((a, b) => a.name.compareTo(b.name));
+    _tasks.sort((a, b) => a.date.compareTo(b.date));
+
+  }
+  
+
   void loadTasksFromMemory() async {
     _tasks.clear();
     _tasks.addAll(await loadTasks());
+    sortTasksByDate();
     notifyListeners();
   }
 
@@ -27,6 +35,7 @@ class TaskViewModel extends ChangeNotifier {
     int index = _tasks.indexWhere((t) => t.id == id);
     _tasks.removeAt(index);
     deleteTaskFromMemory(id);
+    _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
     notifyListeners();
   }
 
@@ -34,6 +43,8 @@ class TaskViewModel extends ChangeNotifier {
     int index = _tasks.indexWhere((t) => t.id == id);
     if (index != -1) {
       _tasks[index] = editedTask;
+      sortTasksByDate();
+      _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
       notifyListeners();
     }
     saveTaskInMemory(editedTask);
@@ -50,10 +61,18 @@ class TaskViewModel extends ChangeNotifier {
   void toggleDone(Task task) {
     task.isDone = !task.isDone;
     saveTaskInMemory(task);
-
-    _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
     notifyListeners();
+    delay(task);
   }
+
+  void delay(Task task) {
+    Future.delayed(const Duration(seconds: 1, milliseconds: 30), () {
+     _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
+     notifyListeners();
+    });
+
+  }
+
 
   set isDoneFilter(bool value) {
     _isDoneFilter = value;
