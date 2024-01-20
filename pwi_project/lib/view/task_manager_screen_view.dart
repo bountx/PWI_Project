@@ -36,11 +36,7 @@ class TaskManagerScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Consumer<TaskViewModel>(
         builder: (context, taskList, child) {
-          var displayTasks = taskList.searchResults.isNotEmpty
-              ? taskList.searchResults
-              : taskList.searchQuery.isNotEmpty
-                  ? []
-                  : taskList.tasks;
+          var displayTasks = taskList.searchResults;
 
           return ListView.builder(
             itemCount: displayTasks.length,

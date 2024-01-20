@@ -31,6 +31,12 @@ class Nawigator extends StatelessWidget {
 
 
           child: TabBar(
+            onTap: (index) {
+              if (index == 2) {
+                Provider.of<TaskViewModel>(context, listen: false)
+                    .search('');
+              }
+            },
             overlayColor: MaterialStateProperty.all(Colors.transparent),
             splashFactory: NoSplash.splashFactory,
             labelColor: Colors.orange[300],
