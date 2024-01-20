@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
@@ -18,9 +19,19 @@ class NotepadScreen extends StatelessWidget {
     noteViewModel.updateControllersIfNeeded(textFieldControllers);
 
 
+    final contentFocusNode = FocusNode();
+
+    contentFocusNode.addListener(() {
+      if (!contentFocusNode.hasFocus) {
+        final updatedDocument = Document.fromJson(
+            textFieldControllers.quillController.document.toDelta().toJson());
+        textFieldControllers.quillController.document = updatedDocument;
+      }
+    });
+
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).unfocus();
+        contentFocusNode.unfocus();
       },
       child: Scaffold(
         appBar: AppBar(
@@ -69,17 +80,17 @@ class NotepadScreen extends StatelessWidget {
             selector: (_, notepadViewMode) => notepadViewMode.isEditing,
             builder: (context, isEditing, child) {
               return IgnorePointer(
-                ignoring: !isEditing,
-                child: QuillEditor.basic(
-                  configurations: QuillEditorConfigurations(
-                    controller: textFieldControllers.quillController,
-                    readOnly: !isEditing,
-                    showCursor: isEditing,
-                    placeholder: 'Enter your note here...',
-                    expands: true,
-                  ),
-                ),
-              );
+  ignoring: !isEditing,
+  child: QuillEditor.basic(
+    configurations: QuillEditorConfigurations(
+      controller: textFieldControllers.quillController,
+      readOnly: !isEditing,
+      showCursor: isEditing,
+      placeholder: 'Enter your note here...',
+      expands: true,
+    ),
+  ),
+);
             },
           ),
         ),

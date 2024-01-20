@@ -19,7 +19,7 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (context) => NoteViewModel()),
       ChangeNotifierProvider(create: (context) => Calendar()),
-      ChangeNotifierProvider(create: (context) => TaskList()),
+      ChangeNotifierProvider(create: (context) => TaskViewModel()),
       ChangeNotifierProvider(create: (context) => TextFieldControllers()),
       ChangeNotifierProvider(create: (context) => NotelistViewMode()),
       ChangeNotifierProvider(create: (context) => NotepadViewMode()),

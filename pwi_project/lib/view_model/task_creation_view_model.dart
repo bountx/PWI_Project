@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/utils/memory_management.dart';
 
 import '../model/task.dart';
 import '../view_model/task_view_model.dart';
@@ -14,8 +15,8 @@ class TaskCreationViewModel extends ChangeNotifier {
   TaskCreationViewModel({required this.task})
       : titleController = TextEditingController(text: task.name),
         descriptionController = TextEditingController(text: task.description),
-        selectedDate = task.day,
-        selectedColor = task.background;
+        selectedDate = task.date,
+        selectedColor = task.color;
 
   Future<void> selectDate(BuildContext context) async {
     final ThemeData themeData = Theme.of(context);
@@ -118,31 +119,32 @@ class TaskCreationViewModel extends ChangeNotifier {
 
   // addTask is function that creates a new task and adds it to the list of tasks
   void addTask(BuildContext context) {
-    Provider.of<TaskList>(context, listen: false).addTask(
-      Task(
-        task.id,
-        titleController.text,
-        descriptionController.text,
-        selectedDate,
-        selectedColor,
-        false,
-      ),
+    Task newTask = Task(
+      task.id,
+      titleController.text,
+      descriptionController.text,
+      selectedDate,
+      selectedColor,
+      false,
     );
+    Provider.of<TaskViewModel>(context, listen: false).addTask(newTask);
     Navigator.pop(context);
     notifyListeners();
   }
 
   void editTask(BuildContext context) {
-    Provider.of<TaskList>(context, listen: false).editTask(
+    Task newTask = Task(
       task.id,
-      Task(
-        task.id,
-        titleController.text,
-        descriptionController.text,
-        selectedDate,
-        selectedColor,
-        false,
-      ),
+      titleController.text,
+      descriptionController.text,
+      selectedDate,
+      selectedColor,
+      false,
+    );
+    
+    Provider.of<TaskViewModel>(context, listen: false).editTask(
+      task.id,
+      newTask,
     );
     Navigator.pop(context);
     notifyListeners();

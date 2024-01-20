@@ -33,3 +33,18 @@ class NotelistViewMode extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+void handleTap(BuildContext context, int index) {
+  final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
+  final notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
+
+  noteViewModel.selectNote(index);
+  notepadViewMode.isEditing = false;
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const NotepadScreen(),
+    ),
+  );
+}

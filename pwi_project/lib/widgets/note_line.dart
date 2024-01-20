@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:pwi_project/model/note.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
+
+import '../view_model/notelist_view_model.dart';
 
 class NoteLine extends StatelessWidget {
   final Note note;
-  final int? index;
+  final int index;
 
-  const NoteLine(
-      {super.key,
-      required this.note,
-      this.index,}
-      );
+  const NoteLine({
+    super.key,
+    required this.note,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
     double containerSize = 40.0;
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return SizedBox(
+    return GestureDetector(
+      onTap: () {
+        handleTap(context, index);
+      },
+      child: SizedBox(
       height: containerSize,
       child: Row(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,6 +67,7 @@ class NoteLine extends StatelessWidget {
             ),
           ),
         ],
+      ),
       ),
     );
   }

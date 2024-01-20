@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../model/task.dart';
 import '../view/task_view_screen.dart';
+import '../view_model/task_view_model.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
   final bool showDate;
+  final int index;
 
-  const TaskWidget({super.key, required this.task, this.showDate = true});
+  const TaskWidget({super.key, required this.task, this.showDate = true, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class TaskWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        MyCheckbox(),
+        MyCheckbox(task: task, index: index,),
         Expanded(
           child: InkWell(
             onTap: () {
@@ -35,7 +38,7 @@ class TaskWidget extends StatelessWidget {
               width: screenWidth-100.0,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: task.background,
+                color: task.color,
                 borderRadius: BorderRadius.circular(13.0),
               ),
               child: Container(
@@ -45,7 +48,7 @@ class TaskWidget extends StatelessWidget {
                   children: [
                     if (showDate)
                       Text(
-                        DateFormat('yyyy-MM-dd').format(task.day.toLocal()),
+                        DateFormat('yyyy-MM-dd').format(task.date.toLocal()),
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18.0,
@@ -72,48 +75,38 @@ class TaskWidget extends StatelessWidget {
   }
 }
 
-class MyCheckbox extends StatefulWidget {
-  const MyCheckbox({Key? key}) : super(key: key);
+class MyCheckbox extends StatelessWidget {
+  final Task task;
+  final int index;
 
-  @override
-  _MyCheckboxState createState() => _MyCheckboxState();
-}
-
-class _MyCheckboxState extends State<MyCheckbox> {
-  bool isChecked = false;
-
-  Color? getColor() {
-    return isChecked
-        ? Theme.of(context).colorScheme.surfaceVariant
-        : Theme.of(context).colorScheme.surface;
-  }
+  const MyCheckbox({super.key, required this.task, required this.index});
 
   @override
   Widget build(BuildContext context) {
     return InkResponse(
-      onTap: () {
-        setState(() {
-          isChecked = !isChecked;
-        });
-      },
-      splashColor: Theme.of(context).splashColor,
-      child: Container(
-        width: 40.0,
-        height: 40.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: getColor(),
-        ),
-        child: Center(
-          child: isChecked
-              ? const Icon(
-                  Icons.check,
-                  size: 24.0,
-                  color: Colors.black,
-                )
-              : null,
-        ),
-      ),
-    );
+          onTap: () {
+            Provider.of<TaskViewModel>(context, listen: false).toggleDone(task);
+          },
+          splashColor: Theme.of(context).splashColor,
+          child: Container(
+            width: 40.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: task.isDone
+                  ? Theme.of(context).colorScheme.surfaceVariant
+                  : Theme.of(context).colorScheme.surface,
+            ),
+            child: Center(
+              child:  task.isDone
+                  ? const Icon(
+                Icons.check,
+                size: 24.0,
+                color: Colors.black,
+              )
+                  : null,
+            ),
+          ),
+        );
   }
 }

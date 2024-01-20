@@ -32,7 +32,7 @@ class TaskViewWidget extends StatelessWidget {
                   IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
-                      Provider.of<TaskList>(context, listen: false)
+                      Provider.of<TaskViewModel>(context, listen: false)
                           .removeTask(task.id);
                       Navigator.pop(context);
                     },
@@ -83,7 +83,7 @@ class TaskViewWidget extends StatelessWidget {
                     height: 650, // media query
                     alignment: Alignment.topCenter,
                     decoration: BoxDecoration(
-                      color: task.background,
+                      color: task.color,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: SingleChildScrollView(

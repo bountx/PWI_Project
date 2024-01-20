@@ -4,6 +4,7 @@ import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/view_model/notepad_view_model.dart';
 
 import '../view_model/note_view_model.dart';
+import '../view_model/notelist_view_model.dart';
 import 'note_stick.dart';
 
 class NoteStickGrid extends StatelessWidget {
@@ -26,7 +27,7 @@ class NoteStickGrid extends StatelessWidget {
       itemCount: notes.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () => _handleTap(context, index),
+          onTap: () => handleTap(context, index),
           child: NoteStick(
             note: notes[index],
             index: index,
@@ -35,19 +36,4 @@ class NoteStickGrid extends StatelessWidget {
       },
     );
   }
-}
-
-void _handleTap(BuildContext context, int index) {
-  final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
-  final notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
-
-  noteViewModel.selectNote(index);
-  notepadViewMode.isEditing = false;
-
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => const NotepadScreen(),
-    ),
-  );
 }

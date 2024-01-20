@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/view/task_creation_screen_view.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -16,46 +17,69 @@ class CalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: SfCalendar(
-            backgroundColor: Theme.of(context).colorScheme.background,
-            onSelectionChanged: (selection) {},
-            todayHighlightColor: Theme.of(context).colorScheme.secondary,
-            controller: Provider.of<Calendar>(context).controller,
-            dataSource: DataSource(Provider.of<TaskList>(context).tasks,
-                Provider.of<NoteViewModel>(context).notes),
-            monthViewSettings: const MonthViewSettings(
-              agendaItemHeight: 50,
-              //appointmentDisplayMode: MonthAppointmentDisplayMode.appointment
-              showAgenda: true,
-            ),
-            onTap: (details) {
-              if (details.targetElement == CalendarElement.appointment) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text(details.appointments![0].subject),
-                        content: Text(details.appointments![0].notes),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text(
-                                'OK',
-                                style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
-                            ),
-                          ),
-                        ],
-                      );
-                    });
-              }
-            },
-            showDatePickerButton: true,
-            view: CalendarView.month,
-            appointmentBuilder: appointmentBuilder,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: AppBar(
+          title: Row(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TaskCreationWidget()),
+                  );
+                },
+                borderRadius: BorderRadius.circular(10),
+                splashColor: Theme.of(context).splashColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                     Icons.add_task,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ));
+          backgroundColor: Theme.of(context).colorScheme.primary,
+        ),
+      ),
+
+
+        body: SfCalendar(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      onSelectionChanged: (selection) {},
+      controller: Provider.of<Calendar>(context).controller,
+      dataSource: DataSource(Provider.of<TaskViewModel>(context).tasks,
+          Provider.of<NoteViewModel>(context).notes),
+      monthViewSettings: const MonthViewSettings(
+        agendaItemHeight: 50,
+        //appointmentDisplayMode: MonthAppointmentDisplayMode.appointment
+        showAgenda: true,
+      ),
+      onTap: (details) {
+        /*if (details.targetElement == CalendarElement.appointment) {
+
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text(details.appointments![0].subject),
+                  content: Text(details.appointments![0].notes),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                );
+              });
+        }*/
+      },
+      showDatePickerButton: true,
+      view: CalendarView.month,
+      appointmentBuilder: appointmentBuilder,
+    ));
   }
 }
 
@@ -63,23 +87,17 @@ Widget appointmentBuilder(BuildContext context,
     CalendarAppointmentDetails calendarAppointmentDetails) {
   final Appointment appointment = calendarAppointmentDetails.appointments.first;
   if (appointment.id == 0) {
-    return Flexible(
-      child: TaskWidget(
-          task: Task(appointment.id.toString(),appointment.subject,'', appointment.startTime,
-              appointment.color, false), showDate: false,
-      
-      ),
-    );
-
+    int index = Provider.of<TaskViewModel>(context)
+        .tasks
+        .indexWhere((element) => element.id == appointment.notes);
+    return TaskWidget(
+        task: Provider.of<TaskViewModel>(context).tasks[index], index: index);
   } else {
+    int index = Provider.of<NoteViewModel>(context)
+        .notes
+        .indexWhere((element) => element.id == appointment.notes);
     return NoteLine(
-      note: Note(
-        appointment.subject,
-        '',
-        null,
-        appointment.color,
-        appointment.startTime,
-      ),
+      note: Provider.of<NoteViewModel>(context).notes[index], index: index,
     );
   }
 }

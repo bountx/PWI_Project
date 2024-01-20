@@ -19,12 +19,31 @@ class TaskManagerScreen extends StatelessWidget {
         child: AppBar(
           title: Row(
             children: [
+               InkWell(
+                onTap: () {
+                    var taskViewModel = Provider.of<TaskViewModel>(context, listen: false);
+                    taskViewModel.isDoneFilter = !taskViewModel.isDoneFilter;
+                },
+                child: Consumer<TaskViewModel>(
+                  builder: (context, taskList, child) => Material(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(10),
+                    child:
+                        Padding(padding: const EdgeInsets.all(8.0),
+                          child : Icon(
+                            taskList.isDoneFilter ? Icons.check_box : Icons.check_box_outline_blank,
+                        ),
+                        ),
+                ),
+              ),
+           ),
+
               Expanded(
                 child: OurSearchBar(
                   searchController: Provider.of<TextFieldControllers>(context)
                       .searchController,
                   onSearch: (query) {
-                    Provider.of<TaskList>(context, listen: false).search(query);
+                    Provider.of<TaskViewModel>(context, listen: false).search(query);
                   },
                 ),
               ),
@@ -34,13 +53,9 @@ class TaskManagerScreen extends StatelessWidget {
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Consumer<TaskList>(
+      body: Consumer<TaskViewModel>(
         builder: (context, taskList, child) {
-          var displayTasks = taskList.searchResults.isNotEmpty
-              ? taskList.searchResults
-              : taskList.searchQuery.isNotEmpty
-                  ? []
-                  : taskList.tasks;
+          var displayTasks = taskList.searchResults;
 
           return ListView.builder(
             itemCount: displayTasks.length,
@@ -48,13 +63,8 @@ class TaskManagerScreen extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 0.0),
                 child: TaskWidget(
-                  task: Task(
-                      displayTasks[index].id,
-                      displayTasks[index].name,
-                      displayTasks[index].description,
-                      displayTasks[index].day,
-                      displayTasks[index].background,
-                      false),
+                  task: displayTasks[index],
+                  index: index,
                 ),
               );
             },
