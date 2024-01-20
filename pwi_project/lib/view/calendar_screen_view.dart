@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/view/task_creation_screen_view.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -16,6 +17,35 @@ class CalendarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: AppBar(
+          title: Row(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const TaskCreationWidget()),
+                  );
+                },
+                borderRadius: BorderRadius.circular(10),
+                splashColor: Theme.of(context).splashColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                     Icons.add_task,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+        ),
+      ),
+
+
         body: SfCalendar(
       backgroundColor: Theme.of(context).colorScheme.background,
       onSelectionChanged: (selection) {},
