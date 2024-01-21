@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view/calendar_screen_view.dart';
 import 'package:pwi_project/view/notelist_screen_view.dart';
 import 'package:pwi_project/view/task_manager_screen_view.dart';
@@ -48,6 +49,7 @@ class CustomNavigator extends StatelessWidget {
                   Provider.of<TaskViewModel>(context, listen: false)
                       .search('');
                 }
+                Provider.of<TextFieldControllers>(context, listen: false).clearSearchController();
               },
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
                 splashFactory: NoSplash.splashFactory,

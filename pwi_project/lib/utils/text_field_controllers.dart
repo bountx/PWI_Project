@@ -17,6 +17,11 @@ class TextFieldControllers with ChangeNotifier {
     searchController.dispose();
   }
 
+    void clearSearchController() {
+    searchController.clear();
+    notifyListeners();
+  }
+
   void updateControllers(String title, String content) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       titleController.text = title;
