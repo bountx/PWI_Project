@@ -6,6 +6,7 @@ import 'package:pwi_project/view/task_manager_screen_view.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
+import 'package:pwi_project/view_model/theme_switch_view_model.dart';
 
 List<Widget> _screens = [
   const NotelistScreen(),
@@ -13,8 +14,8 @@ List<Widget> _screens = [
   const TaskManagerScreen(),
 ];
 
-class Nawigator extends StatelessWidget {
-  const Nawigator({super.key});
+class CustomNavigator extends StatelessWidget {
+  const CustomNavigator({super.key});
 
   @override
   Widget build(BuildContext context) {

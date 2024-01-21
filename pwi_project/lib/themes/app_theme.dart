@@ -33,9 +33,9 @@ class AppTheme {
           onError: Color(0xFF800808),
           background: Color(0xFF1F1806),
           onBackground: Color(0xFFFFFCB3),
-          surface: Color(0xFF85630D),
+          surface: Color(0xFF866207),
           onSurface: Color(0xFFFFFCB3),
-          surfaceVariant: Color(0xFFFFC400),
+          surfaceVariant: Color(0xFFAB903D),
           tertiary: Color(0xFFB48F0F),
 
       ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/view/task_creation_screen_view.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
+import 'package:pwi_project/view_model/theme_switch_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../model/note.dart';
@@ -22,7 +24,10 @@ class CalendarScreen extends StatelessWidget {
         child: AppBar(
           title: Row(
             children: [
-              InkWell(
+              Material(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(10),
+              child: InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -36,6 +41,58 @@ class CalendarScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
                      Icons.add_task,
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
+                ),
+              ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8,0,0,0),
+                child: Material(
+                  color: Theme.of(context).colorScheme.secondary,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NotepadScreen()),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(10),
+                    splashColor: Theme.of(context).splashColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.note_add,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
+                child: Selector<ThemeProvider, bool>(
+                  selector: (_, themeProvider) => themeProvider.isDarkMode,
+                  builder: (context, isDarkMode, viewMode) => Material(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(10),
+                    child: InkWell(
+                      onTap: () {
+                        Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                      },
+                      borderRadius: BorderRadius.circular(10),
+                      splashColor: Theme.of(context).splashColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                          color: Theme.of(context).colorScheme.onSecondary,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),

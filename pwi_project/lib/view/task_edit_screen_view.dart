@@ -7,8 +7,8 @@ import '../view_model/task_view_model.dart';
 
 class TaskEditWidget extends StatelessWidget {
   final Task task;
-  TaskEditWidget({required this.task});
 
+  TaskEditWidget({required this.task});
 
   @override
   Widget build(BuildContext context) {
@@ -26,25 +26,35 @@ class TaskEditWidget extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             actions: [
-          Row(
-          children:[
-          IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () {
-            Provider.of<TaskViewModel>(context, listen: false).removeTask(task.id);
-            Navigator.pop(context);
-          },
-
-        ),
-              IconButton(
-                icon: Icon(Icons.check),
-                onPressed: () { model.editTask(context);
-                Navigator.pop(context); //goes back to task manager screen, omiting task view screen, temporary solution, need to change it so that the view screen updates after edit
-                },
-                ),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      Provider.of<TaskViewModel>(context, listen: false)
+                          .removeTask(task.id);
+                      Navigator.pop(context);
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.check),
+                    onPressed: () {
+                      if (model.titleController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Title is too short!')),
+                        );
+                        return;
+                      }
+                      model.editTask(context);
+                      Navigator.pop(context);
+                      //goes back to task manager screen, omiting task view screen, temporary solution,
+                      //need to change it so that the view screen updates after edit
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
-            ],),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
@@ -55,12 +65,19 @@ class TaskEditWidget extends StatelessWidget {
                     controller: model.titleController,
                     decoration: InputDecoration(
                       labelText: 'Title',
-                      labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                      labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground),
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
                     ),
                   ),
@@ -68,14 +85,22 @@ class TaskEditWidget extends StatelessWidget {
                     controller: model.descriptionController,
                     decoration: InputDecoration(
                       labelText: 'Description',
-                      labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                      labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground),
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
-                    ),),
+                    ),
+                  ),
                   SizedBox(height: 50),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,10 +113,16 @@ class TaskEditWidget extends StatelessWidget {
                               model.selectDate(context);
                             },
                             child: Text(
-                                DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal()),
-                                style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                              ),
-                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(model.selectedColor)),
+                              DateFormat('yyyy-MM-dd HH:mm')
+                                  .format(model.selectedDate.toLocal()),
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSecondary),
+                            ),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    model.selectedColor)),
                           ),
                         ],
                       ),
