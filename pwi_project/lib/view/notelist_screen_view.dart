@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 import 'package:pwi_project/view_model/notelist_view_model.dart';
+import 'package:pwi_project/view_model/theme_switch_view_model.dart';
 import 'package:pwi_project/widgets/search_bar.dart';
 import 'package:pwi_project/widgets/noteline_list.dart';
 import 'package:pwi_project/widgets/notestick_grid.dart';
@@ -55,6 +56,32 @@ class NotelistScreen extends StatelessWidget {
                     },
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
+                  child: Selector<ThemeProvider, bool>(
+                    selector: (_, themeProvider) => themeProvider.isDarkMode,
+                    builder: (context, isDarkMode, viewMode) => Material(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(10),
+                      child: InkWell(
+                        onTap: () {
+                          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                        },
+                        borderRadius: BorderRadius.circular(10),
+                        splashColor: Theme.of(context).splashColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Icon(
+                            isDarkMode ? Icons.dark_mode : Icons.light_mode,
+                            color: Theme.of(context).colorScheme.onSecondary,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+
               ],
             ),
             backgroundColor: Theme.of(context).colorScheme.primary,
