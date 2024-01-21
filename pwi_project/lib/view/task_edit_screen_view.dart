@@ -16,9 +16,10 @@ class TaskEditWidget extends StatelessWidget {
       create: (context) => TaskCreationViewModel(task: task),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
-          backgroundColor: Colors.orange[50],
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
             backgroundColor: model.selectedColor,
+            foregroundColor: Theme.of(context).colorScheme.onSecondary,
             title: Text(
               'Edit Task',
               textAlign: TextAlign.center,
@@ -46,51 +47,74 @@ class TaskEditWidget extends StatelessWidget {
             ],),
           body: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextFormField(
-                  controller: model.titleController,
-                  decoration: InputDecoration(labelText: 'Title'),
-                ),
-                TextFormField(
-                  controller: model.descriptionController,
-                  decoration: InputDecoration(labelText: 'Description'),
-                ),
-                SizedBox(height: 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        Text('Finish Date:'),
-                        ElevatedButton(
-                          onPressed: () {
-                            model.selectDate(context);
-                          },
-                          child: Text(DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
-                        ),
-                      ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextFormField(
+                    controller: model.titleController,
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                      labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Background Color:'),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: model.selectedColor,
-                            shape: CircleBorder(),
+                  ),
+                  TextFormField(
+                    controller: model.descriptionController,
+                    decoration: InputDecoration(
+                      labelText: 'Description',
+                      labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                      ),
+                    ),),
+                  SizedBox(height: 50),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Text('Finish Date:'),
+                          ElevatedButton(
+                            onPressed: () {
+                              model.selectDate(context);
+                            },
+                            child: Text(
+                                DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal()),
+                                style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+                              ),
+                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(model.selectedColor)),
                           ),
-                          onPressed: () {
-                            model.selectColor(context);
-                          },
-                          child: null,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('Background Color:'),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: model.selectedColor,
+                              shape: CircleBorder(),
+                            ),
+                            onPressed: () {
+                              model.selectColor(context);
+                            },
+                            child: null,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

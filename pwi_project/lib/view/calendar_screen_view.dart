@@ -48,6 +48,7 @@ class CalendarScreen extends StatelessWidget {
 
         body: SfCalendar(
       backgroundColor: Theme.of(context).colorScheme.background,
+      todayHighlightColor: Theme.of(context).colorScheme.tertiary,
       onSelectionChanged: (selection) {},
       controller: Provider.of<Calendar>(context).controller,
       dataSource: DataSource(Provider.of<TaskViewModel>(context).tasks,
@@ -91,7 +92,7 @@ Widget appointmentBuilder(BuildContext context,
         .tasks
         .indexWhere((element) => element.id == appointment.notes);
     return TaskWidget(
-        task: Provider.of<TaskViewModel>(context).tasks[index], index: index);
+        task: Provider.of<TaskViewModel>(context).tasks[index],showDate: false, index: index);
   } else {
     int index = Provider.of<NoteViewModel>(context)
         .notes

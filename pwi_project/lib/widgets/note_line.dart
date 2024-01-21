@@ -16,55 +16,58 @@ class NoteLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double containerSize = MediaQuery.of(context).size.width / 5 - 30;
+    double containerSize = 40.0;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         handleTap(context, index);
       },
       child: SizedBox(
-        height: containerSize,
-        child: Row(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: containerSize,
-              width: containerSize,
+      height: containerSize,
+      child: Row(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 15, 0),
+            height: containerSize,
+            width: containerSize,
+            decoration: BoxDecoration(
+              color: Colors.pink,
+              borderRadius: BorderRadius.circular(13.0),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: screenWidth / 5 - 40,
+              //width: screenWidth / 1.5,
               decoration: BoxDecoration(
-                color: Colors.pink,
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(13.0),
               ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 2 / 15 - 30,
-            ),
-            Expanded(
-              child: Container(
-                height: MediaQuery.of(context).size.width / 5 - 40,
-                //width: MediaQuery.of(context).size.width / 1.5,
-                decoration: BoxDecoration(
-                  color: Colors.amber[200],
-                  borderRadius: BorderRadius.circular(13.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        note.title.length > 17
-                            ? '${note.title.substring(0, 17)}...'
-                            : note.title,
-                        // !!mediaquery to be implemented
-                        style: const TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        note.title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onSecondary,
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
       ),
     );
   }

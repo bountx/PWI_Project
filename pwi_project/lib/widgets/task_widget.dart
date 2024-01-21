@@ -8,59 +8,68 @@ import '../view_model/task_view_model.dart';
 
 class TaskWidget extends StatelessWidget {
   final Task task;
+  final bool showDate;
   final int index;
 
-  const TaskWidget({super.key, required this.task, required this.index});
+  const TaskWidget({super.key, required this.task, this.showDate = true, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        InkWell(
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => TaskViewWidget(
-                          task: task,
-                        )));
-          },
-          splashColor: Colors.transparent,
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-            width: 200,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: task.color,
-              borderRadius: BorderRadius.circular(20),
-            ),
+        MyCheckbox(task: task, index: index,),
+        Expanded(
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TaskViewWidget(
+                            task: task,
+                          )));
+            },
+            splashColor: Colors.transparent,
             child: Container(
-              margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    DateFormat('yyyy-MM-dd').format(task.date.toLocal()),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18.0,
-                    ),
-                  ),
-                  Text(
+              margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              width: screenWidth-100.0,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: task.color,
+                borderRadius: BorderRadius.circular(13.0),
+              ),
+              child: Container(
+                margin: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    if (showDate)
+                      Text(
+                        DateFormat('yyyy-MM-dd').format(task.date.toLocal()),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18.0,
+                          color: Theme.of(context).colorScheme.onSecondary,
+                        ),
+                      ),
+                    Text(
                     task.name,
-                    style: const TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                      fontSize: 22.0,
+                      color: Theme.of(context).colorScheme.onSecondary,
                     ),
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-        MyCheckbox(task: task, index: index,),
       ],
     );
   }

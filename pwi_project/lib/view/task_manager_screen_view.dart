@@ -79,17 +79,12 @@ class TaskManagerScreen extends StatelessWidget {
                   builder: (context) => const TaskCreationWidget()),
             );
           },
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          child: Container(
-            width: 100,
-            height: 100,
-            alignment: Alignment.center,
-            child: const Icon(
+          child: Icon(
               Icons.add,
+              color: Theme.of(context).colorScheme.onSecondary,
             ),
-          )),
+          ),
     );
   }
 }

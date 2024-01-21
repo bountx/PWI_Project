@@ -15,7 +15,9 @@ class NotepadScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final noteViewModel = context.read<NoteViewModel>();
     final textFieldControllers = context.read<TextFieldControllers>();
+
     noteViewModel.updateControllersIfNeeded(textFieldControllers);
+
 
     final contentFocusNode = FocusNode();
 
@@ -33,6 +35,7 @@ class NotepadScreen extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          foregroundColor: Theme.of(context).colorScheme.onSecondary,
           backgroundColor: Theme.of(context).colorScheme.primary,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -49,9 +52,12 @@ class NotepadScreen extends StatelessWidget {
                   controller: textFieldControllers.titleController,
                   readOnly: !isEditing,
                   maxLines: null,
-                  style: Theme.of(context).textTheme.titleLarge,
-                  decoration: const InputDecoration(
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+                  decoration: InputDecoration(
                     hintText: 'Enter title...',
+                    hintStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
@@ -99,7 +105,10 @@ class NotepadScreen extends StatelessWidget {
             },
             child: Icon(Provider.of<NotepadViewMode>(context).isEditing
                 ? Icons.check
-                : Icons.edit),
+                : Icons.edit,
+                color: Theme.of(context).colorScheme.onSecondary
+            ),
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           ),
         ),
         bottomSheet: Provider.of<NotepadViewMode>(context).isEditing

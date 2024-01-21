@@ -30,29 +30,43 @@ class Nawigator extends StatelessWidget {
           color: Theme.of(context).colorScheme.background,
 
 
-          child: TabBar(
-            onTap: (index) {
-              if (index == 2) {
-                Provider.of<TaskViewModel>(context, listen: false)
-                    .search('');
-              }
-            },
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
-            splashFactory: NoSplash.splashFactory,
-            labelColor: Colors.orange[300],
-            indicatorColor: Colors.orange[300],
-            tabs: const [
-              Tab(
-                icon: Icon(Icons.note),
-                text: 'Notatki',
+
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 16.0), // Adjust the value as needed
+                child: Divider(
+                  color: Theme.of(context).colorScheme.onBackground,
+                  height: 1,
+                ),
               ),
-              Tab(
-                icon: Icon(Icons.calendar_today),
-                text: 'Kalendarz',
-              ),
-              Tab(
-                icon: Icon(Icons.check_box),
-                text: 'Zadania',
+              TabBar(
+                onTap: (index) {
+                if (index == 2) {
+                  Provider.of<TaskViewModel>(context, listen: false)
+                      .search('');
+                }
+              },
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                splashFactory: NoSplash.splashFactory,
+                labelColor: Theme.of(context).colorScheme.tertiary,
+                indicatorColor: Theme.of(context).colorScheme.secondary,
+                unselectedLabelColor: Theme.of(context).colorScheme.onBackground,
+                tabs: const [
+                  Tab(
+                    icon: Icon(Icons.note),
+                    text: 'Notes',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.calendar_today),
+                    text: 'Calendar',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.check_box),
+                    text: 'Tasks',
+                  ),
+                ],
               ),
             ],
           ),
