@@ -15,6 +15,9 @@ Future<List<Note>> loadNotes() async {
   final keys = prefs.getKeys();
   final notes = <Note>[];
   for (final key in keys) {
+    if (key[0] != 'T' && key[0] != 'N') {
+      continue;
+    }
     final json = prefs.getString(key);
     if (key[0] == 'N' && json != null) {
       notes.add(Note.fromJson(jsonDecode(json)));
@@ -37,8 +40,10 @@ Future<List<Task>> loadTasks() async {
   final prefs = await SharedPreferences.getInstance();
   final keys = prefs.getKeys();
   final tasks = <Task>[];
-  print(prefs);
   for (final key in keys) {
+    if (key[0] != 'T' && key[0] != 'N') {
+      continue;
+    }
     final json = prefs.getString(key);
     if (key[0] == 'T' && json != null) {
       tasks.add(Task.fromJson(jsonDecode(json)));
@@ -50,4 +55,18 @@ Future<List<Task>> loadTasks() async {
 void deleteTaskFromMemory(String id) async {
   final prefs = await SharedPreferences.getInstance();
   prefs.remove(id);
+}
+
+void saveThemeInMemory(bool isDarkMode) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setBool('isDarkMode', isDarkMode);
+}
+
+Future<bool> loadThemeFromMemory() async {
+  final prefs = await SharedPreferences.getInstance();
+  final isDarkMode = prefs.getBool('isDarkMode');
+  if (isDarkMode != null) {
+    return isDarkMode;
+  }
+  return false;
 }

@@ -10,24 +10,27 @@ class TaskViewModel extends ChangeNotifier {
   void addTask(Task newTask) {
     _tasks.add(newTask);
     saveTaskInMemory(newTask);
-    sortTasksByDate();
+    sortTasksByDate(reverse: _isDoneFilter);
     _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
     notifyListeners();
   }
 
   List<Task> get tasks => _tasks;
 
-  void sortTasksByDate() {
+  void sortTasksByDate({bool reverse = false}) {
     // _tasks.sort((a, b) => a.name.compareTo(b.name));
-    _tasks.sort((a, b) => a.date.compareTo(b.date));
-
+    _searchResults.sort((a, b) => a.date.compareTo(b.date));
+    if (reverse) {
+      _searchResults = _searchResults.reversed.toList();
+    }
+    notifyListeners();
   }
   
 
   void loadTasksFromMemory() async {
     _tasks.clear();
     _tasks.addAll(await loadTasks());
-    sortTasksByDate();
+    sortTasksByDate(reverse: _isDoneFilter);
     notifyListeners();
   }
 
@@ -43,7 +46,7 @@ class TaskViewModel extends ChangeNotifier {
     int index = _tasks.indexWhere((t) => t.id == id);
     if (index != -1) {
       _tasks[index] = editedTask;
-      sortTasksByDate();
+      sortTasksByDate(reverse: _isDoneFilter);
       _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
       notifyListeners();
     }
@@ -66,7 +69,7 @@ class TaskViewModel extends ChangeNotifier {
   }
 
   void delay(Task task) {
-    Future.delayed(const Duration(seconds: 1, milliseconds: 30), () {
+    Future.delayed(const Duration(milliseconds: 327,), () {
      _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
      notifyListeners();
     });

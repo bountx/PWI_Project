@@ -7,14 +7,15 @@ import '../view_model/task_creation_view_model.dart';
 import '../view_model/task_view_model.dart';
 import 'package:uuid/uuid.dart';
 
-
 class TaskCreationWidget extends StatelessWidget {
   const TaskCreationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TaskCreationViewModel(task: Task('T${generateRandomString(16)}','', '', DateTime.now(), Color(0xFFEFB949) , false)),
+      create: (context) => TaskCreationViewModel(
+          task: Task('T${generateRandomString(16)}', '', '', DateTime.now(),
+              Color(0xFFEFB949), false)),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
@@ -24,17 +25,25 @@ class TaskCreationWidget extends StatelessWidget {
             title: Text(
               'Create Task',
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.onSecondary,
               ),
             ),
             actions: [
               IconButton(
                 icon: Icon(
-                    Icons.check,
+                  Icons.check,
                   color: Theme.of(context).colorScheme.onSecondary,
                 ),
-                onPressed: () => model.addTask(context),
+                onPressed: () {
+                  if (model.titleController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Title is too short!')),
+                    );
+                    return;
+                  }
+                  model.addTask(context);
+                },
               ),
             ],
           ),
@@ -47,26 +56,40 @@ class TaskCreationWidget extends StatelessWidget {
                   TextFormField(
                     controller: model.titleController,
                     decoration: InputDecoration(
-                        labelText: 'Title',
-                        labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
-                        enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
-                    ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                      labelText: 'Title',
+                      labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
-                  ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
+                      ),
+                    ),
                   ),
                   TextFormField(
                     controller: model.descriptionController,
                     decoration: InputDecoration(
                       labelText: 'Description',
-                      labelStyle: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                      labelStyle: TextStyle(
+                          color: Theme.of(context).colorScheme.onBackground),
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Theme.of(context).colorScheme.onBackground), // Set the color you want
+                        borderSide: BorderSide(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground), // Set the color you want
                       ),
                     ),
                   ),
@@ -78,13 +101,19 @@ class TaskCreationWidget extends StatelessWidget {
                         children: [
                           Text('Finish Date:'),
                           ElevatedButton(
-                              onPressed: () => model.selectDate(context),
-                              child: Text(
-                                DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal()),
-                                style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
-                              ),
-                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.secondary)),
+                            onPressed: () => model.selectDate(context),
+                            child: Text(
+                              DateFormat('yyyy-MM-dd HH:mm')
+                                  .format(model.selectedDate.toLocal()),
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSecondary),
                             ),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Theme.of(context).colorScheme.secondary)),
+                          ),
                         ],
                       ),
                       Column(

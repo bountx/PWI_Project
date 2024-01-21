@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pwi_project/utils/memory_management.dart';
 import 'package:pwi_project/view/calendar_screen_view.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/themes/app_theme.dart';
@@ -15,10 +16,12 @@ import 'package:pwi_project/view_model/notepad_view_model.dart';
 import 'package:pwi_project/view_model/task_view_model.dart';
 import 'view_model/calendar_view_model.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  bool isDarkMode = await loadThemeFromMemory();
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider(create: (context) => ThemeProvider(isDarkMode)),
       ChangeNotifierProvider(create: (context) => NoteViewModel()),
       ChangeNotifierProvider(create: (context) => Calendar()),
       ChangeNotifierProvider(create: (context) => TaskViewModel()),
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: Nawigator(),
+      home: CustomNavigator(),
     );
   }
 }

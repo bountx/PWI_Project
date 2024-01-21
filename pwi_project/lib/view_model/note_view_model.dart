@@ -8,11 +8,7 @@ import 'package:pwi_project/utils/text_field_controllers.dart';
 import '../utils/memory_management.dart';
 
 class NoteViewModel extends ChangeNotifier {
-  final List<Note> _notes = [
-    //convert plain string to json
-    Note('adfsafd', 'siema', 'eeeeeeeeelo',r'[{"insert":"eeeeeeeelo\n"}]', const Color(0xFFF0F4C3),
-        DateTime.now().add(const Duration(days: 1)))
-  ];
+  final List<Note> _notes = [];
   List<Note> _searchResults = [];
 
   String _searchQuery = '';

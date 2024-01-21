@@ -29,6 +29,9 @@ class TaskManagerScreen extends StatelessWidget {
                     onTap: () {
                       var taskViewModel = Provider.of<TaskViewModel>(context, listen: false);
                       taskViewModel.isDoneFilter = !taskViewModel.isDoneFilter;
+                      print(taskViewModel.isDoneFilter);
+
+                      taskViewModel.sortTasksByDate(reverse: taskViewModel.isDoneFilter);
                     },
                     borderRadius: BorderRadius.circular(10),
                     splashColor: Theme.of(context).splashColor,
