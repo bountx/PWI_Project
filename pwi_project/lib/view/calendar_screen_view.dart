@@ -91,10 +91,8 @@ Widget appointmentBuilder(BuildContext context,
     int index = Provider.of<TaskViewModel>(context)
         .tasks
         .indexWhere((element) => element.id == appointment.notes);
-    return Flexible(
-      child: TaskWidget(
-          task: Provider.of<TaskViewModel>(context).tasks[index],showDate: false, index: index),
-    );
+    return TaskWidget(
+        task: Provider.of<TaskViewModel>(context).tasks[index],showDate: false, index: index);
   } else {
     int index = Provider.of<NoteViewModel>(context)
         .notes
