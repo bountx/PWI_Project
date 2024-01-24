@@ -5,9 +5,6 @@ import 'package:pwi_project/view/task_creation_screen_view.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
 import 'package:pwi_project/view_model/theme_switch_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-
-import '../model/note.dart';
-import '../model/task.dart';
 import '../view_model/note_view_model.dart';
 import '../view_model/task_view_model.dart';
 import '../widgets/note_line.dart';
