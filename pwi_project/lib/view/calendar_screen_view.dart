@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:pwi_project/view/notepad_screen_view.dart';
 import 'package:pwi_project/view/task_creation_screen_view.dart';
 import 'package:pwi_project/view_model/calendar_view_model.dart';
+import 'package:pwi_project/view_model/notelist_view_model.dart';
 import 'package:pwi_project/view_model/theme_switch_view_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
@@ -53,11 +54,7 @@ class CalendarScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const NotepadScreen()),
-                      );
+                      handleAddButtonPress(context);
                     },
                     borderRadius: BorderRadius.circular(10),
                     splashColor: Theme.of(context).splashColor,
