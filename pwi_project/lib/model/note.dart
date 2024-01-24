@@ -1,15 +1,13 @@
-import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Note {
   final String id;
   final String title;
   final String stringContent;
-  final jsonContent;
+  final dynamic jsonContent;
   final Color color;
   final DateTime date;
 
@@ -32,5 +30,7 @@ class Note {
         Color(json['color']),
         DateFormat('yyyy-MM-dd HH:mm:ss').parse(json['date']),
       );
-  Note(this.id, this.title, this.stringContent,this.jsonContent, this.color, this.date);
+
+  Note(this.id, this.title, this.stringContent, this.jsonContent, this.color,
+      this.date);
 }

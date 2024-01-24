@@ -6,7 +6,6 @@ import 'package:pwi_project/view_model/theme_switch_view_model.dart';
 import 'package:pwi_project/widgets/search_bar.dart';
 import 'package:pwi_project/widgets/task_widget.dart';
 
-import '../model/task.dart';
 import '../view_model/task_view_model.dart';
 
 class TaskManagerScreen extends StatelessWidget {
@@ -20,43 +19,46 @@ class TaskManagerScreen extends StatelessWidget {
         child: AppBar(
           title: Row(
             children: [
-               Selector<TaskViewModel, bool>(
+              Selector<TaskViewModel, bool>(
                 selector: (_, toggle) => toggle.isDoneFilter,
                 builder: (context, isDoneFilter, viewMode) => Material(
                   color: Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                     onTap: () {
-                      var taskViewModel = Provider.of<TaskViewModel>(context, listen: false);
+                      var taskViewModel =
+                          Provider.of<TaskViewModel>(context, listen: false);
                       taskViewModel.isDoneFilter = !taskViewModel.isDoneFilter;
-                      print(taskViewModel.isDoneFilter);
 
-                      taskViewModel.sortTasksByDate(reverse: taskViewModel.isDoneFilter);
+                      taskViewModel.sortTasksByDate(
+                          reverse: taskViewModel.isDoneFilter);
                     },
                     borderRadius: BorderRadius.circular(10),
                     splashColor: Theme.of(context).splashColor,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(
-                        isDoneFilter ? Icons.check_box : Icons.check_box_outline_blank,
+                        isDoneFilter
+                            ? Icons.check_box
+                            : Icons.check_box_outline_blank,
                         color: Theme.of(context).colorScheme.onSecondary,
                       ),
                     ),
                   ),
                 ),
               ),
-
               Expanded(
                 child: OurSearchBar(
                   searchController: Provider.of<TextFieldControllers>(context)
                       .searchController,
                   onSearch: (query) {
-                    Provider.of<TaskViewModel>(context, listen: false).search(query);
+                    Provider.of<TaskViewModel>(context, listen: false)
+                        .search(query);
                   },
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(8.0,0,0,0),
+                padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
                 child: Selector<ThemeProvider, bool>(
                   selector: (_, themeProvider) => themeProvider.isDarkMode,
                   builder: (context, isDarkMode, viewMode) => Material(
@@ -64,7 +66,8 @@ class TaskManagerScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       onTap: () {
-                        Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+                        Provider.of<ThemeProvider>(context, listen: false)
+                            .toggleTheme();
                       },
                       borderRadius: BorderRadius.circular(10),
                       splashColor: Theme.of(context).splashColor,
@@ -104,19 +107,18 @@ class TaskManagerScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const TaskCreationWidget()),
-            );
-          },
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          child: Icon(
-              Icons.add,
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
-          ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const TaskCreationWidget()),
+          );
+        },
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).colorScheme.onSecondary,
+        ),
+      ),
     );
   }
 }

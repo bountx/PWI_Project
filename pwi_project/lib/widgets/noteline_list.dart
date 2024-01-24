@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pwi_project/view/notepad_screen_view.dart';
-import 'package:pwi_project/view_model/notepad_view_model.dart';
 import 'package:pwi_project/widgets/note_line.dart';
 
 import '../view_model/note_view_model.dart';
@@ -11,8 +9,6 @@ class NoteLineList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     final noteViewModel = Provider.of<NoteViewModel>(context);
     final notes = noteViewModel.searchResults.isNotEmpty
         ? noteViewModel.searchResults

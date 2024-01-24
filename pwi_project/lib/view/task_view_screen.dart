@@ -10,11 +10,10 @@ import 'task_edit_screen_view.dart';
 class TaskViewWidget extends StatelessWidget {
   final Task task;
 
-  TaskViewWidget({required this.task});
+  const TaskViewWidget({super.key, required this.task});
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return ChangeNotifierProvider(
       create: (context) => TaskCreationViewModel(task: task),
@@ -27,13 +26,13 @@ class TaskViewWidget extends StatelessWidget {
             title: Text(
               model.titleController.text,
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             actions: [
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     onPressed: () {
                       Provider.of<TaskViewModel>(context, listen: false)
                           .removeTask(task.id);
@@ -41,7 +40,7 @@ class TaskViewWidget extends StatelessWidget {
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -67,19 +66,15 @@ class TaskViewWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          const Text(
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              'Finish Date'),
                           Text(
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold
-                            ),
-                              'Finish Date'
-                          ),
-                          Text(
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold
-                            ),
-                              DateFormat('yyyy-MM-dd HH:mm').format(model.selectedDate.toLocal())),
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              DateFormat('yyyy-MM-dd HH:mm')
+                                  .format(model.selectedDate.toLocal())),
                         ],
                       ),
                     ),
@@ -92,7 +87,8 @@ class TaskViewWidget extends StatelessWidget {
                       ),
                       child: SingleChildScrollView(
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                          margin:
+                              const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -101,7 +97,8 @@ class TaskViewWidget extends StatelessWidget {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 27.0,
-                                  color: Theme.of(context).colorScheme.onSecondary,
+                                  color:
+                                      Theme.of(context).colorScheme.onSecondary,
                                 ),
                               ),
                               Text(
@@ -109,7 +106,8 @@ class TaskViewWidget extends StatelessWidget {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18.0,
-                                  color: Theme.of(context).colorScheme.onSecondary,
+                                  color:
+                                      Theme.of(context).colorScheme.onSecondary,
                                 ),
                               ),
                             ],
@@ -119,8 +117,7 @@ class TaskViewWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
-          ),
+              )),
         ),
       ),
     );

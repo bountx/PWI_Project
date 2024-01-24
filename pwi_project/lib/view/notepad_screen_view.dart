@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
@@ -17,7 +16,6 @@ class NotepadScreen extends StatelessWidget {
     final textFieldControllers = context.read<TextFieldControllers>();
 
     noteViewModel.updateControllersIfNeeded(textFieldControllers);
-
 
     final contentFocusNode = FocusNode();
 
@@ -52,7 +50,8 @@ class NotepadScreen extends StatelessWidget {
                   controller: textFieldControllers.titleController,
                   readOnly: !isEditing,
                   maxLines: null,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSecondary),
                   decoration: InputDecoration(
                     hintText: 'Enter title...',
                     hintStyle: TextStyle(
@@ -80,17 +79,17 @@ class NotepadScreen extends StatelessWidget {
             selector: (_, notepadViewMode) => notepadViewMode.isEditing,
             builder: (context, isEditing, child) {
               return IgnorePointer(
-  ignoring: !isEditing,
-  child: QuillEditor.basic(
-    configurations: QuillEditorConfigurations(
-      controller: textFieldControllers.quillController,
-      readOnly: !isEditing,
-      showCursor: isEditing,
-      placeholder: 'Enter your note here...',
-      expands: true,
-    ),
-  ),
-);
+                ignoring: !isEditing,
+                child: QuillEditor.basic(
+                  configurations: QuillEditorConfigurations(
+                    controller: textFieldControllers.quillController,
+                    readOnly: !isEditing,
+                    showCursor: isEditing,
+                    placeholder: 'Enter your note here...',
+                    expands: true,
+                  ),
+                ),
+              );
             },
           ),
         ),
@@ -103,12 +102,12 @@ class NotepadScreen extends StatelessWidget {
               handleEditSaveButtonPress(
                   context, textFieldControllers, noteViewModel);
             },
-            child: Icon(Provider.of<NotepadViewMode>(context).isEditing
-                ? Icons.check
-                : Icons.edit,
-                color: Theme.of(context).colorScheme.onSecondary
-            ),
-          backgroundColor: Theme.of(context).colorScheme.secondary,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            child: Icon(
+                Provider.of<NotepadViewMode>(context).isEditing
+                    ? Icons.check
+                    : Icons.edit,
+                color: Theme.of(context).colorScheme.onSecondary),
           ),
         ),
         bottomSheet: Provider.of<NotepadViewMode>(context).isEditing

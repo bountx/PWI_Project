@@ -17,7 +17,7 @@ class TextFieldControllers with ChangeNotifier {
     searchController.dispose();
   }
 
-    void clearSearchController() {
+  void clearSearchController() {
     searchController.clear();
     notifyListeners();
   }
@@ -25,7 +25,7 @@ class TextFieldControllers with ChangeNotifier {
   void updateControllers(String title, String content) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       titleController.text = title;
-      quillController.document=Document.fromJson(jsonDecode(content));
+      quillController.document = Document.fromJson(jsonDecode(content));
       notifyListeners();
     });
   }

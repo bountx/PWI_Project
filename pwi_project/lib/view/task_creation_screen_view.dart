@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:pwi_project/utils/random_string.dart';
+
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
-import '../view_model/task_view_model.dart';
-import 'package:uuid/uuid.dart';
 
 class TaskCreationWidget extends StatelessWidget {
   const TaskCreationWidget({super.key});
@@ -15,7 +14,7 @@ class TaskCreationWidget extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => TaskCreationViewModel(
           task: Task('T${generateRandomString(16)}', '', '', DateTime.now(),
-              Color(0xFFEFB949), false)),
+              const Color(0xFFEFB949), false)),
       child: Consumer<TaskCreationViewModel>(
         builder: (context, model, child) => Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
@@ -93,15 +92,18 @@ class TaskCreationWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
                         children: [
-                          Text('Finish Date:'),
+                          const Text('Finish Date:'),
                           ElevatedButton(
                             onPressed: () => model.selectDate(context),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Theme.of(context).colorScheme.secondary)),
                             child: Text(
                               DateFormat('yyyy-MM-dd HH:mm')
                                   .format(model.selectedDate.toLocal()),
@@ -110,20 +112,17 @@ class TaskCreationWidget extends StatelessWidget {
                                       .colorScheme
                                       .onSecondary),
                             ),
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Theme.of(context).colorScheme.secondary)),
                           ),
                         ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Background Color:'),
+                          const Text('Background Color:'),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: model.selectedColor,
-                              shape: CircleBorder(),
+                              backgroundColor: model.selectedColor,
+                              shape: const CircleBorder(),
                             ),
                             onPressed: () => model.selectColor(context),
                             child: null,

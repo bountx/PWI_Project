@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:ui';
-
 import 'package:flutter/foundation.dart';
 import 'package:pwi_project/model/note.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
