@@ -11,7 +11,8 @@ class TaskViewModel extends ChangeNotifier {
     _tasks.add(newTask);
     saveTaskInMemory(newTask);
     sortTasksByDate(reverse: _isDoneFilter);
-    _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
+    _searchResults =
+        _tasks.where((task) => task.isDone == isDoneFilter).toList();
     notifyListeners();
   }
 
@@ -25,7 +26,6 @@ class TaskViewModel extends ChangeNotifier {
     }
     notifyListeners();
   }
-  
 
   void loadTasksFromMemory() async {
     _tasks.clear();
@@ -38,7 +38,8 @@ class TaskViewModel extends ChangeNotifier {
     int index = _tasks.indexWhere((t) => t.id == id);
     _tasks.removeAt(index);
     deleteTaskFromMemory(id);
-    _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
+    _searchResults =
+        _tasks.where((task) => task.isDone == isDoneFilter).toList();
     notifyListeners();
   }
 
@@ -47,7 +48,8 @@ class TaskViewModel extends ChangeNotifier {
     if (index != -1) {
       _tasks[index] = editedTask;
       sortTasksByDate(reverse: _isDoneFilter);
-      _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
+      _searchResults =
+          _tasks.where((task) => task.isDone == isDoneFilter).toList();
       notifyListeners();
     }
     saveTaskInMemory(editedTask);
@@ -57,6 +59,7 @@ class TaskViewModel extends ChangeNotifier {
   List<Task> _searchResults = [];
 
   String get searchQuery => _searchQuery;
+
   List<Task> get searchResults => _searchResults;
 
   bool _isDoneFilter = false;
@@ -69,33 +72,36 @@ class TaskViewModel extends ChangeNotifier {
   }
 
   void delay(Task task) {
-    Future.delayed(const Duration(milliseconds: 327,), () {
-     _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
-     notifyListeners();
+    Future.delayed(
+        const Duration(
+          milliseconds: 327,
+        ), () {
+      _searchResults =
+          _tasks.where((task) => task.isDone == isDoneFilter).toList();
+      notifyListeners();
     });
-
   }
-
 
   set isDoneFilter(bool value) {
     _isDoneFilter = value;
     _searchResults = _tasks.where((task) => task.isDone == value).toList();
     notifyListeners();
   }
+
   bool get isDoneFilter => _isDoneFilter;
-  
+
   void search(String query) {
     _searchQuery = query;
     if (query.trim().isEmpty) {
-      _searchResults = _tasks.where((task) => task.isDone == isDoneFilter).toList();
+      _searchResults =
+          _tasks.where((task) => task.isDone == isDoneFilter).toList();
     } else {
       _searchResults = _tasks
           .where((task) =>
               task.name.toLowerCase().contains(query.trim().toLowerCase()))
           .toList();
-      _searchResults = _searchResults
-          .where((task) => task.isDone == isDoneFilter)
-          .toList();
+      _searchResults =
+          _searchResults.where((task) => task.isDone == isDoneFilter).toList();
     }
     notifyListeners();
   }

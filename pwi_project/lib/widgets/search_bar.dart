@@ -5,8 +5,7 @@ class OurSearchBar extends StatelessWidget {
   final ValueChanged<String> onSearch;
 
   const OurSearchBar(
-      {Key? key, required this.searchController, required this.onSearch})
-      : super(key: key);
+      {super.key, required this.searchController, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +24,11 @@ class OurSearchBar extends StatelessWidget {
           ),
           contentPadding: const EdgeInsets.all(10),
           border: InputBorder.none,
-          prefixIcon: Icon(Icons.search, color: Theme.of(context).secondaryHeaderColor),
+          prefixIcon:
+              Icon(Icons.search, color: Theme.of(context).secondaryHeaderColor),
           suffixIcon: IconButton(
-            icon: Icon(Icons.close, color: Theme.of(context).secondaryHeaderColor),
+            icon: Icon(Icons.close,
+                color: Theme.of(context).secondaryHeaderColor),
             onPressed: () {
               searchController.clear();
               onSearch('');

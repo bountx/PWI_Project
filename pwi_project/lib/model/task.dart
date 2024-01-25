@@ -30,6 +30,6 @@ class Task {
         json['isDone'],
       );
 
-  Task(this.id, this.name, this.description, this.date, this.color,
-      this.isDone);
+  Task(
+      this.id, this.name, this.description, this.date, this.color, this.isDone);
 }

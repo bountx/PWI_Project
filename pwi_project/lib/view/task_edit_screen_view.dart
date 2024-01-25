@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
 import '../model/task.dart';
 import '../view_model/task_creation_view_model.dart';
 import '../view_model/task_view_model.dart';
@@ -8,7 +9,7 @@ import '../view_model/task_view_model.dart';
 class TaskEditWidget extends StatelessWidget {
   final Task task;
 
-  TaskEditWidget({required this.task});
+  const TaskEditWidget({super.key, required this.task});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class TaskEditWidget extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: model.selectedColor,
             foregroundColor: Theme.of(context).colorScheme.onSecondary,
-            title: Text(
+            title: const Text(
               'Edit Task',
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -29,7 +30,7 @@ class TaskEditWidget extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     onPressed: () {
                       Provider.of<TaskViewModel>(context, listen: false)
                           .removeTask(task.id);
@@ -37,7 +38,7 @@ class TaskEditWidget extends StatelessWidget {
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.check),
+                    icon: const Icon(Icons.check),
                     onPressed: () {
                       if (model.titleController.text.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -101,17 +102,20 @@ class TaskEditWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
                         children: [
-                          Text('Finish Date:'),
+                          const Text('Finish Date:'),
                           ElevatedButton(
                             onPressed: () {
                               model.selectDate(context);
                             },
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    model.selectedColor)),
                             child: Text(
                               DateFormat('yyyy-MM-dd HH:mm')
                                   .format(model.selectedDate.toLocal()),
@@ -120,20 +124,17 @@ class TaskEditWidget extends StatelessWidget {
                                       .colorScheme
                                       .onSecondary),
                             ),
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    model.selectedColor)),
                           ),
                         ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Background Color:'),
+                          const Text('Background Color:'),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: model.selectedColor,
-                              shape: CircleBorder(),
+                              backgroundColor: model.selectedColor,
+                              shape: const CircleBorder(),
                             ),
                             onPressed: () {
                               model.selectColor(context);

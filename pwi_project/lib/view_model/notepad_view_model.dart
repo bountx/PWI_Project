@@ -8,7 +8,6 @@ import 'package:pwi_project/utils/random_string.dart';
 import 'package:pwi_project/utils/text_field_controllers.dart';
 import 'package:pwi_project/view_model/note_view_model.dart';
 
-
 void handleEditSaveButtonPress(BuildContext context,
     TextFieldControllers textFieldControllers, NoteViewModel noteViewModel) {
   var notepadViewMode = Provider.of<NotepadViewMode>(context, listen: false);
@@ -22,12 +21,14 @@ void handleEditSaveButtonPress(BuildContext context,
       );
       return;
     }
-    String stringContent = textFieldControllers.quillController.document.toPlainText();
-    final jsonContent = jsonEncode(textFieldControllers.quillController.document.toDelta().toJson());
+    String stringContent =
+        textFieldControllers.quillController.document.toPlainText();
+    final jsonContent = jsonEncode(
+        textFieldControllers.quillController.document.toDelta().toJson());
     Color color = Theme.of(context).colorScheme.surface;
     DateTime dateTime = DateTime.now();
 
-    Note newNote = Note(id, title, stringContent,jsonContent, color, dateTime);
+    Note newNote = Note(id, title, stringContent, jsonContent, color, dateTime);
     saveNoteInMemory(newNote);
 
     if (noteViewModel.currentIndex != null) {
